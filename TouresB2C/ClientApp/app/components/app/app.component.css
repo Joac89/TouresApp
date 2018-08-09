@@ -1,0 +1,47 @@
+@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+}
+.container-fluid{
+    padding-left:0;
+    padding-right:0;    
+}
+.container-fluid > .slide {
+    background-image: url('../../../../wwwroot/img/slide.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    height:450px;
+    color:#fff;
+}
+    .container-fluid > .slide .row {
+        height: 450px;
+    }
+
+.container-fluid .content{
+    padding-top:10%;
+}
+    .container-fluid .content .search-content {
+        padding:20px;
+        text-align:center;
+    }
+        .container-fluid .content .text {
+            font-size: 30px;
+            text-transform:uppercase;
+            margin-bottom:20px;
+        }
+
+    .container-fluid .slide .search {
+        padding:10px;
+        background-color: rgba(0,0,0,0.5);
+        border-radius:5px;
+    }
+
+    .container-fluid .row{
+        margin:0;
+    }
+
+    .base-content{
+        padding-top:50px;
+    }

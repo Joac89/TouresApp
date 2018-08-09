@@ -1,0 +1,10 @@
+﻿.page-title{
+    margin-bottom:50px;
+}
+.page-title > .title{
+    font-size:22px;
+    margin-bottom:0;
+}
+.page-title > .subtitle {
+    color: #dc3545;
+}

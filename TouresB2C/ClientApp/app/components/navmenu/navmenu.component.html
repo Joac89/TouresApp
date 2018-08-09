@@ -1,0 +1,91 @@
+<div class="row justify-content-md-center h-menu">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="nav justify-content-start">
+                    <li class="nav-item">
+                        <a [routerLink]="['/home']" class="nav-link title" href="#" style="padding-left:0">
+                            <i class="fa fa-futbol text-danger"></i>
+                            &nbsp;TOURES BALON
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Iniciar sesi&oacute;n</a>
+                    </li>                 
+                </ul>
+            </div>
+            <div class="col-md-8" style="padding-right:0">
+                <ul class="nav justify-content-end">
+                    <li [routerLinkActive]="['active']" class="nav-item">
+                        <a [routerLink]="['/home']" class="nav-link" href="#"><i class="fa fa-home"></i>&nbsp;Inicio</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item">
+                        <a [routerLink]="['/about']" class="nav-link" href="#">Acerca de</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item">
+                        <a [routerLink]="['/campaign']" class="nav-link" href="#">Campa&ntilde;as</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item">
+                        <a [routerLink]="['/product']" class="nav-link" href="#">Productos</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item">
+                        <a [routerLink]="['/contact']" class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="padding-right:0" href="#">Reg&iacute;strate!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cart" href="#">
+                            <div class="bg-danger cart-item">
+                                <i class="fa fa-shopping-cart"></i>&nbsp;3
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>        
+    </div>
+</div>
+<!--<div class='main-nav'>
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' [routerLink]="['/home']">B2C</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav'>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-home'></span> Home
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/about']">
+                        <span class='glyphicon glyphicon-education'></span> Acerca de
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/campaign']">
+                        <span class='glyphicon glyphicon-th-list'></span> Campañas
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/product']">
+                        <span class='glyphicon glyphicon-th-list'></span> Paquetes
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/contact']">
+                        <span class='glyphicon glyphicon-th-list'></span> Contacto
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>-->
