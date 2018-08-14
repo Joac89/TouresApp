@@ -1,0 +1,23 @@
+﻿.item-offer {
+    border-radius: 3px;
+    color: #fff;
+    text-align: left;
+    background-size: cover;
+    padding: 0;
+    border-radius: 3px;
+    margin: 10px;
+}
+
+    .item-offer .transparent {
+        padding: 10px;
+        border-radius: 3px;
+    }
+
+    .item-offer .title {
+        font-size: 20px;
+    }
+
+    .item-offer .price {
+        font-size: 30px;
+        margin: 0;
+    }

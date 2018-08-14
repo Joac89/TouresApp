@@ -11,7 +11,10 @@ import { AboutComponent } from './components/about/about.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { ProductComponent } from './components/product/product.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { PagetitleComponent } from './components/custom/pagetitle/pagetitle.component';
+import { PagetitleComponent } from './components/controls/pagetitle/pagetitle.component';
+import { ItemprodComponent } from './components/controls/itemprod/itemprod.component';
+import { ItemofferComponent } from './components/controls/itemoffer/itemoffer.component';
+
 
 @NgModule({
     declarations: [
@@ -22,7 +25,9 @@ import { PagetitleComponent } from './components/custom/pagetitle/pagetitle.comp
         HomeComponent,
         ProductComponent,
         ContactComponent,
-        PagetitleComponent
+        PagetitleComponent,
+        ItemprodComponent,
+        ItemofferComponent
     ],
     imports: [
         CommonModule,

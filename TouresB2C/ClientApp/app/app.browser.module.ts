@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.shared.module';
 import { AppComponent } from './components/app/app.component';
+import { ConfigService } from './components/controls/service/config.service';
 
 @NgModule({
     bootstrap: [ AppComponent ],

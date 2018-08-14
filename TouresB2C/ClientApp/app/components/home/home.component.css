@@ -1,33 +1,6 @@
-﻿.home .product .image img{
-    height:100%;
-    width:100%;
-    border-radius:3px;
+﻿.home .row{
+    margin-bottom:20px;
 }
-.home .product .price {
-    position: absolute;
-    padding: 5px;
-    border-radius: 3px;
-    margin: 5px;
-    font-weight: 600;
-}
-
-.home .product .title{
-    text-align:left;
-    margin-top:0px;
-    font-weight:600;
-    font-size:18px;
-}
-
-.home .product .buttons{
-    margin-top:20px;
-}
-
-.home .product .description {
-    margin:0;
-}
-
-.home .product .rating {
-    margin-bottom: 10px;
-    text-align: left;
-    color:gold;
+.home .product {   
+    padding-bottom:20px;
 }

@@ -2,9 +2,9 @@
     <nav-menu></nav-menu>
     <div class="slide my-auto">
         <div class="row justify-content-center">
-            <div class="col-md-8 text-center my-auto">
+            <div class="col-lg-8 col-md-10 col-sm-12 text-center my-auto">
                 <div class="row" style="">
-                    <div class="col-md-8 text-left my-auto">
+                    <div class="col-lg-8 col-md-6 text-left my-auto xs-desktop">
                         <div>
                             <div style="margin-bottom:50px">
                                 <h1>
@@ -15,12 +15,12 @@
                                 </h6>
                             </div>
                             <div>
-                                <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span>Reg&iacute;strate</button>
-                                <button type="button" class="btn btn-outline-light"><span class="glyphicon glyphicon-search"></span>Iniciar sesi&oacute;n</button>
+                                <button type="button" class="btn btn-danger xs-desktop"><span class="glyphicon glyphicon-search"></span>Reg&iacute;strate</button>
+                                <button type="button" class="btn btn-outline-light xs-desktop"><span class="glyphicon glyphicon-search"></span>Iniciar sesi&oacute;n</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 text-left search my-auto">
+                    <div class="col-lg-4 col-md-6 text-left search my-auto">
                         <form>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">&iquest;A donde vas?</label>
@@ -31,7 +31,11 @@
                                 <input type="date" class="form-control" id="input_date">
                             </div>
                             <br />
-                            <button type="submit" class="btn btn-danger"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                            <button type="submit" class="btn btn-danger xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                            <button type="submit" class="btn btn-light xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+
+                            <button type="button" class="btn btn-outline-light xs-phone float-right xs-margin-left"><span class="glyphicon glyphicon-search"></span>Iniciar sesi&oacute;n</button>
+                            <button type="button" class="btn btn-outline-light xs-phone float-right"><span class="glyphicon glyphicon-search"></span>Reg&iacute;strate</button>
                         </form>
                     </div>
                 </div>
@@ -43,9 +47,50 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <br /><br />
+    <div class="row my-auto">
+        <div class="col-md-12 bg-dark no-padding">
+            <div class="row justify-content-center">
+                <div class="col-md-8 my-auto footer">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <h2><i class="fa fa-futbol"></i>&nbsp;TOURES BALON</h2>
+                            <p class="description">
+                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere.
+                            </p>
+                            <div>
+                                <button class="btn btn-danger">
+                                    Reg&iacute;strate!
+                                </button>
+                                <button class="btn btn-outline-light">
+                                    Contactanos
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-4 xs-desktop-medium">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-4 col-md-6 text-center no-padding">
+                            <h3>Compra hoy!</h3>
+                            <div class="no-margin">
+                                <item-offer [title]="'UFC Combat'"
+                                            [price]="76000000"
+                                            [rating]="5">
+                                </item-offer>
+                                <item-offer [title]="'NFL Touch-Down'"
+                                            [price]="83000000"
+                                            [rating]="5">
+                                </item-offer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row copyright justify-content-center no-margin">
+                <div class="col-md-8 my-auto text-right">
+                    &copy;2018 IT-BUSINESS todos los derechos reservados
+                </div>
+            </div>
         </div>
     </div>
 </div>

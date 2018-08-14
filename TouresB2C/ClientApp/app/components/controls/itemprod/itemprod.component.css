@@ -1,0 +1,35 @@
+﻿.item-prod .image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.item-prod .price {
+    position: absolute;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px;
+    font-weight: 600;
+    background-color: rgba(255,193,7,0.75);
+}
+
+.item-prod .title {
+    text-align: left;
+    margin-top: 0px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.item-prod .buttons {
+    margin-top: 20px;
+}
+
+.item-prod .description {
+    margin: 0;
+}
+
+.item-prod .rating {
+    margin-bottom: 10px;
+    text-align: left;
+    color: gold;
+}

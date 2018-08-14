@@ -1,107 +1,47 @@
 <div class="text-center">
-    <page-title [title]="'Paquetes m&aacute;s populares'"
+    <page-title class="text-uppercase" [title]="'Paquetes m&aacute;s populares'"
                 [subtitle]="'Los mejores eventos deportivos esperan por ti!'">
     </page-title>
     <div class="row justify-content-md-center">
-        <div class="col-md-8 home">
+        <div class="col-lg-8 col-md-10 col-sm-12 home">
             <div class="row">
-                <div class="col-md-4 product">
-                    <div class="image">
-                        <div class="image">
-                            <p class="price bg-warning">$6.000.000 US</p>
-                            <img src="../../../../wwwroot/img/products/product002.jpg" />
-                        </div>
-                        <div class="text-left">
-                            <small class="text-warning">2018/06/23</small>
-                            <p class="title">Rusia 2018</p>
-                            <p class="description">
-                                Duelo de titanes en semi finales de la Copa del mundo con el encuentro entre <strong>Francia</strong> y <strong>B&eacute;lgica</strong>. Final adelantada!
-                            </p>
-                            <div class="rating">
-                                <small>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </small>
-                            </div>
-                            <div class="buttons">
-                                <button class="btn btn-danger">
-                                    <i class="fa fa-plus"></i>&nbsp;Lo quiero!
-                                </button>
-                                <button class="btn btn-outline-dark">
-                                    Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 product">
+                    <item-prod [price]="76000000"
+                               [image]="'/img/products/product004.jpg'"
+                               [date]="'2018/11/24'"
+                               [title]="'UFC Combat'"
+                               [description]="'Encuentro explosivo entre <strong>McGregor</strong> y <strong>Nurmagomedov</strong>. Dice Mark Wahlberg que ser&aacute; la mayor pelea de la historia!'"
+                               [rating]="5">
+                    </item-prod>
                 </div>
-                <div class="col-md-4 product">
-                    <div>
-                        <div class="image">
-                            <p class="price bg-warning">$4.500.000 US</p>
-                            <img src="../../../../wwwroot/img/products/product001.jpg" />
-                        </div>
-                        <div class="text-left">
-                            <small class="text-warning">2017/11/15</small>
-                            <p class="title">Final Champions!</p>
-                            <p class="description">
-                                Vive la final de la Champions con el encuentro entre <strong>Real Madrid</strong> de Espa&ntilde;a y <strong>Liverpool</strong> de Inglaterra
-                            </p>
-                            <div class="rating">
-                                <small>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </small>
-                            </div>
-                            <div class="buttons">
-                                <button class="btn btn-danger">
-                                    <i class="fa fa-plus"></i>&nbsp;Lo quiero!
-                                </button>
-                                <button class="btn btn-outline-dark">
-                                    Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 product">
+                    <item-prod [price]="83000000"
+                               [image]="'/img/products/product003.jpg'"
+                               [date]="'2018/09/16'"
+                               [title]="'NFL Touch-Down!'"
+                               [description]="'Dicen que es el Touch-Down m&aacute;s salvaje de la historia!. No te pierdas el gran encuentro entre <strong>Patriots</strong> y <strong>Buffalo Bills</strong>'"
+                               [rating]="5">
+                    </item-prod>
                 </div>
-                <div class="col-md-4 product">
-                    <div class="image">
-                        <div class="image">
-                            <p class="price bg-warning">$8.300.000 US</p>
-                            <img src="../../../../wwwroot/img/products/product003.jpg" />
-                        </div>
-                        <div class="text-left">
-                            <small class="text-warning">2018/09/22</small>
-                            <p class="title">NFL Touch-Down!</p>
-                            <p class="description">
-                                Dicen que es el Touch-Down m&aacute;s salvaje de la historia!. No te pierdas el gran encuentro entre <strong>Patriots</strong> y <strong>Buffalo Bills</strong>
-                            </p>
-                            <div class="rating">
-                                <small>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </small>
-                            </div>
-                            <div class="buttons">
-                                <button class="btn btn-danger">
-                                    <i class="fa fa-plus"></i>&nbsp;Lo quiero!
-                                </button>
-                                <button class="btn btn-outline-dark">
-                                    Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 product">
+                    <item-prod [price]="32000000"
+                               [image]="'/img/products/product002.jpg'"
+                               [date]="'2018/08/23'"
+                               [title]="'Rusia 2018'"
+                               [description]="'Duelo de titanes en semi finales de la Copa del mundo con el encuentro entre <strong>Francia</strong> y <strong>B&eacute;lgica</strong>. Final adelantada!'"
+                               [rating]="4">
+                    </item-prod>
                 </div>
-            </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 product">
+                    <item-prod [price]="20000000"
+                               [image]="'/img/products/product001.jpg'"
+                               [date]="'2018/08/15'"
+                               [title]="'Final Champions!'"
+                               [description]="'Vive la final de la Champions League con el encuentro entre <strong>Real Madrid</strong> de Espa&ntilde;a y <strong>Liverpool</strong> de Inglaterra'"
+                               [rating]="3">
+                    </item-prod>
+                </div>
+            </div>            
         </div>
     </div>
 </div>
