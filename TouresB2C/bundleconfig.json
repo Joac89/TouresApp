@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "ClientApp/app/components/home/home.component.min.css",
+    "inputFiles": [
+      "ClientApp/app/components/home/home.component.css"
+    ]
+  },
+  {
+    "outputFileName": "ClientApp/app/components/app/app.component.min.css",
+    "inputFiles": [
+      "ClientApp/app/components/app/app.component.css"
+    ]
+  }
+]

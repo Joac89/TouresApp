@@ -1,5 +1,4 @@
 @media (max-width: 767px) {
-    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
     .body-content {
         padding-top: 5px;
     }
@@ -18,8 +17,8 @@
         padding: 10px;
         background-color: #dc3545 !important;
         border-radius: 5px;
-    }  
-    
+    }
+
     .container-fluid .slide .show-desktop {
         display: none !important;
     }
@@ -27,9 +26,34 @@
     .container-fluid .slide .show-phone {
         display: inline !important;
     }
-    .xs-margin-left{
-        margin-left:5px;
+
+    .xs-margin-left {
+        margin-left: 5px;
     }
+}
+
+#input_event {
+    margin-right: 10px;
+    width: 100%;
+}
+
+#input_date {
+    margin-right: 10px;
+}
+
+.form-search {
+    width: 100%;
+    padding: 15px;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.content-search {
+    border-bottom: 1px solid #e0e0e0;
+    margin-top: 5px !important;
+    padding-bottom: 5px;
 }
 
 .container-fluid {
@@ -38,15 +62,15 @@
 }
 
     .container-fluid > .slide {
-        background-image: url('../../../../wwwroot/img/slide.jpg');
         background-repeat: no-repeat;
         background-size: cover;
-        height: 450px;
+        height: 100%;
         color: #fff;
+        background-position: center;
     }
 
         .container-fluid > .slide .row {
-            height: 450px;
+            height: 100%;
         }
 
     .container-fluid .content {
@@ -87,10 +111,10 @@
     }
 
 .copyright {
-    background-color: #252525;
-    color: #c0c0c0;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top: 50px;
+    border-top: 1px solid #f0f0f0;
 }
 
 .container-fluid .slide .show-desktop {
@@ -100,3 +124,33 @@
 .container-fluid .slide .show-phone {
     display: none;
 }
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    background-color: #dc3545;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #dc3545;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    opacity: 0.9;
+    z-index: 999999;
+}
+
+    .loading .content-load {
+        margin: 20% auto;
+    }
+    .loading .content-load p{
+        margin-top:10px;
+        color: #000;
+        font-weight:bold;
+        font-size:18px;
+    }

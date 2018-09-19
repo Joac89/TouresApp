@@ -2,16 +2,21 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppModuleShared } from './app.shared.module';
 import { AppComponent } from './components/app/app.component';
-import { ConfigService } from './components/controls/service/config.service';
+import { ConfigService } from '../app/services/config.service';
+import { StoreService } from '../app/services/store.service';
+import { LoaderService } from '../app/services/loader.service';
 
 @NgModule({
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         AppModuleShared
     ],
     providers: [
-        { provide: 'BASE_URL', useFactory: getBaseUrl }
+        { provide: 'BASE_URL', useFactory: getBaseUrl },
+        LoaderService,
+        StoreService,
+        ConfigService
     ]
 })
 export class AppModule {

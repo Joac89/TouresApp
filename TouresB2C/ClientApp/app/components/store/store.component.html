@@ -1,0 +1,180 @@
+﻿<div id="home_page" class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Mis compras'"
+                        [subtitle]="'Eventos que has agregado al carrito de compras'">
+            </page-title>
+
+            <div class="row" *ngIf="products.length > 0">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 col-sm-12">
+                            <page-title class="text-uppercase" [title]="'Total'">
+                            </page-title>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">Cantidad</td>
+                                        <td class="text-right"><h5 class="no-margin"><strong>{{("0" + getCountInCart()).slice(-2)}}</strong></h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">Valor compra</td>
+                                        <td class="text-right"><h5 class="no-margin"><strong>{{getTotalInCart() | currency:'COP':'symbol':'2.0' }}</strong></h5></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-info float-right" data-toggle="modal" data-target="#modalStore_confirm">
+                                <i class="fa fa-credit-card"></i>&nbsp;Confirmar pedido
+                            </button>                           
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-12">
+                            <page-title class="text-uppercase" [title]="'Eventos'">
+                            </page-title>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">C&oacute;digo</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Valor unidad</th>
+                                        <th scope="col">Subtotal</th>
+                                        <th scope="col">&nbsp;</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of products">
+                                        <td scope="row" class="row-fil text-center">{{("000" + item.id).slice(-4)}}</td>
+                                        <td class="text-left">{{item.name}}</td>
+                                        <td scope="row" class="row-fil text-right">{{item.count}}</td>
+                                        <td class="text-right">{{item.price | currency:'COP':true:'2.0'}}</td>
+                                        <td class="text-right">{{(item.price*item.count) | currency:'COP':true:'2.0' }}</td>
+                                        <td scope="row" class="row-fil text-center">
+                                            <button class="btn btn-sm btn-info" (click)="setCurrent(item)" data-toggle="modal" data-target="#modalStore_update">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                        </td>
+                                        <td scope="row" class="row-fil text-center">
+                                            <button class="btn btn-sm btn-light" (click)="setCurrent(item)" data-toggle="modal" data-target="#modalStore_delete">
+                                                <i class="fa fa-times"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg pulse animated" id="modalStore_delete" tabindex="-1" role="dialog" aria-labelledby="modalStorelabel_delete" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <p class="modal-title text-uppercase" id="modalStorelabel_delete"><strong>Quitar Evento de mi lista</strong></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h3>¿Seguro que quieres quitar el evento <strong>{{current.name}}</strong>?</h3>
+            </div>
+            <div class="modal-footer">
+                <button style="min-width:100px;" class="btn btn-light btn-default-rounded" (click)="removeItemInCart()" data-dismiss="modal" aria-label="Close">
+                    Si
+                </button>
+                <button style="min-width:100px;" class="btn btn-info btn-default-rounded" data-dismiss="modal" aria-label="Close">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg pulse animated" id="modalStore_update" tabindex="-1" role="dialog" aria-labelledby="modalStoreLabel_update" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <p class="modal-title text-uppercase" id="modalStoreLabel_update"><strong>Actualizar Evento de mi lista</strong></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-left">
+                <h5>Actualizar cantidad para el Evento <strong>{{current.name}}</strong></h5>
+                <form>
+                    <div class="form-group">
+                        <label class="col-form-label"><strong>Ingrese la nueva cantidad:</strong></label>
+                        <div class="input-group mb-3">
+                            <input type="number" min="0" [(ngModel)]="newCount" name="count" class="form-control">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" (click)="countDown()">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button class="btn btn-outline-secondary" type="button" (click)="countUp()" style="border-radius: 0 3px 3px 0;">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="newCount == 0" class="alert alert-warning" role="alert">
+                        <strong>Advertencia: </strong>Actualizar la cantidad del evento a cero(0) lo eliminar&aacute; autom&aacute;ticamente de la lista
+                    </div>
+                    <div *ngIf="newCount == 99" class="alert alert-info" role="alert">
+                        No puedes agregar una cantidad mayor a 99 para un Evento
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button [disabled]="newCount == null" style="min-width:100px;" class="btn btn-info btn-default-rounded" (click)="updateItemInCart()" data-dismiss="modal" aria-label="Close">
+                    Guardar cambios
+                </button>
+                <button style="min-width:100px;" class="btn btn-light btn-default-rounded" data-dismiss="modal" aria-label="Close">
+                    Salir
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg pulse animated" id="modalStore_confirm" tabindex="-1" role="dialog" aria-labelledby="modalStorelabel_confirm" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <p class="modal-title text-uppercase" id="modalStorelabel_confirm"><strong>Confirmar pedido</strong></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h3>¿Desea proceder con la compra?</h3>
+                <div style="margin-top:20px;">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="text-left">Cantidad</td>
+                                <td class="text-right"><h5 class="no-margin"><strong>{{("0" + getCountInCart()).slice(-2)}}</strong></h5></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Valor compra</td>
+                                <td class="text-right"><h5 class="no-margin"><strong>{{getTotalInCart() | currency:'COP':'symbol':'2.0' }}</strong></h5></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button style="min-width:100px;" class="btn btn-info btn-default-rounded" (click)="addOrder()" data-dismiss="modal" aria-label="Close">
+                    Si
+                </button>
+                <button style="min-width:100px;" class="btn btn-light btn-default-rounded" data-dismiss="modal" aria-label="Close">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

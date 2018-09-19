@@ -1,3 +1,30 @@
-﻿<div>
-    <h1>Product</h1>
+﻿<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+                        [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
+                        [reference]="textSearch">
+            </page-title>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 product" *ngFor="let item of search.data">
+                    <item-prod (click)="getDetail(item)" style="cursor:pointer;" data-toggle="modal" data-target="#exampleModal1"
+                               [code]="item.id"
+                               [price]="item.price"
+                               [image]="item.image"
+                               [date]="item.date"
+                               [title]="item.title"
+                               [description]="item.description"
+                               [rating]="item.rating">
+                    </item-prod>
+                    <div class="in-cart bg-danger" *ngIf="item.inCart">
+                        <i class="fa fa-shopping-cart"></i>&nbsp;en el carrito
+                    </div>
+                </div>
+            </div>
+            <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch()">
+                <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+            </button>
+        </div>
+    </div>
 </div>
+<detail-prod [item]="current" [modal]="'exampleModal1'" [callback]="update()"></detail-prod>

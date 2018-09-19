@@ -1,47 +1,59 @@
-<div class="text-center">
-    <page-title class="text-uppercase" [title]="'Paquetes m&aacute;s populares'"
-                [subtitle]="'Los mejores eventos deportivos esperan por ti!'">
-    </page-title>
-    <div class="row justify-content-md-center">
-        <div class="col-lg-8 col-md-10 col-sm-12 home">
+<div id="home_page" class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase xs-desktop" [title]="'Mira las campa&ntilde;as actuales'"
+                        [subtitle]="'Reg&iacute;strate y aprovecha las ofertas para viajar y disfrutar de los mejores eventos deportivos'">
+            </page-title>
+
+            <div id="carouselCampaign" class="carousel slide carousel-fade xs-desktop" data-ride="carousel" data-interval="7000">
+                <ol class="carousel-indicators">
+                    <li *ngFor="let item of campaign.data; let ix = index" data-target="#carouselCampaign" [attr.data-slide-to]="ix" [ngClass]="{'active': ix==0}"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div *ngFor="let item of campaign.data; let ix = index" class="carousel-item" [ngClass]="{'active': ix==0}">
+                        <img class="d-block w-100" src="{{(path + item.image)}}" alt="slide {{ix}}" />
+                        <div class="carousel-caption d-none d-md-block home-campaign">
+                            <h1 class="text-shadow title"><strong>{{item.name}}</strong></h1>
+                            <h3 class="text-shadow date"><strong>Desde {{item.startDate | date}} hasta {{item.endDate | date}}</strong></h3>
+                            <button class="btn btn-info">
+                                Reg&iacute;strate!
+                            </button>
+                            <button class="btn btn-light" (click)="goToCampaign(item.id)">
+                                <strong>Ver oferta</strong>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselCampaign" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselCampaign" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+            </div>
+            <page-title class="text-uppercase" [title]="'Paquetes m&aacute;s popularess'"
+                        [subtitle]="'Disfruta de los mejores eventos deportivos al mejor precio!'">
+            </page-title>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 product">
-                    <item-prod [price]="76000000"
-                               [image]="'/img/products/product004.jpg'"
-                               [date]="'2018/11/24'"
-                               [title]="'UFC Combat'"
-                               [description]="'Encuentro explosivo entre <strong>McGregor</strong> y <strong>Nurmagomedov</strong>. Dice Mark Wahlberg que ser&aacute; la mayor pelea de la historia!'"
-                               [rating]="5">
+                <div class="col-lg-3 col-md-4 col-sm-6 product" *ngFor="let item of principals.data">
+                    <item-prod (click)="getDetail(item)" style="cursor:pointer;" data-toggle="modal" data-target="#exampleModal0"
+                               [code]="item.id"
+                               [price]="item.price"
+                               [image]="item.image"
+                               [date]="item.date"
+                               [title]="item.title"
+                               [description]="item.description"
+                               [rating]="item.rating">
                     </item-prod>
+                    <div class="in-cart bg-danger" *ngIf="item.inCart">
+                        <i class="fa fa-shopping-cart"></i>&nbsp;en el carrito
+                    </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 product">
-                    <item-prod [price]="83000000"
-                               [image]="'/img/products/product003.jpg'"
-                               [date]="'2018/09/16'"
-                               [title]="'NFL Touch-Down!'"
-                               [description]="'Dicen que es el Touch-Down m&aacute;s salvaje de la historia!. No te pierdas el gran encuentro entre <strong>Patriots</strong> y <strong>Buffalo Bills</strong>'"
-                               [rating]="5">
-                    </item-prod>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 product">
-                    <item-prod [price]="32000000"
-                               [image]="'/img/products/product002.jpg'"
-                               [date]="'2018/08/23'"
-                               [title]="'Rusia 2018'"
-                               [description]="'Duelo de titanes en semi finales de la Copa del mundo con el encuentro entre <strong>Francia</strong> y <strong>B&eacute;lgica</strong>. Final adelantada!'"
-                               [rating]="4">
-                    </item-prod>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 product">
-                    <item-prod [price]="20000000"
-                               [image]="'/img/products/product001.jpg'"
-                               [date]="'2018/08/15'"
-                               [title]="'Final Champions!'"
-                               [description]="'Vive la final de la Champions League con el encuentro entre <strong>Real Madrid</strong> de Espa&ntilde;a y <strong>Liverpool</strong> de Inglaterra'"
-                               [rating]="3">
-                    </item-prod>
-                </div>
-            </div>            
+            </div>
         </div>
     </div>
 </div>
+<detail-prod [item]="current" [modal]="'exampleModal0'" [callback]="update()"></detail-prod>
+

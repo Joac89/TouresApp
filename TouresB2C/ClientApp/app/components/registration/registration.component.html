@@ -1,0 +1,115 @@
+﻿<div class="text-center fadeIn slow animated registration">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
+                        [subtitle]="'Reg&iacute;strate para poder realizar las compras de tus eventos deportivos preferidos'">
+            </page-title>
+            <form>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+                        <div class="step justify-content-md-center my-auto">
+                            <div class="number bg-info justify-content-md-center my-auto">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <p class="text">
+                                Datos b&aacute;sicos
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nombres</label>
+                            <input type="text" class="form-control" id="name" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="surname">Apellidos</label>
+                            <input type="text" class="form-control" id="surname" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Direcci&oacute;n</label>
+                            <input type="text" class="form-control" id="address" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Tel&eacute;fono</label>
+                            <input type="number" class="form-control" id="phone" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electr&oacute;nico</label>
+                            <input type="email" class="form-control" id="email" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+                        <div class="step justify-content-md-center my-auto">
+                            <div class="number bg-info justify-content-md-center my-auto">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                            <p class="text">
+                                Datos de seguridad
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Contrase&ntilde;a</label>
+                            <input type="password" class="form-control" id="password1" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirmar contrase&ntilde;a</label>
+                            <input type="password" class="form-control" id="password2" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+                        <div class="step justify-content-md-center my-auto">
+                            <div class="number bg-info justify-content-md-center my-auto">
+                                <i class="fa fa-credit-card"></i>
+                            </div>
+                            <p class="text">
+                                Datos de compra
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="creditcard">N&uacute;mero de tarjeta de cr&eacute;dito</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="creditcard" placeholder="">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-credit-card"></i>&nbsp;{{cardtype}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastdate">Mes / A&ntilde;o de expiraci&oacute;</label>
+                            <div class="form-row">
+                                <div class="col">
+                                    <select class="form-control" id="month">
+                                        <option value="{{item.id}}" *ngFor="let item of getMonths()">{{item.description}}</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="year">
+                                        <option value="{{item.id}}" *ngFor="let item of getYears()">{{item.description}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cv">C&oacute;digo de verificaci&oacute;n (CVV)</label>
+                            <div class="form-row">
+                                <div class="col">
+                                    <input type="number" class="form-control" id="cv" placeholder="">
+                                </div>
+                                <div class="col">
+                                    <div class="alert alert-info" role="alert">
+                                        3 o 4 d&iacute;gitos en la parte posterior de la tarjeta
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <hr />
+            <p>
+                Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
+            </p>
+            <button type="submit" class="btn btn-info">Finalizar registro</button>
+        </div>
+    </div>
+</div>
+
+

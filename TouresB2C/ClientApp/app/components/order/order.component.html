@@ -1,0 +1,50 @@
+<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Mis &oacute;rdenes'"
+                        [subtitle]="'Aqui se encuentran tus &oacute;rdenes pendientes y aprobadas'">
+            </page-title>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#Orden</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orders">
+                                <td scope="row" class="row-fil text-center">{{("000" + item.id).slice(-4)}}</td>
+                                <td scope="row" class="row-fil text-left">
+                                    <i class="fa"
+                                       [ngClass]="{'fa-clock-o text-danger': item.state == 1, 'fa-check text-success': item.state == 2}"></i>
+                                    {{item.stateName}}
+                                </td>
+                                <td class="text-right">{{item.count}}</td>
+                                <td class="text-right">{{item.price | currency:'COP':true:'2.0'}}</td>
+                                <td scope="row" class="row-fil text-center">
+                                    <button class="btn btn-sm btn-info" [disabled]="item.state == 2">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </td>
+                                <td scope="row" class="row-fil text-center">
+                                    <button class="btn btn-sm btn-light" [disabled]="item.state == 2">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="alert alert-info text-left" role="alert">
+                        Las ordenes <strong>Aprobadas</strong>, no pueden ser modificadas o eliminadas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

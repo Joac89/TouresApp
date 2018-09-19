@@ -1,7 +1,35 @@
-<h1>Counter</h1>
-
-<p>This is a simple example of an Angular component.</p>
-
-<p>Current count: <strong>{{ currentCount }}</strong></p>
-
-<button (click)="incrementCounter()">Increment</button>
+<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 xs-no-padding-campaign">
+            <div class="xs-padding-campaign-title">
+                <page-title class="text-uppercase" [title]="'Campa&ntilde;as'"
+                            [subtitle]="'Todas las campa&ntilde;as vigentes para ti'">
+                </page-title>
+            </div>        
+            <div class="row no-padding no-margin">
+                <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let item of campaign.data">
+                    <div class="card mb-3">
+                        <img class="card-img-top" [src]="getImageLink(item.image)" alt="Card image cap" style="height:180px">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <strong>{{item.name}}</strong>
+                            </h5>
+                           
+                            <p class="card-text">
+                                Desde <strong>{{item.startDate | date}}</strong> hasta <strong>{{item.endDate | date}}</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <!--<div class="content-campaign">
+                        <div class="campaign" [ngStyle]="{'background-image': getImage(item.image)}">
+                            <h3>{{item.name}}</h3>
+                            <div class="text-campaign bg-info">
+                                Desde <strong>{{item.startDate | date}}</strong> hasta <strong>{{item.endDate | date}}</strong>
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
