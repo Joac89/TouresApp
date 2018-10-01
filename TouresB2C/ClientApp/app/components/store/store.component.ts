@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfigService } from '../../services/config.service';
+import { CommonService } from '../../services/common.service';
 import { StoreService } from '../../services/store.service';
 import { Product } from '../../models/product.model';
 import { Order } from '../../models/order.model';
@@ -9,7 +9,7 @@ import { Order } from '../../models/order.model';
     selector: 'app',
     templateUrl: './store.component.html',
     styleUrls: ['./store.component.css', '../../style/general.css'],
-    providers: [ConfigService, StoreService]
+    providers: [CommonService, StoreService]
 })
 export class StoreComponent {
 
@@ -18,7 +18,7 @@ export class StoreComponent {
     current: Product = {};
     newCount: number = 0;
 
-    constructor(private router: Router, private configService: ConfigService, private storeService: StoreService) {
+    constructor(private router: Router, private configService: CommonService, private storeService: StoreService) {
         this.products = this.storeService.getItemsInCart();
         this.current = {
             id: 0,

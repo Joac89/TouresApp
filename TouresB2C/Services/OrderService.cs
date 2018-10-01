@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using TouresB2C.Models;
+using TouresCommon;
 
 namespace TouresB2C.Services
 {
-    public class OrderService
+	public class OrderService
     {
 		private string urlService = "";
 
@@ -16,9 +15,9 @@ namespace TouresB2C.Services
 			urlService = url;
 		}
 
-		public async Task<ResponseModel<List<OrderModel>>> GetOrders()
+		public async Task<ResponseBase<List<OrderModel>>> GetOrders()
 		{
-			var response = new ResponseModel<List<OrderModel>>();
+			var response = new ResponseBase<List<OrderModel>>();
 			var search = new List<OrderModel>();
 			var lst = new List<OrderModel>();
 

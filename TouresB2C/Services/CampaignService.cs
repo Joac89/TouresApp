@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TouresB2C.Models;
+using TouresCommon;
 
 namespace TouresB2C.Services
 {
 	public class CampaignService
 	{
-		public async Task<ResponseModel<List<CampaignModel>>> GetCampaign()
+		public async Task<ResponseBase<List<CampaignModel>>> GetCampaign()
 		{
-			var response = new ResponseModel<List<CampaignModel>>();
+			var response = new ResponseBase<List<CampaignModel>>();
 			var search = new List<CampaignModel>();
 			var lst = new List<CampaignModel>();
 

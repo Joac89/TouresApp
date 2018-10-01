@@ -1,5 +1,5 @@
 ﻿import { Component, Input} from '@angular/core';
-import { ConfigService } from '../../services/config.service';
+import { CommonService } from '../../services/common.service';
 import { StoreService } from '../../services/store.service';
 import { Product } from '../../models/product.model';
 import * as $ from 'jquery';
@@ -8,7 +8,7 @@ import * as $ from 'jquery';
     selector: 'detail-prod',
     templateUrl: './detailprod.component.html',
     styleUrls: ['./detailprod.component.css', '../../style/general.css'],
-    providers: [ConfigService, StoreService]
+    providers: [CommonService, StoreService]
 })
 export class DetailProdComponent {
     @Input() item: any = {};
@@ -17,7 +17,7 @@ export class DetailProdComponent {
 
     private product: Product;
 
-    constructor(private configService: ConfigService, private storeService: StoreService) {
+    constructor(private configService: CommonService, private storeService: StoreService) {
         this.product = this.storeService.newItemCart();
     }
 

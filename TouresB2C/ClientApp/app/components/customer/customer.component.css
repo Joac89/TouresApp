@@ -1,5 +1,5 @@
-﻿.registration {
-}
+﻿/*.registration {
+}*/
 
     .registration .step {
         text-align: center;
@@ -31,4 +31,26 @@
 
 .border-left {
     border-left: 1px dashed #c5c5c5;
+}
+
+.card-description {
+    color: #17a2b8;
+    font-weight: bold;
+    margin: 0;
+    float: right;
+    font-size: 12px;
+    text-transform: uppercase !important;
+    border: 1px solid #17a2b8;
+    border-radius: 3px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.psw-description {
+    color: #17a2b8;
+    margin: 0;
+    float: right;
+    font-size: 12px;
+    padding: 5px;
 }

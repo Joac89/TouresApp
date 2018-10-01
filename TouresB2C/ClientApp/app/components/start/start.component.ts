@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/map';
+import { Http } from '@angular/http';
+import { CheckControl } from '../../models/check.control';
 
 @Component({
     selector: 'home',
@@ -9,14 +11,14 @@ import 'rxjs/add/operator/map';
     styleUrls: ['./start.component.css']
 })
 export class StartComponent {
-    check = new checkControl(0, "Sin filtro");
+    check = new CheckControl(0, "Sin filtro");
     searchForm = new FormGroup({
         textSearch: new FormControl(''),
         dateSearch: new FormControl(''),
         checkSearch: new FormControl(''),
     });
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private http: Http) {
     }
 
     sendSearch() {
@@ -36,15 +38,5 @@ export class StartComponent {
     changeFilter(id: number, text: string) {
         this.check.id = id;
         this.check.text = text;
-    }
-}
-
-export class checkControl {
-    id: number | undefined;
-    text: string | undefined;
-
-    constructor(id_: number, text_: string) {
-        this.id = id_;
-        this.text = text_;
-    }
+    }    
 }

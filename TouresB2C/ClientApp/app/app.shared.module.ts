@@ -11,13 +11,18 @@ import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { ProductComponent } from './components/product/product.component';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { CustomerComponent } from './components/customer/customer.component';
 import { StoreComponent } from './components/store/store.component';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 import { PagetitleComponent } from './controls/pagetitle/pagetitle.component';
 import { ItemprodComponent } from './controls/itemprod/itemprod.component';
 import { ItemofferComponent } from './controls/itemoffer/itemoffer.component';
 import { DetailProdComponent } from './controls/detailprod/detailprod.component';
+import { ValidatorComponent } from './controls/validator/validator.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GuardService } from './services/guard.service';
 
 @NgModule({
     declarations: [
@@ -28,12 +33,16 @@ import { ReactiveFormsModule } from '@angular/forms';
         StartComponent,
         HomeComponent,
         ProductComponent,
-        RegistrationComponent,
+        CustomerComponent,
         StoreComponent,
+        UserComponent,
+        LoginComponent,
+        LogoutComponent,
         PagetitleComponent,
         ItemprodComponent,
         ItemofferComponent,
-        DetailProdComponent
+        DetailProdComponent,
+        ValidatorComponent
     ],
     imports: [
         CommonModule,
@@ -47,8 +56,11 @@ import { ReactiveFormsModule } from '@angular/forms';
             { path: 'order', component: OrderComponent },
             { path: 'campaign', component: CampaignComponent },
             { path: 'product', component: ProductComponent },
-            { path: 'registration', component: RegistrationComponent },
+            { path: 'customer', component: CustomerComponent },
             { path: 'store', component: StoreComponent },
+            { path: 'user', component: UserComponent, canActivate: [GuardService] },
+            { path: 'login', component: LoginComponent },
+            { path: 'logout', component: LogoutComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]

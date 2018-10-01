@@ -1,12 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { Http } from '@angular/http';
-import { ConfigService } from '../../services/config.service';
-import { StoreService } from '../../services/store.service';
-import { LoaderService } from '../../services/loader.service';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { forEach } from '@angular/router/src/utils/collection';
-import { validateConfig } from '@angular/router/src/config';
+import { LoaderService } from '../../services/loader.service';
+import { StoreService } from '../../services/store.service';
 
 @Component({
     selector: 'home',
@@ -17,15 +13,16 @@ import { validateConfig } from '@angular/router/src/config';
 export class HomeComponent {
     principals: any = {};
     campaign: any = {};
-    current: any = {};    
+    current: any = {};
     count: number = 0;
     path: string = "";
-    
+    //authorize: boolean = false;
+
     constructor(@Inject('BASE_URL') baseUrl: string, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
-        
         this.getPrincipals();
         this.getCampaign();
+        //this.authorize = this.authService.isAuthorized();
     }
 
     getPrincipals() {

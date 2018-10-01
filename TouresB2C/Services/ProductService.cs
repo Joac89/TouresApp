@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using TouresB2C.Models;
+using TouresCommon;
 
 namespace TouresB2C.Services
 {
@@ -19,7 +18,7 @@ namespace TouresB2C.Services
 			urlService = url;
 		}
 
-		public async Task<ResponseModel<List<ProductModel>>> GetSearch(string textSearch, int typeSearch, int pag = 1)
+		public async Task<ResponseBase<List<ProductModel>>> GetSearch(string textSearch, int typeSearch, int pag = 1)
 		{
 			//var response = new ResponseModel<List<ProductModel>>();
 			//var search = new List<ProductModel>();
@@ -57,7 +56,7 @@ namespace TouresB2C.Services
 
 
 
-			var response = new ResponseModel<List<ProductModel>>();
+			var response = new ResponseBase<List<ProductModel>>();
 			var search = new List<ProductModel>();
 			var lst = new List<ProductModel>();
 
@@ -105,9 +104,9 @@ namespace TouresB2C.Services
 			return await Task.Run(() => response);
 		}
 
-		public async Task<ResponseModel<List<ProductModel>>> GetPrincipals()
+		public async Task<ResponseBase<List<ProductModel>>> GetPrincipals()
 		{
-			var response = new ResponseModel<List<ProductModel>>();
+			var response = new ResponseBase<List<ProductModel>>();
 			var lst = new List<ProductModel>();
 
 			lst = GetList();

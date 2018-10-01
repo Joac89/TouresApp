@@ -5,11 +5,12 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <ApplicationIcon>toures-icon.ico</ApplicationIcon>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
@@ -23,13 +24,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\ResponseModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\app\components\store\store.component.ts" />
     <None Remove="ClientApp\app\controls\detailprod\detailprod.component.ts" />
     <None Remove="ClientApp\app\controls\itemprod\itemprod.component.ts" />
+    <None Remove="ClientApp\app\controls\validator\validator.component.ts" />
+    <None Remove="ClientApp\app\models\check.control.ts" />
+    <None Remove="ClientApp\app\models\creditcard.model.ts" />
     <None Remove="ClientApp\app\models\order.model.ts" />
+    <None Remove="ClientApp\app\services\auth.service.ts" />
     <None Remove="ClientApp\app\services\cart.service.ts" />
+    <None Remove="ClientApp\app\services\guard.service.ts" />
     <None Remove="ClientApp\app\services\loader.service.ts" />
     <None Remove="ClientApp\app\models\product.model.ts" />
+    <None Remove="ClientApp\app\services\localstorage.service.ts" />
+    <None Remove="ClientApp\app\services\token.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,17 +51,30 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\store\store.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\controls\detailprod\detailprod.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\controls\validator\validator.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\check.control.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\creditcard.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\order.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\auth.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\loader.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\localstorage.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\store.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\product.model.ts" />
-    <TypeScriptCompile Include="ClientApp\app\services\config.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\common.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\controls\itemprod\itemprod.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\token.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\app\components\login\" />
+    <Folder Include="ClientApp\app\components\logout\" />
     <Folder Include="wwwroot\img\campaigns\" />
     <Folder Include="wwwroot\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TouresCore\TouresCommon\TouresCommon.csproj" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

@@ -1,40 +1,44 @@
 ﻿import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 import { Order } from '../models/order.model';
+import { LocalStorageService } from './localstorage.service';
 
 @Injectable()
 export class StoreService {
     private carts: Product[] = [];
-    private storage: Storage;
+    private storage: LocalStorageService;
+    private aux: Product[] = [];
 
     constructor() {
-        this.storage = new Storage("carts");
+        this.storage = new LocalStorageService("carts");
     }
 
-    public clearItemsCart(): void {
+    clearItemsCart(): void {
         this.storage.clear();
     }
 
-    public addItemInCart(product: Product): void {
-        this.carts = this.storage.get();
-        this.carts.push(product);
+    addItemInCart(product: Product): void {
+        var stor = this.storage.get();
 
+        this.carts = stor != "" ? <Product[]>JSON.parse(stor) : [];
+        this.carts.push(product);
         this.storage.save(this.carts);
     }
 
-    public getItemsInCart(): Product[] {
-        this.carts = this.storage.get();
+    getItemsInCart(): Product[] {
+        var stor = this.storage.get();
 
+        this.carts = stor != "" ? <Product[]>JSON.parse(stor) : [];
         return this.carts;
     }
 
-    public removeItemInCart(id: number): void {
+    removeItemInCart(id: number): void {
         var index = this.getItemIndex(id);
 
-        this.storage.remove(this.carts, index);
+        this.remove(this.carts, index);
     }
 
-    public updateItemInCart(product: Product) {
+    updateItemInCart(product: Product) {
         var index = this.getItemIndex(<number>product.id);
 
         if (index > -1) {
@@ -47,7 +51,7 @@ export class StoreService {
         }
     }
 
-    public newItemCart(): Product {
+    newItemCart(): Product {
         return {
             id: 0,
             name: "",
@@ -56,7 +60,7 @@ export class StoreService {
         };
     }
 
-    public newOrderCart(): Order {
+    newOrderCart(): Order {
         return {
             id: 0,
             price: 0,
@@ -68,69 +72,94 @@ export class StoreService {
 
     private getItemIndex(id: number): number {
         var index = -1;
+        var stor = this.storage.get();
 
-        this.carts = this.storage.get();
-
+        this.carts = stor != "" ? <Product[]>JSON.parse(stor) : [];
         if (this.carts) index = this.carts.findIndex(x => id === x.id);
 
         return index;
     }
-}
 
-export class Storage {
-    private item: string;
-    private aux: Product[] = [];
-
-    constructor(item_: string) {
-        this.item = item_;
-    }
-
-    save(data: Product[]): void {
-        if (typeof window !== 'undefined') {
-
-            var json = this.encrypt(JSON.stringify(data));
-            localStorage.setItem("carts", json);
-        }
-    }
-
-    get(): Product[] {
-        if (typeof window !== 'undefined') {
-            var result = localStorage.getItem(this.item) || "";
-
-            return result != "" ? <Product[]>JSON.parse(this.decrypt(result)) : [];
-        } else {
-            return [];
-        }
-    }
-
-    remove(data: Product[], index: number): void {
+    private remove(data: Product[], index: number): void {
         var c = 0;
 
         if (index > -1) {
             data.slice(index, index + 1);
-
             data.forEach(x => {
                 if (c != index) this.aux.push(x);
                 c += 1;
             });
             data = this.aux;
+
             this.aux = [];
-
-            var json = this.encrypt(JSON.stringify(data));
-
-            localStorage.setItem("carts", json);
+            this.storage.save(data);
         }
     }
-
-    clear(): void {
-        if (typeof window !== 'undefined') localStorage.removeItem(this.item);
-    }
-
-    encrypt(data: string) {
-        return btoa(data);
-    }
-
-    decrypt(data: string) {
-        return atob(data);
-    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//### declare
+//private storage: Storage;
+//### implement constructor 
+//this.storage = new Storage("carts");
+//###
+//export class Storage {
+//    private item: string;
+//    private aux: Product[] = [];
+//    constructor(item_: string) {
+//        this.item = item_;
+//    }
+//    save(data: Product[]): void {
+//        if (typeof window !== 'undefined') {
+//            var json = this.encrypt(JSON.stringify(data));
+//            localStorage.setItem("carts", json);
+//        }
+//    }
+//    get(): Product[] {
+//        if (typeof window !== 'undefined') {
+//            var result = localStorage.getItem(this.item) || "";
+//            return result != "" ? <Product[]>JSON.parse(this.decrypt(result)) : [];
+//        } else {
+//            return [];
+//        }
+//    }
+//    remove(data: Product[], index: number): void {
+//        var c = 0;
+//        if (index > -1) {
+//            data.slice(index, index + 1);
+//            data.forEach(x => {
+//                if (c != index) this.aux.push(x);
+//                c += 1;
+//            });
+//            data = this.aux;
+//            this.aux = [];
+//            var json = this.encrypt(JSON.stringify(data));
+//            localStorage.setItem("carts", json);
+//        }
+//    }
+//    clear(): void {
+//        if (typeof window !== 'undefined') localStorage.removeItem(this.item);
+//    }
+//    encrypt(data: string) {
+//        return btoa(data);
+//    }
+//    decrypt(data: string) {
+//        return atob(data);
+//    }
+//}

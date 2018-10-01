@@ -1,0 +1,11 @@
+﻿.validator > .fa {
+    position: absolute;
+    right: 5%;
+    z-index: 999999;
+    margin-top: -25px;
+}
+.validator > p {
+    font-size: 12px;
+    float: right;
+    margin: 0;
+}

@@ -1,0 +1,16 @@
+﻿<div class="validator" *ngIf="field.errors && field.touched">
+    <i class="fa fa-warning text-danger"></i>
+
+    <p class="text-danger" *ngIf="field.errors && field.errors.pattern && field.touched" 
+       [innerHtml]="identityPattern(field.errors.pattern.requiredPattern)">        
+    </p>
+    <p class="text-danger" *ngIf="field.errors && field.errors.required && field.touched">
+        Requerido
+    </p>
+    <p class="text-danger" *ngIf="field.errors && field.errors.minlength && !field.errors.pattern && field.touched">
+        M&iacute;nimo <strong>{{field.errors.minlength.requiredLength}}</strong> caracteres
+    </p>
+    <p class="text-danger" *ngIf="field.errors && field.errors.maxlength && !field.errors.pattern && field.touched">
+        M&aacute;ximo <strong>{{field.errors.maxlength.requiredLength}}</strong> caracteres
+    </p>
+</div>

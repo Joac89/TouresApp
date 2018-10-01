@@ -51,6 +51,14 @@
     display: none;
 }
 
+.nav-user {
+    border-right: 1px solid #c0c0c0;
+    border-left: 1px solid #c0c0c0;
+}
+.nav-logout{
+
+}
+
 .h-menu {
     background-color: #fff;
     margin: 0;
@@ -82,7 +90,8 @@
 
         .h-menu .nav-item.active .nav-link {
             /*color: #dc3545;*/
-            color: #138496;
+            /*color: #138496;*/
+            color: #000;
             font-weight: bolder;
         }
 
@@ -107,8 +116,8 @@ li .glyphicon {
 li.link-active a,
 li.link-active a:hover,
 li.link-active a:focus {
-    background-color: #4189C7;
-    color: white;
+    /*background-color: #4189C7;
+    color: white;*/
 }
 
 .main-nav {

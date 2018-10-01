@@ -15,9 +15,9 @@
                         <div class="carousel-caption d-none d-md-block home-campaign">
                             <h1 class="text-shadow title"><strong>{{item.name}}</strong></h1>
                             <h3 class="text-shadow date"><strong>Desde {{item.startDate | date}} hasta {{item.endDate | date}}</strong></h3>
-                            <button class="btn btn-info">
+                            <!--<button class="btn btn-info" *ngIf="!authorize">
                                 Reg&iacute;strate!
-                            </button>
+                            </button>-->
                             <button class="btn btn-light" (click)="goToCampaign(item.id)">
                                 <strong>Ver oferta</strong>
                             </button>

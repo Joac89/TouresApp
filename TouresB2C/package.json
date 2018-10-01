@@ -61,6 +61,7 @@
     "zone.js": "0.8.12"
   },
   "dependencies": {
+    "angular2-jwt": "^0.2.3",
     "animate.css": "^3.7.0",
     "font-awesome": "^4.7.0",
     "popper.js": "^1.14.4"
