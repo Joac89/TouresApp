@@ -26,6 +26,10 @@
     padding: 0;
 }
 
+.no-radius{
+    border-radius:0 !important;
+}
+
 .in-cart {
     position: absolute;
     top: 0;
@@ -36,6 +40,10 @@
     color: #fff;
     border-radius: 0 0 3px 0;
     text-decoration: none;
+}
+
+.cursor{
+   cursor:pointer !important;
 }
 
 .item-box {

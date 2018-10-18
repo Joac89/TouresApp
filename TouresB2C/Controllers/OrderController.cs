@@ -1,37 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 using TouresB2C.Services;
+using TouresB2C.Models;
+using TouresCommon;
 
 namespace TouresB2C.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/Order")]
-	[EnableCors("*")]
+	[Produces("application/json")]
+	[Route("api/Order")]
 	public class OrderController : Controller
-    {
+	{
 		private IConfiguration config;
 		private string urlService = "";
 
 		public OrderController(IConfiguration configuration)
 		{
 			config = configuration;
-			urlService = config["services:productos"];
+			urlService = config["services:orders"];
 		}
 
-		[HttpGet]
-		public async Task<IActionResult> GetOrders()
+		[HttpGet("get/{customer}")]
+		public async Task<IActionResult> GetOrders(long customer)
 		{
-			var service = new OrderService(urlService);
+			var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+			var service = new OrderService(new HttpService($"{urlService}/{customer}", token));
 			var response = await service.GetOrders();
-			
-			return Ok(response);
+
+			return this.Result(response.Code, response);
 		}
 
+		[HttpPost]
+		[Route("create")]
+		public async Task<IActionResult> InsertOrder([FromBody] OrderModel data)
+		{
+			var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+			var service = new OrderService(new HttpService($"{urlService}", token));
+			var response = await service.InsertOrder(data);
+
+			return this.Result(response.Code, response);
+		}
+
+		[HttpDelete]
+		[Route("delete/{id}")]
+		public async Task<IActionResult> DeleteOrder(long id)
+		{
+			var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+			var service = new OrderService(new HttpService($"{urlService}/{id}", token));
+			var response = await service.DeleteOrder();
+
+			return this.Result(response.Code, response);
+		}
 	}
 }

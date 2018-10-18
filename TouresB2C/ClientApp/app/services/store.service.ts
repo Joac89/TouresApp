@@ -10,7 +10,8 @@ export class StoreService {
     private aux: Product[] = [];
 
     constructor() {
-        this.storage = new LocalStorageService("carts");
+        this.storage = new LocalStorageService();
+        this.storage.define("carts");
     }
 
     clearItemsCart(): void {
@@ -67,6 +68,13 @@ export class StoreService {
             count: 0,
             state: 0,
             stateName: ""
+
+            /*ordId: 0,
+            custId: 0,
+            ordenDate: new Date(),
+            price: 0,
+            quantity: 0,
+            lItem: []*/
         }
     }
 

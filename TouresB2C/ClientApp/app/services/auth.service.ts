@@ -9,7 +9,8 @@ export class AuthService {
     private storage: LocalStorageService;
 
     constructor() {
-        this.storage = new LocalStorageService("login");
+        this.storage = new LocalStorageService();
+        this.storage.define("login");
     }
 
     login(data: string) {

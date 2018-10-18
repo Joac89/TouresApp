@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TouresB2C.Models
+﻿namespace TouresB2C.Models
 {
-    public class RegistrationModel
+	public class CustomerModel
     {
 		public long CustId { get; set; }
 		public string FName { get; set; }
@@ -19,11 +14,5 @@ namespace TouresB2C.Models
 		public string DocNumber { get; set; }
 		public string UserName { get; set; }
 		public string Address { get; set; }
-	}
-
-	public class LoginModel
-	{
-		public string Username { get; set; }
-		public string Password { get; set; }
 	}
 }

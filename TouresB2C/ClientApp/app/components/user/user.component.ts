@@ -44,7 +44,7 @@ export class UserComponent {
                 var info = JSON.parse(this.authService.get());
 
                 this.authorize = true;
-                this.getUserInfo(info.data.docNumber);
+                this.getUserInfo(info.docNumber);
             }
         }
     }
@@ -79,35 +79,48 @@ export class UserComponent {
         this.loaderService.start();
 
         var json = {
-            custid: this.user.custId,
-            fname: this.user.fName,
-            lname: this.user.lName,
-            phonenumber: this.user.phoneNumber,
+            custId: this.user.custId,
+            fName: this.user.fName,
+            lName: this.user.lName,
+            phoneNumber: this.user.phoneNumber,
             email: this.user.email,
             password: this.user.password,
-            creditcardtype: this.user.creditCardType,
-            creditcardnumber: this.user.creditCardNumber,
+            creditCardType: this.user.creditCardType,
+            creditCardNumber: this.user.creditCardNumber,
             status: "1",
-            docnumber: this.user.docNumber,
-            username: this.getUsername(),
-            address: "-" //this.registrationForm.value.textAddres
+            docNumber: this.user.docNumber,
+            userName: this.getUsername(),
+            address: "-"
+
+            //custid: this.user.custId,
+            //fname: this.user.fName,
+            //lname: this.user.lName,
+            //phonenumber: this.user.phoneNumber,
+            //email: this.user.email,
+            //password: this.user.password,
+            //creditcardtype: this.user.creditCardType,
+            //creditcardnumber: this.user.creditCardNumber,
+            //status: "1",
+            //docnumber: this.user.docNumber,
+            //username: this.getUsername(),
+            //address: "-"
         }
         var token = this.tokenService.getTokenHeader();
 
         console.log(json);
 
-        this.http.put(this.path + "api/registration/update", json, token).map(response => response.json()).subscribe(result => {
+        this.http.put(this.path + "api/customer/update", json, token).map(response => response.json()).subscribe(result => {
             this.update = true;
             this.loaderService.end();
 
-            this.getUserInfo(json.docnumber);
+            this.getUserInfo(json.docNumber);
 
             var object = {
                 code: 200,
                 message: "",
                 data: json
             }
-            this.authService.login(JSON.stringify(object));
+            this.authService.login(JSON.stringify(object.data));
         }, error => {
             this.loaderService.end();
             this.error = error;
@@ -116,21 +129,21 @@ export class UserComponent {
         });
     }
 
-    private getUsername() {
+    getUsername() {
         var first = this.updateForm.value.textName;
         var last = this.updateForm.value.textSurname;
 
         return this.commonService.generateUserName(first, last);
     }
 
-    private getCreditCardType(value: number) {
+    getCreditCardType(value: number) {
         var card = this.commonService.identityCreditCard(value);
 
         this.cardtype = card.description;
         this.user.creditCardType = card.id;
     }
 
-    private reloadInfo() {
+    reloadInfo() {
         this.updateForm.value.textName = this.user.fName;
         this.updateForm.value.textSurname = this.user.lName;
         //this.updateForm.value.textAddres = "";

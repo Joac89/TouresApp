@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +18,8 @@ namespace TouresB2C.Services
 		Get = 0,
 		Delete = 1
 	}
-	
-	public class HttpService: IHttpService
+
+	public class HttpService : IHttpService
 	{
 		private string urlService = "";
 		private string token = "";

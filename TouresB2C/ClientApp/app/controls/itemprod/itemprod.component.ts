@@ -15,6 +15,7 @@ export class ItemprodComponent {
     @Input() rating: number | undefined;
 
     constructor(@Inject('BASE_URL') baseUrl: string,) {
-        this.image = baseUrl + this.image;
+        //this.image = baseUrl + this.image;
+        this.image = this.image;
     }
 }

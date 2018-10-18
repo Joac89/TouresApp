@@ -1,14 +1,12 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
-import { StoreService } from '../../services/store.service';
-import { Product } from '../../models/product.model';
-import { CheckControl } from '../../models/check.control';
 import { isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
-import { Subscription } from 'rxjs/Subscription';
+import { CheckControl } from '../../models/check.control';
+import { Product } from '../../models/product.model';
 import { AuthService } from '../../services/auth.service';
+import { StoreService } from '../../services/store.service';
 
 @Component({
     selector: 'nav-menu',
@@ -16,7 +14,7 @@ import { AuthService } from '../../services/auth.service';
     styleUrls: ['./navmenu.component.css', '../../style/general.css'],
     providers: [StoreService, AuthService]
 })
-    //implements OnDestroy
+//implements OnDestroy
 export class NavMenuComponent {
     watcherStore: any;
     products: Product[] = [];
@@ -41,12 +39,23 @@ export class NavMenuComponent {
 
                 if (this.authService.isAuthorized()) {
                     this.authenticate = JSON.parse(this.authService.get());
-                    this.authenticate.names = this.authenticate.data.fName;
+                    this.authenticate.names = this.validateName();
+                    //this.authenticate.names = this.authenticate.fName + " " + this.authenticate.lName.split(" ")[0];
                 } else {
                     this.authenticate = { status: false };
                 }
             }, 1000)
         }
+    }
+
+    validateName(): string {
+        //var lname = this.authenticate.lname ? this.authenticate.lname : this.authenticate.lName;
+        //var fname = this.authenticate.fname ? this.authenticate.fname : this.authenticate.fName;
+
+        var lname = this.authenticate.lName;
+        var fname = this.authenticate.fName;
+
+        return fname + " " + lname.split(" ")[0];
     }
 
     //ngOnDestroy() {

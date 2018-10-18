@@ -1,11 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TouresB2C.Models
 {
-    public class CampaignModel
+	public class CampaignModelMatchService
+	{
+		public string FechaFin { get; set; }
+		public string FechaInicial { get; set; }
+		public long IdCampana { get; set; }
+		public long IdProducto { get; set; }
+		public string Nombre { get; set; }
+		public string RutaImagen { get; set; }
+	}
+
+	public class CampaignModel: CampaignModelMatchService
     {
 		public long Id { get; set; }
 		public string Name { get; set; }

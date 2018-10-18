@@ -1,6 +1,6 @@
 ﻿.validator > .fa {
     position: absolute;
-    right: 5%;
+    right: 40px; /*5%;*/
     z-index: 999999;
     margin-top: -25px;
 }
@@ -8,4 +8,6 @@
     font-size: 12px;
     float: right;
     margin: 0;
+    width: 100%;
+    text-align: right;
 }

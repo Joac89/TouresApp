@@ -2,13 +2,21 @@
 
 @Injectable()
 export class LocalStorageService {
-    private item: string;
+    private item: string = "default";
     private json: string = "";
-    private crypt: boolean = true;
+    private crypt: boolean = false;
 
-    constructor(item_: string, @Optional() crypt_: boolean = true) {
+    /*constructor(item_: string) {
         this.item = item_;
-        this.crypt = false; //crypt_;
+        this.crypt = false;
+    }*/
+
+    constructor() {
+        this.crypt = false;
+    }
+
+    define(item: string) {
+        this.item = item;
     }
 
     save(data: any, stringify: boolean = true): void {

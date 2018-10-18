@@ -34,16 +34,21 @@ export class ProductComponent {
         });
     }
 
-    getSearch() {
+    getSearch(inner: boolean = false) {
         this.loaderService.start();
         this.pag += 1;
 
-        if (this.pag > 1) this.textSearch = btoa(this.textSearch);
+        if (inner && this.pag > 1) {
+            this.textSearch = btoa(this.textSearch);
+        } else {
+            this.pag = 1;
+            this.endPage = false;
+        }
 
         this.http.get(this.path + "api/product/search/" + this.textSearch + "/" + this.typeSearch + "/" + this.pag).map(response => response.json()).subscribe(result => {
             this.aux = result;
 
-            if (this.aux.data.length == 0) this.endPage = true;
+            if (this.aux.data.length == 0 || this.aux.data.length < 4) this.endPage = true;
 
             var carts = this.storeService.getItemsInCart();
             for (var i = 0; i < this.aux.data.length; ++i) {
@@ -58,7 +63,10 @@ export class ProductComponent {
             }
 
             this.loaderService.end();
-        }, error => console.error(error));
+        }, error => {
+            this.loaderService.end();
+            console.error(error);
+        });
 
         this.textSearch = atob(this.textSearch);
     }

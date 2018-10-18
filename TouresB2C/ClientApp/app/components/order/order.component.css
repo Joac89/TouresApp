@@ -2,3 +2,11 @@
     white-space: nowrap;
     width: 1%;
 }
+
+.row-selected {
+    background-color: #fffede;
+}
+
+.footer {
+    background-color: #f7f7f7;
+}

@@ -5,7 +5,7 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
+    <ApplicationIcon>wwwroot\icono.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\components\campaign\detail.component.ts" />
     <None Remove="ClientApp\app\components\store\store.component.ts" />
     <None Remove="ClientApp\app\controls\detailprod\detailprod.component.ts" />
     <None Remove="ClientApp\app\controls\itemprod\itemprod.component.ts" />
@@ -49,6 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\components\campaign\detail.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\store\store.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\controls\detailprod\detailprod.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\controls\validator\validator.component.ts" />

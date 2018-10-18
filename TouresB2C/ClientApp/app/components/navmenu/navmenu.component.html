@@ -10,7 +10,7 @@
                         <a class="dropdown-item" href="#" [routerLink]="['/home']">Inicio</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/campaign']">Campa&ntilde;as</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/order']">Mis ordenes</a>
-                        <a class="dropdown-item" href="#" [routerLink]="['/registration']">Reg&iacute;strate</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/customer']">Reg&iacute;strate</a>
                     </div>
                 </div>
             </div>  
@@ -85,9 +85,9 @@
                         <a [routerLink]="['/login']" class="nav-link" style="padding-right:0" href="#">Iniciar sesi&oacute;n</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
-                        <a [routerLink]="['/user']" class="nav-link nav-user" href="#">
+                        <a [routerLink]="['/user']" class="nav-link nav-user" href="#" style="text-transform: capitalize">
                             <strong>
-                                {{authenticate.names.toUpperCase()}}
+                                {{authenticate.names}}
                             </strong>
                         </a>
                     </li>

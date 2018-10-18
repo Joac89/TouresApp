@@ -33,7 +33,10 @@ export class HomeComponent {
             this.update();
 
             this.loaderService.end();
-        }, error => console.error(error));
+        }, error => {
+            this.loaderService.end();
+            console.error(error);
+        });
     }
 
     getCampaign() {
@@ -43,7 +46,10 @@ export class HomeComponent {
             this.campaign = result;
 
             this.loaderService.end();
-        }, error => console.error(error));
+        }, error => {
+            this.loaderService.end();
+            console.error(error);
+        });
     }
 
     goToCampaign(id: number) {

@@ -17,19 +17,19 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Documento</label>
-                            <input type="text" required maxlength="10" minlength="5" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="document" name="document" formControlName="textDocument" placeholder="">
+                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="document" name="document" formControlName="textDocument" placeholder="">
 
                             <validator [field]="form.textDocument"></validator>
                         </div>
                         <div class="form-group">
                             <label for="name">Nombres</label>
-                            <input type="text" required maxlength="50" class="form-control" id="name" formControlName="textName" placeholder="">
+                            <input type="text" required maxlength="40" minlenth="5" class="form-control" id="name" formControlName="textName" placeholder="">
 
                             <validator [field]="form.textName"></validator>
                         </div>
                         <div class="form-group">
                             <label for="surname">Apellidos</label>
-                            <input type="text" required maxlength="50" class="form-control" id="surname" formControlName="textSurname" placeholder="">
+                            <input type="text" required maxlength="40" minlength="5" class="form-control" id="surname" formControlName="textSurname" placeholder="">
 
                             <validator [field]="form.textSurname"></validator>
                         </div>
@@ -51,13 +51,13 @@
                         </div>-->
                         <div class="form-group">
                             <label for="phone">Tel&eacute;fono</label>
-                            <input type="text" required maxlength="15" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="phone" formControlName="textPhone" placeholder="">
+                            <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="phone" formControlName="textPhone" placeholder="">
 
                             <validator [field]="form.textPhone"></validator>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo electr&oacute;nico</label>
-                            <input type="email" required maxlength="20" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" class="form-control" id="email" formControlName="textEmail" placeholder="">
+                            <input type="email" required maxlength="40" minlength="6" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" class="form-control" id="email" formControlName="textEmail" placeholder="">
 
                             <validator [field]="form.textEmail"></validator>
                         </div>
@@ -82,7 +82,7 @@
                                         <i class="fa" [ngClass]="{'fa-eye-slash': typepsw == 'password', 'fa-eye': typepsw == 'text'}"></i>
                                     </span>
                                 </div>
-                                <input [type]="typepsw" required maxlength="20" class="form-control" id="password1" formControlName="textPassword1" placeholder="">
+                                <input [type]="typepsw" required maxlength="40" minlength="5" class="form-control" id="password1" formControlName="textPassword1" placeholder="">
                             </div>
                             <validator [field]="form.textPassword1"></validator>
                         </div>
@@ -95,7 +95,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
                                 </div>
-                                <input type="text" required maxlength="20" minlength="14" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="creditcard" (keyup)="getCreditCardType($event.target.value)" formControlName="textCreditCard" placeholder="">
+                                <input type="text" required maxlength="40" minlength="14" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="creditcard" (keyup)="getCreditCardType($event.target.value)" formControlName="textCreditCard" placeholder="">
                             </div>
                             <validator [field]="form.textCreditCard"></validator>
                         </div>
@@ -135,6 +135,11 @@
                         </div>-->
                     </div>
                 </div>
+                <div *ngIf="error.statusCode != 200">
+                    <div class="alert alert-danger text-left">
+                        <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar el usuario: {{error.statusText}}
+                    </div>
+                </div>
                 <hr />
                 <p>
                     Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
@@ -147,7 +152,16 @@
                     <h4 class="alert-heading">
                         <i class="fa fa-check"></i>&nbsp;Felicitaciones!
                     </h4>
-                    <p>Te has registrado correctamente como usuario <strong>myuser</strong> en <strong>TouresBalon</strong>. Desde ahora podrás disfrutar de la compra de tus Eventos Deportivos deseados.</p>
+                    <p class="no-margin">Te has registrado correctamente como usuario <strong>{{newuser}}</strong> en <strong>TouresBalon</strong>. Desde ahora podrás disfrutar de la compra de tus Eventos Deportivos deseados.</p>
+                </div>
+                <div class="text-center">
+                    <!--<a href="/login?user={{newuser}}" class="btn btn-info">
+                        Iniciar sesi&oacute;n
+                    </a>-->
+
+                    <a href="#" [routerLink]="['/login', newuser]" class="btn btn-info">
+                        Iniciar sesi&oacute;n
+                    </a>
                 </div>
             </div>
         </div>

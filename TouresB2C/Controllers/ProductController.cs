@@ -11,22 +11,23 @@ namespace TouresB2C.Controllers
 {
 	[Produces("application/json")]
 	[Route("api/Product")]
-	[EnableCors("*")]
 	public class ProductController : Controller
 	{
 		private IConfiguration config;
 		private string urlService = "";
+		private string urlImages = "";
 
 		public ProductController(IConfiguration configuration)
 		{
 			config = configuration;
 			urlService = config["services:productos"];
+			urlImages = config["services:images"];
 		}
 
 		[HttpGet]
 		public async Task<IActionResult> GetPrincipals()
 		{
-			var service = new ProductService(urlService);
+			var service = new ProductService(urlService, urlImages);
 			var response = await service.GetPrincipals();
 
 			if (response.Data != null && response.Data.Count > 0) response.Data = response.Data.Where(x => x.Rating == 5).ToList();
@@ -40,9 +41,9 @@ namespace TouresB2C.Controllers
 		{
 			textSearch = Encoding.UTF8.GetString(Convert.FromBase64String(textSearch));
 
-			var url = $"{urlService}/{typeSearch}/{textSearch}/{pag}";
-			var service = new ProductService(url);
-			var response = await service.GetSearch(textSearch, typeSearch, pag);
+			var url = typeSearch == 1 ? $"{urlService}/{textSearch}/{typeSearch}/{pag - 1}" : $"{urlService}/{textSearch}/0";
+			var service = new ProductService(url, urlImages);
+			var response = await service.GetSearch(textSearch, typeSearch);
 
 			return Ok(response);
 		}
@@ -53,7 +54,7 @@ namespace TouresB2C.Controllers
 		{
 			textSearch = Encoding.UTF8.GetString(Convert.FromBase64String(textSearch));
 
-			var service = new ProductService(urlService);
+			var service = new ProductService(urlService, urlImages);
 			var response = await service.GetSearch(textSearch, 0);
 
 			return Ok(response);

@@ -5,7 +5,7 @@
                         [subtitle]="'Eventos que has agregado al carrito de compras'">
             </page-title>
 
-            <div class="row" *ngIf="products.length > 0">
+            <div class="row" *ngIf="products.length > 0 && !saved">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-left">
 
                     <div class="row">
@@ -24,9 +24,9 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn btn-info float-right" data-toggle="modal" data-target="#modalStore_confirm">
+                            <button class="btn btn-info float-left" data-toggle="modal" data-target="#modalStore_confirm">
                                 <i class="fa fa-credit-card"></i>&nbsp;Confirmar pedido
-                            </button>                           
+                            </button>
                         </div>
                         <div class="col-lg-7 col-md-6 col-sm-12">
                             <page-title class="text-uppercase" [title]="'Eventos'">
@@ -65,6 +65,25 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div *ngIf="error.statusCode != 200">
+                <br />
+                <div class="alert alert-danger text-left">
+                    <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar el usuario: {{error.statusText}}
+                </div>
+            </div>
+            <div class="text-left" style="padding:0" *ngIf="saved">
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">
+                        <i class="fa fa-check"></i>&nbsp;Felicitaciones!
+                    </h4>
+                    <p class="no-margin"><strong>{{username}}</strong> Tu orden fue enviada correctamente.</p>
+                </div>
+                <div class="text-center">
+                    <a [routerLink]="['/order']" href="#" class="btn btn-info">
+                        Ver mis ordenes
+                    </a>
                 </div>
             </div>
         </div>

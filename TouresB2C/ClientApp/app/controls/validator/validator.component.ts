@@ -7,9 +7,10 @@ import { FormControl } from '@angular/forms';
     styleUrls: ['./validator.component.css', '../../style/general.css'],
 })
 export class ValidatorComponent {
-    @Input() field: FormControl | undefined;
+    @Input() field: FormControl;
 
     constructor() {
+        this.field = new FormControl();
     }
 
     identityPattern(pattern: string): string {

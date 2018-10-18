@@ -4,8 +4,8 @@
             <!--<page-title class="text-uppercase xs-desktop" [title]="'Mira las campa&ntilde;as actuales'"
                         [subtitle]="'Reg&iacute;strate y aprovecha las ofertas para viajar y disfrutar de los mejores eventos deportivos'">
             </page-title>-->
-           
-            <form *ngIf="!saved" [formGroup]="logForm" (ngSubmit)="sendLogin()" #formLog="ngForm" style="margin-top:50px;">
+
+            <form [formGroup]="logForm" (ngSubmit)="sendLogin()" #formLog="ngForm" style="margin-top:50px;">
                 <div class="row justify-content-md-center no-margin">
                     <div class="col-lg-4 col-md-6 col-sm-12 text-left login-content">
                         <div class="step justify-content-md-center my-auto">
@@ -14,7 +14,9 @@
                             </div>
                             <p class="text">
                                 inicio de sesi&oacute;n
-                            </p>
+                        </div>
+                        <div *ngIf="newusername != ''" class="alert alert-warning">
+                            Ingresa con el usuario <strong>{{newusername}}</strong> que se te acaba de asignar
                         </div>
                         <div class="form-group">
                             <label for="name">Usuario</label>
@@ -24,17 +26,17 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Contrase&ntilde;a</label>
-                            <input type="password" required maxlength="50" class="form-control" id="password" formControlName="textPassword" placeholder="">
+                            <input type="password" required maxlength="40" minlength="6" class="form-control" id="password" formControlName="textPassword" placeholder="">
 
                             <validator [field]="form.textPassword"></validator>
                         </div>
                         <br />
                         <div *ngIf="error && error.statusCode != 200" class="alert alert-danger" role="alert">
-                            <strong>Lo sentimos!</strong> ha ocurrido un error: {{error.statusCode}} - {{error.statusText}}
+                            <strong>Lo sentimos!</strong> ha ocurrido un error: {{error.statusText}}
                         </div>
                         <button type="submit" class="btn btn-info float-right" [disabled]="formLog.form.invalid">Continuar</button>
-                    </div> 
-                </div>                                
+                    </div>
+                </div>
             </form>
         </div>
     </div>

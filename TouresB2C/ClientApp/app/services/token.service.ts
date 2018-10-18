@@ -1,19 +1,19 @@
-﻿import { Injectable, Inject } from '@angular/core';
-import { Product } from '../models/product.model';
-import { Order } from '../models/order.model';
-import { LocalStorageService } from './localstorage.service';
-import { Http, Headers, RequestOptions } from '@angular/http';
+﻿import { Inject, Injectable } from '@angular/core';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import { JwtHelper } from 'angular2-jwt';
-import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
+import { LocalStorageService } from './localstorage.service';
 
 @Injectable()
 export class TokenService {
     private storage: LocalStorageService;
     path: string = "";
 
-    constructor(@Inject('BASE_URL') baseUrl: string, private jwtHelper: JwtHelper, private router: Router, private http: Http) {
-        this.storage = new LocalStorageService("token");
+    constructor(@Inject('BASE_URL') baseUrl: string, private jwtHelper: JwtHelper, private http: Http) {
+        this.storage = new LocalStorageService();
+        this.storage.define("token");
+        this.path = baseUrl;
     }
 
     removeToken(): void {
@@ -24,30 +24,15 @@ export class TokenService {
         this.storage.save(token, false);
     }
 
-    getToken() {
+    getToken(): string {
         return this.storage.get();
     }
 
     getTokenHeader(): RequestOptions {
         var headers = new Headers();
-        var token = this.getToken();
-        var success = false;
-
-        if (this.jwtHelper.isTokenExpired(token)) {
-          
-            this.http.post(this.path + "api/token", null).map(response => response.json()).subscribe(result => {
-                if (result.code == 200) {
-
-                    this.saveToken(result.data);
-                    success = true;
-                }
-            }, error => {
-                console.error(error);
-            });
-
-        }
+        
         headers.append('Content-Type', 'application/json');
-        headers.append("Authorization", "Bearer " + success ? this.getToken() : "");
+        headers.append("Authorization", "Bearer " + this.getToken());
 
         var request = new RequestOptions({ headers: headers });
         return request;

@@ -34,6 +34,8 @@ export class CustomerComponent {
     path: string = "";
     saved: boolean = false;
     typepsw: string = "password";
+    error: any = { statusCode: 200 };
+    newuser: string = btoa("undefined");
 
     private first: string = "";
     private last: string = "";
@@ -72,10 +74,13 @@ export class CustomerComponent {
             this.saved = true;
             this.loaderService.end();
 
-            this.authService.login(JSON.stringify(result));
+            this.newuser = btoa(json.username);
+            //this.authService.login(JSON.stringify(result));
         }, error => {
             this.loaderService.end();
-            console.error(error)
+            this.error = error;
+
+            console.error(error);
         });
     }
 

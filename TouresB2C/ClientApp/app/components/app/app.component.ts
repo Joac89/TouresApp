@@ -37,7 +37,9 @@ export class AppComponent implements OnDestroy {
                 console.error(result.message);
             }
 
-        }, error => console.error(error));
+        }, error => {
+            console.error(error);
+        });
     }
 
     ngOnDestroy() {

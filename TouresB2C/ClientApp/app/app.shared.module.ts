@@ -23,6 +23,7 @@ import { DetailProdComponent } from './controls/detailprod/detailprod.component'
 import { ValidatorComponent } from './controls/validator/validator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GuardService } from './services/guard.service';
+import { DetailComponent } from './components/campaign/detail.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { GuardService } from './services/guard.service';
         NavMenuComponent,
         OrderComponent,
         CampaignComponent,
+        DetailComponent,
         StartComponent,
         HomeComponent,
         ProductComponent,
@@ -53,13 +55,16 @@ import { GuardService } from './services/guard.service';
             //{ path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: '', component: StartComponent },
             { path: 'home', component: HomeComponent },
-            { path: 'order', component: OrderComponent },
+            { path: 'order', component: OrderComponent, canActivate: [GuardService] },
             { path: 'campaign', component: CampaignComponent },
+            { path: 'detail', component: DetailComponent },
+            { path: 'detail/:camp', component: DetailComponent },
             { path: 'product', component: ProductComponent },
             { path: 'customer', component: CustomerComponent },
             { path: 'store', component: StoreComponent },
             { path: 'user', component: UserComponent, canActivate: [GuardService] },
             { path: 'login', component: LoginComponent },
+            { path: 'login/:user', component: LoginComponent },
             { path: 'logout', component: LogoutComponent },
             { path: '**', redirectTo: 'home' }
         ])
