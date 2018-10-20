@@ -76,7 +76,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\TouresCore\TouresCommon\TouresCommon.csproj" />
+    <Reference Include="TouresCommon">
+      <HintPath>..\..\TouresCore\TouresCommon\bin\Debug\netstandard2.0\TouresCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

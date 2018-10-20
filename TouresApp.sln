@@ -7,9 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TouresB2C", "TouresB2C\Tour
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TouresCommon", "..\TouresCore\TouresCommon\TouresCommon.csproj", "{9F89E6B1-93BD-4437-ABA0-3C22D70D216E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TouresB2CTest", "TouresB2CTest\TouresB2CTest.csproj", "{CBFA26B4-EF8C-4923-AFDC-DFA0F35D75F8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TouresOMS", "TouresOMS\TouresOMS.csproj", "{449E6F68-AAD4-4E97-8847-C45CE01D8B08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TouresOMS", "TouresOMS\TouresOMS.csproj", "{449E6F68-AAD4-4E97-8847-C45CE01D8B08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{9F89E6B1-93BD-4437-ABA0-3C22D70D216E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F89E6B1-93BD-4437-ABA0-3C22D70D216E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F89E6B1-93BD-4437-ABA0-3C22D70D216E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CBFA26B4-EF8C-4923-AFDC-DFA0F35D75F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CBFA26B4-EF8C-4923-AFDC-DFA0F35D75F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CBFA26B4-EF8C-4923-AFDC-DFA0F35D75F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CBFA26B4-EF8C-4923-AFDC-DFA0F35D75F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{449E6F68-AAD4-4E97-8847-C45CE01D8B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{449E6F68-AAD4-4E97-8847-C45CE01D8B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{449E6F68-AAD4-4E97-8847-C45CE01D8B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
