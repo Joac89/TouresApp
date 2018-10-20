@@ -1,0 +1,152 @@
+﻿<div class="text-center fadeIn slow animated registration">
+    <div *ngIf="authorize" class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Mi cuenta'"
+                        [subtitle]="'Datos de la cuenta de usuario'">
+            </page-title>           
+            <div class="text-left" style="padding:0">
+
+                <div *ngIf="update" class="alert alert-info" role="alert">
+                    <i class="fa fa-check"></i>&nbsp;Datos actualizados
+                </div>
+                <div *ngIf="error.statusCode != 200" class="alert alert-danger" role="alert">
+                    <i class="fa fa-times"></i>&nbsp;Lo sentimos, hubo inconvenientes al actualizar los datos: {{error.statusCode}} - {{error.statusText}}
+                </div>
+
+                <div class="row no-margin">
+                    <div class="col-lg-2 col-md-2 col-sm-4 no-padding">
+                        <div class="user-card text-center" style="width:200px;">
+                            <div class="card-icon">
+                                <i class="fa fa-user-circle text-info"></i>
+                            </div>
+                            <br />
+                            <h4 class="no-margin">
+                                {{user.userName}}
+                            </h4>
+                            <p class="no-margin text-info"><strong>{{("000" + user.custId).slice(-4)}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-8">
+                        <div class="row user-card card-no-border">
+                            <div class="col-lg-12 col-md-12 col-sm-12 card-info">
+                                <h3>
+                                    {{user.names}}
+                                </h3>
+                                <div>
+                                    <p class="no-margin">Documento #{{user.docNumber}}</p>
+                                    <p class="no-margin">
+                                        <i class="fa fa-envelope-o"></i>&nbsp;{{user.email}} -
+                                        <i class="fa fa-phone"></i>&nbsp;{{user.phoneNumber}}
+                                    </p>
+                                </div>
+                                <div style="margin-top:20px">
+                                    <p class="no-margin font-weight-bold">M&eacute;todo de pago</p>
+                                    <p class="no-margin"><i class="fa fa-credit-card"></i>&nbsp;{{user.creditCardNumber}} - {{user.creditType}}</p>
+                                </div>
+                                <div style="margin-top:20px;">
+                                    <button class="btn btn-info" data-toggle="modal" data-target="#updateModalLabel">
+                                        Editar informaci&oacute;n
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg pulse animated" id="updateModalLabel" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <p class="modal-title text-uppercase" id="updateModalLabel"><strong>Editar datos de Usuario</strong></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-left">
+                <form [formGroup]="updateForm" #formUpd="ngForm">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-left">
+                            <div class="form-group">
+                                <label for="name">Documento</label>
+                                <input type="text" readonly [(ngModel)]="user.docNumber" required maxlength="10" minlength="5" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="document" name="document" formControlName="textDocument" placeholder="">
+
+                                <validator [field]="form.textDocument"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Nombres</label>
+                                <input type="text" [(ngModel)]="user.fName" required maxlength="50" class="form-control" id="name" formControlName="textName" placeholder="">
+
+                                <validator [field]="form.textName"></validator>
+                            </div>
+                            {{form.textValue | json}}
+                            <div class="form-group">
+                                <label for="surname">Apellidos</label>
+                                <input type="text" [(ngModel)]="user.lName" required maxlength="50" class="form-control" id="surname" formControlName="textSurname" placeholder="">
+
+                                <validator [field]="form.textSurname"></validator>
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="address">Direcci&oacute;n</label>
+                                <input type="text" [(ngModel)]="user.address" required maxlength="100" class="form-control" id="address" formControlName="textAddres" placeholder="">
+
+                                <validator [field]="form.textAddres"></validator>
+                            </div>-->
+                            <div class="form-group">
+                                <label for="phone">Tel&eacute;fono</label>
+                                <input type="text" [(ngModel)]="user.phoneNumber" required maxlength="15" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="phone" formControlName="textPhone" placeholder="">
+
+                                <validator [field]="form.textPhone"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo electr&oacute;nico</label>
+                                <input type="email" [(ngModel)]="user.email" required maxlength="100" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" class="form-control" id="email" formControlName="textEmail" placeholder="">
+
+                                <validator [field]="form.textEmail"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="password1">Contrase&ntilde;a</label>
+                                <div class="psw-description">
+                                    {{typepsw == 'text' ? 'Contraseña visible': ''}}
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend" (click)="changeTypePws()" style="cursor:pointer">
+                                        <span class="input-group-text">
+                                            <i class="fa" [ngClass]="{'fa-eye-slash': typepsw == 'password', 'fa-eye': typepsw == 'text'}"></i>
+                                        </span>
+                                    </div>
+                                    <input [type]="typepsw" [(ngModel)]="user.password" required maxlength="20" class="form-control" id="password1" formControlName="textPassword1" placeholder="">
+                                </div>
+                                <validator [field]="form.textPassword1"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="creditcard">N&uacute;mero de tarjeta de cr&eacute;dito</label>
+                                <div class="card-description">
+                                    {{cardtype}}
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                    <input type="text" [(ngModel)]="user.creditCardNumber" required maxlength="20" minlength="14" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="creditcard" (keyup)="getCreditCardType($event.target.value)" formControlName="textCreditCard" placeholder="">
+                                </div>
+                                <validator [field]="form.textCreditCard"></validator>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="sendUpdate()" data-dismiss="modal" aria-label="Close" class="btn btn-info" [disabled]="formUpd.form.invalid">
+                    Guardar
+                </button>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-outline-dark">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

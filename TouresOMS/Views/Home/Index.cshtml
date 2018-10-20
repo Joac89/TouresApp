@@ -1,0 +1,10 @@
+@{
+    //ViewData["Title"] = "Toures Balon";
+}
+
+@*<app asp-prerender-module="ClientApp/dist/main-server">Cargando...</app>*@
+<app></app>
+<script src="~/dist/vendor.js" asp-append-version="true"></script>
+@section scripts {
+    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+}

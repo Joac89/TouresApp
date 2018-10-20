@@ -1,0 +1,36 @@
+﻿.user-card {
+    border-right: 1px solid #e0e0e0;
+    border-radius: 3px;
+    padding: 10px;
+}
+.card-no-border{
+    border:0;
+}
+    .user-card .card-info {
+    }
+
+    .user-card .card-icon i {
+        font-size: 6rem;
+    }
+
+.card-description {
+    color: #17a2b8;
+    font-weight: bold;
+    margin: 0;
+    float: right;
+    font-size: 12px;
+    text-transform: uppercase !important;
+    border: 1px solid #17a2b8;
+    border-radius: 3px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.psw-description {
+    color: #17a2b8;
+    margin: 0;
+    float: right;
+    font-size: 12px;
+    padding: 5px;
+}

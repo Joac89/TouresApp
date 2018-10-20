@@ -1,0 +1,27 @@
+﻿.login .step .number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 2.1rem;
+    margin: 0 auto;
+    padding-top: 3px;
+}
+
+.login .step .text {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    border-top: 1px dashed #c5c5c5;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align:center;
+}
+
+.login-content {
+    padding: 30px;
+    /*border: 1px solid #e0e0e0;*/
+    border-radius: 3px;
+    /*background-color: #f9f9f9;*/
+}

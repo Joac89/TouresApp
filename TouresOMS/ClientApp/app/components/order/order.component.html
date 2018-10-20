@@ -1,0 +1,127 @@
+<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Mis &oacute;rdenes'"
+                        [subtitle]="'Aqui se encuentran tus &oacute;rdenes pendientes y aprobadas'">
+            </page-title>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="8" class="text-left">
+                                    Ordenes creadas para el usuario <span class="text-info text-capitalize">{{username}}</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">#Orden</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                                <!--<th scope="col">&nbsp;</th>-->
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of orders" [ngClass]="{'row-selected': selected == item.ordId}">
+                                <td scope="row" class="row-fil text-center">{{("000" + item.ordId).slice(-4)}}</td>
+                                <td scope="row" class="row-fil text-center">{{item.ordenDate | date: 'yyyy/MM/dd'}}</td>
+                                <td scope="row" class="row-fil text-left">
+                                    <i class="fa"
+                                       [ngClass]="{'fa-clock-o text-danger': item.status == 1, 'fa-check text-success': item.status == 2}"></i>
+                                    {{item.statusName}}
+                                </td>
+                                <td class="text-right">{{item.quantity}}</td>
+                                <td class="text-right">{{item.price | currency:'COP':true:'2.0'}}</td>
+                                <!--<td scope="row" class="row-fil text-center">
+                                    <button class="btn btn-sm btn-info" [disabled]="item.state == 2">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                </td>-->
+                                <td scope="row" class="row-fil text-center">
+                                    <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.lItems, item.ordId)">
+                                        Detalles
+                                    </button>
+                                </td>
+                                <td scope="row" class="row-fil text-center">
+                                    <button class="btn btn-sm btn-danger" (click)="orderForDelete = item.ordId" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="item.state == 2">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="5" class="text-left">
+                                    <span *ngIf="orderItem != 0">
+                                        Productos de la <span class="text-info">Orden #{{orderItem}}</span>
+                                    </span>
+                                    <span *ngIf="orderItem == 0">
+                                        Seleccione una orden para ver el detalle
+                                    </span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">C&oacute;digo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of showItems">
+                                <td scope="row" class="row-fil text-center">{{("000" + item.itemId).slice(-4)}}</td>
+                                <td scope="row" class="row-fil text-center">{{item.prodId}}</td>
+                                <td>{{item.productName}}</td>
+                                <td scope="row" class="row-fil text-right">{{item.quantity}}</td>
+                                <td scope="row" class="row-fil text-right">{{item.price | currency:'COP':true:'2.0'}}</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Total</strong></td>
+                                <td scope="row" class="row-fil text-right"><strong>{{sumQ()}}</strong></td>
+                                <td scope="row" class="row-fil text-right"><strong>{{sumP() | currency:'COP':true:'2.0'}}</strong></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="alert alert-info text-left" role="alert">
+                Las ordenes <strong>Aprobadas</strong>, no pueden ser modificadas o eliminadas
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg pulse animated" id="modalOrder_delete" tabindex="-1" role="dialog" aria-labelledby="modalOrderlabel_delete" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border:0">
+                <p class="modal-title text-uppercase" id="modalOrderlabel_delete"><strong>Eliminar Orden de mi lista</strong></p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <h3>&iquest; Seguro que quieres eliminar la orden <strong>#{{orderForDelete}}</strong>?</h3>
+            </div>
+            <div class="modal-footer">
+                <button style="min-width:100px;" class="btn btn-light btn-default-rounded" (click)="deleteOrder(orderForDelete)" data-dismiss="modal" aria-label="Close">
+                    Si
+                </button>
+                <button style="min-width:100px;" class="btn btn-info btn-default-rounded" data-dismiss="modal" aria-label="Close">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

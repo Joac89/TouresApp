@@ -1,0 +1,32 @@
+﻿.item-prod .image img {
+    height: 100%;
+    width: 100%;
+}
+
+.item-prod .price {
+    margin:0;
+    margin-top:10px;
+    font-weight:600;
+    font-size:16px;
+}
+
+.item-prod .title {
+    text-align: left;
+    font-size: 18px;
+    margin:0;
+    margin-top:5px;
+    margin-bottom:10px;
+}
+
+.item-prod .buttons {
+    margin-top: 20px;
+}
+
+.item-prod .description {
+    margin: 0;
+}
+
+.item-prod .rating {
+    margin-bottom: 10px;
+    text-align: left;
+}

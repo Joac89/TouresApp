@@ -1,0 +1,43 @@
+<div id="start_page" class="text-left fadeIn slower animated" [ngStyle]="{'background-image':'url(../../../../img/background/bg002.jpg)'}">
+    <div class="justify-content-md-center">
+        <div class="col-md-7 justify-content-md-center mx-auto">
+            <h1 class="start-title">
+                <i class="fa fa-futbol-o text-white"></i>Toures Balon
+            </h1>
+            <h1 class="start-subtitle">
+                Disfruta de los mejores eventos deportivos a nivel mundial al mejor precio.
+            </h1>
+            <form [formGroup]="searchForm" (ngSubmit)="sendSearch()">
+                <div class="form-group row">
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <div class="input-group-append" id="button_event">
+                                <button class="btn btn-light dropdown-toggle start-btn-filter" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <strong>{{check.text}}</strong>
+                                </button>
+                                <div id="dropdown" class="dropdown-menu">
+                                    <a class="dropdown-item" (click)="changeFilter(1, 'Sin filtro')">Sin filtro</a>
+                                    <a class="dropdown-item" (click)="changeFilter(2, 'Buscar por c&oacute;digo')">C&oacute;digo</a>
+                                </div>
+                            </div>
+                            <input type="{{check.id == 2 ? 'number': 'text'}}"
+                                   placeholder="{{check.id == 2 ? 'ingrese el c&oacute;digo': 'escriba el texto'}} a buscar"
+                                   formControlName="textSearch" class="form-control form-control-lg" id="input_event" aria-describedby="event">
+                        </div>
+                    </div>
+                    <div class="col-sm-2 start-btn">
+                        <button type="submit" class="btn btn-info btn-lg mb-2 btn-search">
+                            <i class="fa fa-search"></i>&nbsp;Buscar
+                        </button>
+                    </div>
+                    <div class="col-sm-2 start-btn" [routerLinkActive]="['active']">
+                        <a class="btn btn-dark btn-lg mb-2 btn-explore" [routerLink]="['/home']" href="#">
+                            <i class="fa fa-futbol-o"></i>&nbsp;Explorar
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

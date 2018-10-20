@@ -1,0 +1,13 @@
+﻿body {
+}
+
+.btn-shoping {
+    border-radius: 3px !important;
+    float: left;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+.product{
+    margin-bottom:30px;
+}

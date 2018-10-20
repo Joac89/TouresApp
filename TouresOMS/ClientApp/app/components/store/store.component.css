@@ -1,0 +1,15 @@
+﻿.row-fil {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.total-precio {
+    padding: 20px;
+    border: 1px solid #dee2e6;
+}
+
+.separator {
+    height: 38px;
+    width: 1px;
+    border-left: 1px solid #e9ecef;
+}

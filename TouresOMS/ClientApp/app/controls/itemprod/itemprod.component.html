@@ -1,0 +1,53 @@
+﻿<div class="item-prod">
+    <div class="image item-box">
+        <div *ngIf="rating == 5" class="item-ribbon"><span>POPULAR</span></div>
+        <img [src]="image" />
+    </div>
+    <div class="text-left">
+        <p class="title"><strong>{{title}}</strong></p>
+        <p [innerHTML]="description" class="description">
+
+        </p>
+        <p class="price">{{price | currency:'COP':true:'2.0'}}</p>
+        <p class="text-left text-info">
+            C&oacute;digo #{{("000" + code).slice(-4)}}
+        </p>
+        <!--<div class="rating text-info">
+            <small *ngIf="rating == 1">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+            </small>
+            <small *ngIf="rating == 2">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+            </small>
+            <small *ngIf="rating == 3">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+            </small>
+            <small *ngIf="rating == 4">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </small>
+            <small *ngIf="rating == 5">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+            </small>
+        </div>-->        
+    </div>
+</div>

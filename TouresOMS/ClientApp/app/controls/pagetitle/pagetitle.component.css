@@ -1,0 +1,12 @@
+﻿.page-title {
+    margin-top:30px;
+    margin-bottom:30px;
+}
+.page-title h5{
+    text-transform:none !important;
+}
+
+    .page-title > p {
+        font-size: 16px;
+        text-transform: none !important;
+    }

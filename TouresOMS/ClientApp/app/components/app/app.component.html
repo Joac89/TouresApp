@@ -1,0 +1,24 @@
+<div class='container-fluid'>
+    <nav-menu *ngIf="validateRoute()"></nav-menu>
+    <div class='row'>
+        <div class='col-sm-12 body-content base-content no-padding'>            
+            <router-outlet>               
+                <div *ngIf="showLoader" class="text-center loading justify-content-end">
+                    <div class="content-load">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw text-info"></i><span class="sr-only">Loading...</span>
+                        <!--<p [innerHTML]="phrase" class="text-info fadeIn slow animated"></p>-->
+                    </div>         
+                </div>
+            </router-outlet>
+        </div>
+    </div>
+    <div class="row my-auto" *ngIf="validateRoute()">
+        <div class="col-md-12 bg-white no-padding">
+            <div class="row copyright justify-content-center no-margin bg-white" style="margin-top:30px !important;">
+                <div class="col-md-11 my-auto text-right">
+                    &copy;2018 IT-BUSINESS todos los derechos reservados
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
