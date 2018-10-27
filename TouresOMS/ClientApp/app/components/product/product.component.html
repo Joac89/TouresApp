@@ -1,29 +1,53 @@
 ﻿<div class="text-center fadeIn slow animated">
     <div class="row justify-content-md-center no-margin">
         <div class="col-lg-11 col-md-11 col-sm-12 home">
-            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
-                        [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
-                        [reference]="textSearch">
-            </page-title>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 product" *ngFor="let item of search.data">
-                    <item-prod (click)="getDetail(item)" style="cursor:pointer;" data-toggle="modal" data-target="#exampleModal1"
-                               [code]="item.id"
-                               [price]="item.price"
-                               [image]="item.image"
-                               [date]="item.date"
-                               [title]="item.title"
-                               [description]="item.description"
-                               [rating]="item.rating">
-                    </item-prod>
-                    <div class="in-cart bg-danger" *ngIf="item.inCart">
-                        <i class="fa fa-shopping-cart"></i>&nbsp;en el carrito
+            <ul class="nav justify-content-start">
+                <li class="nav-item">
+                    <form [formGroup]="searchForm" (ngSubmit)="sendSearch()" class="form-search">
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <div class="input-group-append show no-margin" id="button_event">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{check.text}}
+                                    </button>
+                                    <div id="dropdown" class="dropdown-menu">
+                                        <a class="dropdown-item" (click)="changeFilter(1, 'Sin filtro')">Sin filtro</a>
+                                        <a class="dropdown-item" (click)="changeFilter(2, 'Buscar por c&oacute;digo')">C&oacute;digo</a>
+                                    </div>
+                                </div>
+                                <input type="{{check.id == 2 ? 'number': 'text'}}"
+                                       placeholder="{{check.id == 2 ? 'ingrese el c&oacute;digo': 'escriba el texto'}} a buscar"
+                                       formControlName="textSearch" class="form-control" id="input_event" aria-describedby="event">
+                            </div>
+                            <button type="submit" class="btn btn-info btn xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                            <button type="submit" class="btn btn-light btn xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                        </div>
+                    </form>
+                </li>
+                </ul>
+                <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+                            [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
+                            [reference]="textSearch">
+                </page-title>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6 product" *ngFor="let item of search.data">
+                        <item-prod (click)="getDetail(item)" style="cursor:pointer;" data-toggle="modal" data-target="#exampleModal1"
+                                   [code]="item.id"
+                                   [price]="item.price"
+                                   [image]="item.image"
+                                   [date]="item.date"
+                                   [title]="item.title"
+                                   [description]="item.description"
+                                   [rating]="item.rating">
+                        </item-prod>
+                        <div class="in-cart bg-danger" *ngIf="item.inCart">
+                            <i class="fa fa-shopping-cart"></i>&nbsp;en el carrito
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch(true)">
-                <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
-            </button>
+                <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch(true)">
+                    <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+                </button>
         </div>
     </div>
 </div>

@@ -3,8 +3,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 import { StoreService } from '../../services/store.service';
 import { LoaderService } from '../../services/loader.service';
+import { CheckControl } from '../../models/check.control';
+import { Product } from '../../models/product.model';
+import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/map';
 import { forEach } from '@angular/router/src/utils/collection';
+import { isPlatformBrowser } from '@angular/common';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'product',
@@ -87,5 +92,34 @@ export class ProductComponent {
                 }
             }
         }
+    }
+
+    //####################################################//
+
+    check = new CheckControl(1, "Sin filtro");
+
+    searchForm = new FormGroup({
+        textSearch: new FormControl(''),
+        dateSearch: new FormControl(''),
+        checkSearch: new FormControl(''),
+    });
+
+    sendSearch() {
+        var text = this.searchForm.value.textSearch;
+        var id = this.check.id;
+
+        this.searchForm.reset();
+        this.changeFilter(1, "Sin filtro");
+        this.router.navigate(["product",
+            {
+                search: btoa(text),
+                type: id
+            }
+        ]);
+    }
+
+    changeFilter(id: number, text: string) {
+        this.check.id = id;
+        this.check.text = text;
     }
 }

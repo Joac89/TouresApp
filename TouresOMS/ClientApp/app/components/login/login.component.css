@@ -7,6 +7,15 @@
     font-size: 2.1rem;
     margin: 0 auto;
     padding-top: 3px;
+    
+
+}
+
+.text-title {
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .login .step .text {
@@ -16,7 +25,7 @@
     border-top: 1px dashed #c5c5c5;
     font-weight: 600;
     text-transform: uppercase;
-    text-align:center;
+    text-align: center;   
 }
 
 .login-content {

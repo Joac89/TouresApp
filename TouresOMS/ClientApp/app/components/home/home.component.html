@@ -33,27 +33,3 @@
                     <span class="sr-only">Anterior</span>
                 </a>
             </div>
-            <page-title class="text-uppercase" [title]="'Paquetes m&aacute;s popularess'"
-                        [subtitle]="'Disfruta de los mejores eventos deportivos al mejor precio!'">
-            </page-title>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 product" *ngFor="let item of principals.data">
-                    <item-prod (click)="getDetail(item)" style="cursor:pointer;" data-toggle="modal" data-target="#exampleModal0"
-                               [code]="item.id"
-                               [price]="item.price"
-                               [image]="item.image"
-                               [date]="item.date"
-                               [title]="item.title"
-                               [description]="item.description"
-                               [rating]="item.rating">
-                    </item-prod>
-                    <div class="in-cart bg-danger" *ngIf="item.inCart">
-                        <i class="fa fa-shopping-cart"></i>&nbsp;en el carrito
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<detail-prod [item]="current" [modal]="'exampleModal0'" [callback]="update()"></detail-prod>
-

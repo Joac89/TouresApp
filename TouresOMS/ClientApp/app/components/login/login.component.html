@@ -6,37 +6,41 @@
             </page-title>-->
 
             <form [formGroup]="logForm" (ngSubmit)="sendLogin()" #formLog="ngForm" style="margin-top:50px;">
-                <div class="row justify-content-md-center no-margin">
-                    <div class="col-lg-4 col-md-6 col-sm-12 text-left login-content">
-                        <div class="step justify-content-md-center my-auto">
-                            <div class="number bg-info justify-content-md-center my-auto">
-                                <i class="fa fa-user"></i>
-                            </div>
-                            <p class="text">
+                <p class="text-title" >
+                    Tures Balon <br /> OMS
+                    <div class="row justify-content-md-center no-margin">
+
+                        <div class="col-lg-4 col-md-6 col-sm-12 text-left login-content">
+
+                            <div class="step justify-content-md-center my-auto">
+                                <div class="number bg-info justify-content-md-center my-auto">
+                                    <i class="fa fa-user"> </i>
+                                </div>
+                                    <p class="text">                             
                                 inicio de sesi&oacute;n
-                        </div>
-                        <div *ngIf="newusername != ''" class="alert alert-warning">
-                            Ingresa con el usuario <strong>{{newusername}}</strong> que se te acaba de asignar
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Usuario</label>
-                            <input type="text" required maxlength="20" minlength="5" class="form-control" id="username" formControlName="textUsername" placeholder="">
+                            </div>
+                            <div *ngIf="newusername != ''" class="alert alert-warning">
+                                Ingresa con el usuario <strong>{{newusername}}</strong> que se te acaba de asignar
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Usuario</label>
+                                <input type="text" required maxlength="20" minlength="5" class="form-control" id="username" formControlName="textUsername" placeholder="">
 
-                            <validator [field]="form.textUsername"></validator>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Contrase&ntilde;a</label>
-                            <input type="password" required maxlength="40" minlength="6" class="form-control" id="password" formControlName="textPassword" placeholder="">
+                                <validator [field]="form.textUsername"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Contrase&ntilde;a</label>
+                                <input type="password" required maxlength="40" minlength="6" class="form-control" id="password" formControlName="textPassword" placeholder="">
 
-                            <validator [field]="form.textPassword"></validator>
+                                <validator [field]="form.textPassword"></validator>
+                            </div>
+                            <br />
+                            <div *ngIf="error && error.statusCode != 200" class="alert alert-danger" role="alert">
+                                <strong>Lo sentimos!</strong> ha ocurrido un error: {{error.statusText}}
+                            </div>
+                            <button type="submit" class="btn btn-info float-right" [disabled]="formLog.form.invalid">Continuar</button>
                         </div>
-                        <br />
-                        <div *ngIf="error && error.statusCode != 200" class="alert alert-danger" role="alert">
-                            <strong>Lo sentimos!</strong> ha ocurrido un error: {{error.statusText}}
-                        </div>
-                        <button type="submit" class="btn btn-info float-right" [disabled]="formLog.form.invalid">Continuar</button>
                     </div>
-                </div>
             </form>
         </div>
     </div>

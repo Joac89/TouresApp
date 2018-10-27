@@ -53,7 +53,7 @@ import { DetailComponent } from './components/campaign/detail.component';
         ReactiveFormsModule,
         RouterModule.forRoot([
             //{ path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: '', component: StartComponent },
+            { path: '', component: LoginComponent },
             { path: 'home', component: HomeComponent },
             { path: 'order', component: OrderComponent, canActivate: [GuardService] },
             { path: 'campaign', component: CampaignComponent },
