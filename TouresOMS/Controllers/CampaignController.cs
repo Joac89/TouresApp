@@ -24,8 +24,7 @@ namespace TouresOMS.Controllers
 		[HttpGet("all")]
 		public async Task<IActionResult> GetCampaigns()
 		{
-			var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
-			var service = new CampaignService(new HttpService($"{urlService}/0", token), urlImages);
+			var service = new CampaignService(new HttpService($"{urlService}/0"), urlImages);
 			var response = await service.GetCampaign();
 
 			//temporal
