@@ -15,7 +15,8 @@ import { FormControl, FormGroup } from '@angular/forms';
     selector: 'product',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.css', '../../style/general.css'],
-    providers: [StoreService]
+    providers: [AuthService, StoreService]
+    
 })
 export class ProductComponent {
     search: any = {};
@@ -50,7 +51,6 @@ export class ProductComponent {
             this.endPage = false;
         }
 
-        //this.http.get(this.path + "api/product/search/" + this.textSearch + "/" + this.typeSearch + "/" + this.pag).map(response => response.json()).subscribe(result => {
         this.http.get(this.path + "api/product/search/" + this.textSearch + "/" + this.typeSearch + "/" + this.pag).map(response => response.json()).subscribe(result => {
             this.aux = result;
 
@@ -123,4 +123,21 @@ export class ProductComponent {
         this.check.id = id;
         this.check.text = text;
     }
+
+    deleteProduct(id: number) {
+        this.loaderService.start();
+                
+        this.http.delete(this.path + "api/Product/delete/" + id).map(response => response.json()).subscribe(result => {
+
+            // if (result.code == 200) 
+            //this.sendSearch();
+
+            this.loaderService.end();
+        }, error => {
+            this.loaderService.end();
+            console.error(error);
+        });
+
+    }
+
 }

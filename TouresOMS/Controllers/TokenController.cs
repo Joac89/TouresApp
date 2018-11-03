@@ -32,7 +32,8 @@ namespace TouresOMS.Controllers
 		[HttpPost]
 		public async Task<IActionResult> GetToken()
 		{
-			var service = new TokenService(new HttpService(tokenService));
+
+            var service = new TokenService(new HttpService(tokenService));
 			var response = await service.GetToken(userToken, pswToken);
 
 			return this.Result(response.Code, response);
