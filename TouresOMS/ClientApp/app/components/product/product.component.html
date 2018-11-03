@@ -30,20 +30,61 @@
                             [reference]="textSearch">
                 </page-title>
                 <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6 product" *ngFor="let item of search.data">
-                        <item-prod (click)="getDetail(item)" style="cursor:pointer;" data-toggle="modal" data-target="#exampleModal1"
-                                   [code]="item.id"
-                                   [price]="item.price"
-                                   [image]="item.image"
-                                   [date]="item.date"
-                                   [title]="item.title"
-                                   [description]="item.description"
-                                   [rating]="item.rating">
-                        </item-prod>
-                        <div class="in-cart bg-danger" *ngIf="item.inCart">
-                            <i class="fa fa-shopping-cart"></i>&nbsp;en el carrito
-                        </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="8" class="text-left">
+                                        Productos
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">#Espectaculo</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Fecha Espectaculo</th>
+                                    <th scope="col">Fecha Llegada</th>
+                                    <th scope="col">Fecha Salida</th>
+                                    <!--<th scope="col">Tarifa Espectaculo</th>
+                                    <th scope="col">Tarifa Hospedaje</th>
+                                    <th scope="col">Tarifa trasnporte</th>-->
+                                    <th scope="col">Pais</th>
+                                    <th scope="col">Precio Ciudad</th>
+                                    <th scope="col">Precio Espectaculo</th>
+                                    <th scope="col">Precio Hospedaje</th>
+                                    <th scope="col">Precio Trasnporte</th>
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">Valor Producto</th>
+                                    <th scope="col">&nbsp;</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of search.data">
+                                    <td scope="row" class="row-fil text-center">{{(item.espectaculo)}}</td>
+                                    <td scope="row" class="row-fil text-center">{{item.nombre}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.fechaEspectaculo | date: 'yyyy/MM/dd'}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.fechaLlegada | date: 'yyyy/MM/dd'}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.fechaSalida | date: 'yyyy/MM/dd'}}</td>
+                                    <!--<td scope="row" class="row-fil text-left">{{item.nombreTarifaEsp}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.nombreTarifaHosp}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.nombreTarifaTrans}}</td>-->
+                                    <td scope="row" class="row-fil text-left">{{item.pais}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.precioCiudad}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.precioEsp}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.precioHospedaje}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.precioTransporte}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.rutaImagen}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.valorProducto}}</td>                                    
+                                    <td scope="row" class="row-fil text-center">
+                                        <button class="btn btn-sm btn-danger" (click)="orderForDelete = item.ordId" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="item.state == 2">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                   
                 </div>
                 <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch(true)">
                     <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s

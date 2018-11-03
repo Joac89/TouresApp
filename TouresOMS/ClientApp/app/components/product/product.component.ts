@@ -50,6 +50,7 @@ export class ProductComponent {
             this.endPage = false;
         }
 
+        //this.http.get(this.path + "api/product/search/" + this.textSearch + "/" + this.typeSearch + "/" + this.pag).map(response => response.json()).subscribe(result => {
         this.http.get(this.path + "api/product/search/" + this.textSearch + "/" + this.typeSearch + "/" + this.pag).map(response => response.json()).subscribe(result => {
             this.aux = result;
 

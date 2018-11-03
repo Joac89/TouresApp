@@ -60,7 +60,10 @@
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/product']" class="nav-link" href="#">Productos</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" >
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                        <a [routerLink]="['/customer']" class="nav-link" style="padding-right:0" href="#">Reg&iacute;strate</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item">
                         <a [routerLink]="['/login']" class="nav-link" style="padding-right:0" href="#">Iniciar sesi&oacute;n</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
