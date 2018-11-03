@@ -39,14 +39,16 @@
                                     </th>
                                 </tr>
                                 <tr>
+
                                     <th scope="col">#Espectaculo</th>
+                                    <!--<th scope="col">Id</th>-->
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Fecha Espectaculo</th>
                                     <th scope="col">Fecha Llegada</th>
                                     <th scope="col">Fecha Salida</th>
                                     <!--<th scope="col">Tarifa Espectaculo</th>
-                                    <th scope="col">Tarifa Hospedaje</th>
-                                    <th scope="col">Tarifa trasnporte</th>-->
+    <th scope="col">Tarifa Hospedaje</th>
+    <th scope="col">Tarifa trasnporte</th>-->
                                     <th scope="col">Pais</th>
                                     <th scope="col">Precio Ciudad</th>
                                     <th scope="col">Precio Espectaculo</th>
@@ -59,7 +61,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of search.data">
+                                <tr *ngFor="let item of search.data" [ngClass]="{'row-selected': selected == item.id}">
                                     <td scope="row" class="row-fil text-center">{{(item.espectaculo)}}</td>
                                     <td scope="row" class="row-fil text-center">{{item.nombre}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.fechaEspectaculo | date: 'yyyy/MM/dd'}}</td>
@@ -76,7 +78,7 @@
                                     <td scope="row" class="row-fil text-left">{{item.rutaImagen}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.valorProducto}}</td>                                    
                                     <td scope="row" class="row-fil text-center">
-                                        <button class="btn btn-sm btn-danger" (click)="orderForDelete = item.ordId" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="item.state == 2">
+                                        <button class="btn btn-sm btn-danger" (click)="deleteProduct(item.id)" data-toggle="modal" data-target="#modalProduct_delete" [disabled]="item.state == 2">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </td>

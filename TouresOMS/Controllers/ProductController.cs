@@ -59,6 +59,17 @@ namespace TouresOMS.Controllers
 
 			return Ok(response);
 		}
-                
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<IActionResult> DeleteProduct(long id)
+        {
+            //var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new ProductService(new HttpService($"{urlService}/{id}"));
+            var response = await service.DeleteProduct();
+
+            return this.Ok(response);
+        }
+
     }
 }

@@ -14,9 +14,16 @@ namespace TouresOMS.Services
 	{
 		private string urlImages = "";
 		private string urlService = "";
-		//private int lote = 4;
+        //private int lote = 4;
 
-		public ProductService(string url, string images)
+        private IHttpService httpService;
+
+        public ProductService(IHttpService httpService_)
+        {
+            httpService = httpService_;
+        }
+
+        public ProductService(string url, string images)
 		{
 			urlService = url;
 			urlImages = images;
@@ -132,7 +139,16 @@ namespace TouresOMS.Services
 			return await Task.Run(() => response);
 		}
 
-		private List<ProductModel> GetList()
+        public async Task<ResponseBase<bool>> DeleteProduct()
+        {
+            var response = new ResponseBase<bool>();
+
+            response = await httpService.Send<bool>(UriMethod.Delete);
+
+            return await Task.Run(() => response);
+        }
+
+        private List<ProductModel> GetList()
 		{
 			var lst = new List<ProductModel>
 			{
