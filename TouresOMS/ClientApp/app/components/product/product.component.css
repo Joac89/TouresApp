@@ -11,3 +11,60 @@
 .product{
     margin-bottom:30px;
 }
+
+/*.registration {
+}*/
+
+.registration .step {
+    text-align: center;
+}
+
+    .registration .step .number {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        color: #fff;
+        font-size: 2.1rem;
+        margin: 0 auto;
+        padding-top: 3px;
+    }
+
+    .registration .step .text {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding-top: 5px;
+        border-top: 1px dashed #c5c5c5;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+.border-right {
+    border-right: 1px dashed #c5c5c5;
+}
+
+.border-left {
+    border-left: 1px dashed #c5c5c5;
+}
+
+.card-description {
+    color: #17a2b8;
+    font-weight: bold;
+    margin: 0;
+    float: right;
+    font-size: 12px;
+    text-transform: uppercase !important;
+    border: 1px solid #17a2b8;
+    border-radius: 3px;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.psw-description {
+    color: #17a2b8;
+    margin: 0;
+    float: right;
+    font-size: 12px;
+    padding: 5px;
+}
