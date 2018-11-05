@@ -84,13 +84,14 @@ export class UserComponent {
             lName: this.user.lName,
             phoneNumber: this.user.phoneNumber,
             email: this.user.email,
-            password: this.user.password,
+            password: "", //this.user.password,
             creditCardType: this.user.creditCardType,
             creditCardNumber: this.user.creditCardNumber,
             status: "1",
             docNumber: this.user.docNumber,
             userName: this.getUsername(),
-            address: "-"
+            address: "-",
+            clienttype: ""
 
             //custid: this.user.custId,
             //fname: this.user.fName,

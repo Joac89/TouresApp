@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Text;
 using System.Threading.Tasks;
 using TouresB2C.Models;
 using TouresB2C.Services;
@@ -26,7 +28,10 @@ namespace TouresB2C.Controllers
 
 			userToken = config["tokenconfig:user"];
 			pswToken = config["tokenconfig:password"];
-		}
+
+            byte[] data = Convert.FromBase64String(pswToken);
+            pswToken = Encoding.UTF8.GetString(data);
+        }
 
 		[AllowAnonymous]
 		[HttpPost]

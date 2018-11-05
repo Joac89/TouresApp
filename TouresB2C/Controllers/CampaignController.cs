@@ -28,15 +28,15 @@ namespace TouresB2C.Controllers
 			var service = new CampaignService(new HttpService($"{urlService}/0", token), urlImages);
 			var response = await service.GetCampaign();
 
-			//temporal
-			foreach (var x in response.Data)
-			{
-				x.Image = x.Image.Replace("Imagen1.jpg", "/campaigns/camp101.jpg");
-				x.Image = x.Image.Replace("image6.jpg", "/campaigns/camp102.jpg");
-				x.Image = x.Image.Replace("image5.jpg", "/campaigns/camp103.jpg");
+			////temporal
+			//foreach (var x in response.Data)
+			//{
+			//	x.Image = x.Image.Replace("Imagen1.jpg", "/campaigns/camp101.jpg");
+			//	x.Image = x.Image.Replace("image6.jpg", "/campaigns/camp102.jpg");
+			//	x.Image = x.Image.Replace("image5.jpg", "/campaigns/camp103.jpg");
 
-				x.RutaImagen = x.Image;
-			};
+			//	x.RutaImagen = x.Image;
+			//};
 
 			return this.Result(response.Code, response);
 		}

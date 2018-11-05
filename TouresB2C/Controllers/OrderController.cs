@@ -35,7 +35,7 @@ namespace TouresB2C.Controllers
 		public async Task<IActionResult> InsertOrder([FromBody] OrderModel data)
 		{
 			var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
-			var service = new OrderService(new HttpService($"{urlService}", token));
+			var service = new OrderService(new HttpService($"{urlService}/insert", token));
 			var response = await service.InsertOrder(data);
 
 			return this.Result(response.Code, response);

@@ -58,7 +58,6 @@ export class OrderComponent {
             this.loaderService.end();
             console.error(error);
         });
-
     }
 
     showOrderItems(items: any[], order: number) {
@@ -80,7 +79,7 @@ export class OrderComponent {
 
                 this.orders = result.data;
                 this.orders.forEach(x => {
-                    x.statusName = x.status == "1" ? "Pendiente" : "Aprobada";
+                    x.statusName = x.status == "1" ? "Pendiente" : x.status == "2" ? "Aprobada" : "Eliminada";
                     this.items = x.lItems;
                     this.items.forEach(y => {
                         q += <number>y.quantity;
@@ -101,5 +100,10 @@ export class OrderComponent {
         } else {
             this.orders = [];
         }
+    }
+
+    lockedCancel(id: number) {
+        //console.log(id);
+        return id == 2 || id == 0 ? false : true;
     }
 }

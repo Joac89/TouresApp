@@ -50,7 +50,7 @@ export class StoreComponent {
             lItems: this.getOrderItems()
         }
 
-        console.log(json);
+        //console.log(json);
 
         var token = this.tokenService.getTokenHeader();
         this.http.post(this.path + "api/Order/create", json, token).map(response => response.json()).subscribe(result => {

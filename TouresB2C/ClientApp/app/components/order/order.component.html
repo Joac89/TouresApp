@@ -16,8 +16,8 @@
                             </tr>
                             <tr>
                                 <th scope="col">#Orden</th>
-                                <th scope="col">Fecha</th>
                                 <th scope="col">Estado</th>
+                                <th scope="col">Fecha</th>
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Total</th>
                                 <!--<th scope="col">&nbsp;</th>-->
@@ -28,12 +28,13 @@
                         <tbody>
                             <tr *ngFor="let item of orders" [ngClass]="{'row-selected': selected == item.ordId}">
                                 <td scope="row" class="row-fil text-center">{{("000" + item.ordId).slice(-4)}}</td>
-                                <td scope="row" class="row-fil text-center">{{item.ordenDate | date: 'yyyy/MM/dd'}}</td>
                                 <td scope="row" class="row-fil text-left">
-                                    <i class="fa"
-                                       [ngClass]="{'fa-clock-o text-danger': item.status == 1, 'fa-check text-success': item.status == 2}"></i>
-                                    {{item.statusName}}
+                                    <!--<i class="fa"
+                                    [ngClass]="{'fa-times text-danger': item.status == 0, 'fa-clock-o text-danger': item.status == 1, 'fa-check text-success': item.status == 2}"></i>-->
+                                    <strong class="text-uppercase"
+                                            [ngClass]="{'text-danger': item.status == 0, 'text-info': item.status == 1, 'text-success': item.status == 2}">{{item.statusName}}</strong>
                                 </td>
+                                <td scope="row" class="row-fil text-center">{{item.ordenDate | date: 'yyyy/MM/dd'}}</td>
                                 <td class="text-right">{{item.quantity}}</td>
                                 <td class="text-right">{{item.price | currency:'COP':true:'2.0'}}</td>
                                 <!--<td scope="row" class="row-fil text-center">
@@ -47,7 +48,7 @@
                                     </button>
                                 </td>
                                 <td scope="row" class="row-fil text-center">
-                                    <button class="btn btn-sm btn-danger" (click)="orderForDelete = item.ordId" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="item.state == 2">
+                                    <button class="btn btn-sm btn-danger" [ngClass]="{'btn-danger': item.status == 1}" (click)="orderForDelete = item.ordId" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="!lockedCancel(item.status)">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>

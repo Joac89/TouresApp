@@ -36,6 +36,7 @@ export class CustomerComponent {
     typepsw: string = "password";
     error: any = { statusCode: 200 };
     newuser: string = btoa("undefined");
+    newuserSHOW: string = "";
 
     private first: string = "";
     private last: string = "";
@@ -67,6 +68,7 @@ export class CustomerComponent {
             docnumber: this.registrationForm.value.textDocument,
             username: this.getUsername(),
             address: "" //this.registrationForm.value.textAddres
+            //clienttype: ""
         }
         var token = this.tokenService.getTokenHeader();
 
@@ -75,6 +77,7 @@ export class CustomerComponent {
             this.loaderService.end();
 
             this.newuser = btoa(json.username);
+            this.newuserSHOW = json.username;
             //this.authService.login(JSON.stringify(result));
         }, error => {
             this.loaderService.end();
