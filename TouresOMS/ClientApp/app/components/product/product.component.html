@@ -110,7 +110,8 @@
                         <p class="text">
                             Datos Producto
                         </p>
-                    </div>                   
+                    </div>                  
+
                     <div class="step justify-content-md-center my-auto">
                         <div class="form-group">
                             <label for="nombre">Nombre Producto</label>
@@ -118,25 +119,53 @@
                             <validator [field]="form.textNombre"></validator>
                         </div>
                         <div class="form-group">
+                            <label for="valorproducto">Valor Producto</label>
+                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="valorproducto" name="valorproducto" formControlName="textValueProducto" placeholder="">
+                            <validator [field]="form.textNombre"></validator>
+                        </div>
+
+                        <label for="espectaculo">Fecha Espectaculo</label>
+                        <input type="date" name="fechaespectaculo" min="2018-11-04" max="2020-05-25" step="2">
+                        <label for="espectaculo">Fecha Salida</label>
+                        <input type="date" name="fechasalida" min="2018-11-04" max="2020-05-25" step="3">
+                        <label for="espectaculo">Fecha Regreso</label>
+                        <input type="date" name="fecharegreso" min="2018-11-04" max="2020-05-25" step="4">
+                        <div class="form-group">
                             <label for="espectaculo">Nombre Espectaculo</label>
                             <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
                             <validator [field]="form.textEspectaculo"></validator>
                         </div>
                         <div class="form-group">
-                            <label for="espectaculo">Fecha Espectaculo</label>
-                            <input type="date" name="fechaespectaculo" min="2018-11-04" max="2020-05-25" step="2">
-                            <label for="espectaculo">Fecha Salida</label>
-                            <input type="date" name="fechasalida" min="2018-11-04" max="2020-05-25" step="3">
-                            <label for="espectaculo">Fecha Regreso</label>
-                            <input type="date" name="fecharegreso" min="2018-11-04" max="2020-05-25" step="4">
-                            <!--<my-date-picker name="mydate" [options]="myDatePickerOptions"
-    [(ngModel)]="model" required></my-date-picker>-->
-                            <validator [field]="form.textEspectaculo"></validator>
+                            <label for="ciudadespectaculo">Ciudad</label>
+                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="ciudadespectaculo" name="ciudadespectaculo" formControlName="textCiudadEspectaculo" placeholder="">                                <validator [field]="form.textDocument"></validator>
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="country">Pais</label>
+                            <input type="text" required maxlength="40" minlenth="5" class="form-control" id="country" formControlName="textCountry" placeholder="">
+                            <validator [field]="form.textCountry"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="preciociudad">Precio Ciudad</label>
+                            <input type="text" required maxlength="40" minlength="5" class="form-control" id="preciociudad" formControlName="textPrecioCiudad" placeholder="">
 
-                    </div>
+                            <validator [field]="form.textPrecioCiudad"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="rutaimg">Imagen</label>
+                            <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="rutaimg" formControlName="textRutaimg" placeholder="">
+
+                            <validator [field]="form.textRutaimg"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="precioproducto">Precio Producto</label>
+                            <input type="text" required maxlength="40" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
+
+                            <validator [field]="form.textPrecioProducto"></validator>
+                        </div>
+                    </div>               
+
                 </div>
+                
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 text-left">
                             <div class="step justify-content-md-center my-auto">
@@ -146,22 +175,24 @@
                                 <p class="text">
                                     Datos Espectaculo
                                 </p>
-                            </div>
+                            </div>                            
                             <div class="form-group">
-                                <label for="documento">Documento</label>
-                                <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="document" name="document" formControlName="textDocument" placeholder="">                                <validator [field]="form.textDocument"></validator>
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Nombres</label>
-                                <input type="text" required maxlength="40" minlenth="5" class="form-control" id="name" formControlName="textName" placeholder="">
+                                <label for="tipoespectaculo">Tipo Espectaculo</label>
+                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="tipoespectaculo" formControlName="textTipoEspectaculo" placeholder="">
 
-                                <validator [field]="form.textName"></validator>
+                                <validator [field]="form.textTipoEspectaculo"></validator>
                             </div>
                             <div class="form-group">
-                                <label for="surname">Apellidos</label>
-                                <input type="text" required maxlength="40" minlength="5" class="form-control" id="surname" formControlName="textSurname" placeholder="">
+                                <label for="nombreespectaculo">Nombre Espectaculo</label>
+                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombreespectaculo" formControlName="textNombreEspectaculo" placeholder="">
 
-                                <validator [field]="form.textSurname"></validator>
+                                <validator [field]="form.textNombreEspectaculo"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="precioespectaculo">Precio Espectaculo</label>
+                                <input type="email" required maxlength="40" minlength="6" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
+
+                                <validator [field]="form.textPrecioEspectaculo"></validator>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 text-left">
@@ -174,16 +205,22 @@
                                 </p>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Tel&eacute;fono</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="phone" formControlName="textPhone" placeholder="">
+                                <label for="tipotransporte">Tipo Transporte</label>
+                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="tipotransporte" formControlName="textTipoTransporte" placeholder="">
 
-                                <validator [field]="form.textPhone"></validator>
+                                <validator [field]="form.textTipoTransporte"></validator>
                             </div>
                             <div class="form-group">
-                                <label for="email">Correo electr&oacute;nico</label>
-                                <input type="email" required maxlength="40" minlength="6" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" class="form-control" id="email" formControlName="textEmail" placeholder="">
+                                <label for="nombretransporte">Nombre Transporte</label>
+                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombretransporte" formControlName="textNombreTransporte" placeholder="">
 
-                                <validator [field]="form.textEmail"></validator>
+                                <validator [field]="form.textNombreTransporte"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="preciotrasporte">Precio Trasporte</label>
+                                <input type="text" required maxlength="40" minlength="6" class="form-control" id="preciotrasporte" formControlName="textPrecioTrasporte" placeholder="">
+
+                                <validator [field]="form.textPrecioTrasporte"></validator>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-12 text-left">
@@ -192,36 +229,26 @@
                                     <i class="fa fa-lock"></i>
                                 </div>
                                 <p class="text">
-                                    Datos de Hotel
+                                    Datos de Hospedaje
                                 </p>
                             </div>
                             <div class="form-group">
-                                <label for="password1">Contrase&ntilde;a</label>
-                                <div class="psw-description">
-                                    {{typepsw == 'text' ? 'Contraseña visible': ''}}
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend" (click)="changeTypePws()" style="cursor:pointer">
-                                        <span class="input-group-text">
-                                            <i class="fa" [ngClass]="{'fa-eye-slash': typepsw == 'password', 'fa-eye': typepsw == 'text'}"></i>
-                                        </span>
-                                    </div>
-                                    <input [type]="typepsw" required maxlength="40" minlength="5" class="form-control" id="password1" formControlName="textPassword1" placeholder="">
-                                </div>
-                                <validator [field]="form.textPassword1"></validator>
+                                <label for="tipohospedaje">Tipo Hospedaje</label>
+                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="tipohospedaje" formControlName="textTipoHospedaje" placeholder="">
+
+                                <validator [field]="form.textTipoHospedaje"></validator>
                             </div>
                             <div class="form-group">
-                                <label for="creditcard">N&uacute;mero de tarjeta de cr&eacute;dito</label>
-                                <div class="card-description">
-                                    {{cardtype}}
-                                </div>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
-                                    </div>
-                                    <input type="text" required maxlength="40" minlength="14" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="creditcard" (keyup)="getCreditCardType($event.target.value)" formControlName="textCreditCard" placeholder="">
-                                </div>
-                                <validator [field]="form.textCreditCard"></validator>
+                                <label for="nombrehospedaje">Nombre Hospedaje</label>
+                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrehospedaje" formControlName="textNombreHospedaje" placeholder="">
+
+                                <validator [field]="form.textNombreHospedaje"></validator>
+                            </div>
+                            <div class="form-group">
+                                <label for="preciohospedaje">Precio Hospedaje</label>
+                                <input type="text" required maxlength="40" minlength="6" class="form-control" id="preciohospedaje" formControlName="textPrecioHospedaje" placeholder="">
+
+                                <validator [field]="form.textPrecioHospedaje"></validator>
                             </div>
                         </div>
                     </div>
