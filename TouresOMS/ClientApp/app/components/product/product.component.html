@@ -101,7 +101,7 @@
             <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
                         [subtitle]="'Reg&iacute;strate para poder realizar las compras de tus eventos deportivos preferidos'">
             </page-title>
-            <form *ngIf="!saved" [formGroup]="registrationForm" (ngSubmit)="sendRegister()" #formReg="ngForm">
+            <form *ngIf="!saved" [formGroup]="productForm" (ngSubmit)="sendProduct()" #formReg="ngForm">
                 <div class="text-left">
                     <div class="step justify-content-md-center my-auto">
                         <div class="number bg-info justify-content-md-center my-auto">
@@ -114,30 +114,37 @@
 
                     <div class="step justify-content-md-center my-auto">
                         <div class="form-group">
-                            <label for="nombre">Nombre Producto</label>
-                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombre" name="nombre" formControlName="textNombre" placeholder="">
-                            <validator [field]="form.textNombre"></validator>
+                            <label for="nombrep">Nombre Producto</label>
+                            <input type="text" maxlength="20" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrep" formControlName="textNombreProduct" placeholder="">
+                            <validator [field]="form.textNombreProduct"></validator>                            
                         </div>
                         <div class="form-group">
                             <label for="valorproducto">Valor Producto</label>
-                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="valorproducto" name="valorproducto" formControlName="textValueProducto" placeholder="">
-                            <validator [field]="form.textNombre"></validator>
+                            <input type="text" maxlength="20" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="valorproducto" formControlName="textValueProducto" placeholder="">
+                            <validator [field]="form.textValueProducto"></validator>
                         </div>
 
                         <label for="espectaculo">Fecha Espectaculo</label>
-                        <input type="date" name="fechaespectaculo" min="2018-11-04" max="2020-05-25" step="2">
-                        <label for="espectaculo">Fecha Salida</label>
-                        <input type="date" name="fechasalida" min="2018-11-04" max="2020-05-25" step="3">
-                        <label for="espectaculo">Fecha Regreso</label>
-                        <input type="date" name="fecharegreso" min="2018-11-04" max="2020-05-25" step="4">
+                        <input type="date" id="espectaculo" name="fechaespectaculo" min="2018-11-04" max="2020-05-25" step="2" formControlName="fechaEspectaculo">
+                        <label for="salida">Fecha Salida</label>
+                        <input type="date" id="salida" name="salida" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaSalida">
+                        <label for="regreso">Fecha Regreso</label>
+                        <input type="date" id=" regreso" name="regreso" min="2018-11-04" max="2020-05-25" step="4" formControlName="fechaRegreso">
+
                         <div class="form-group">
                             <label for="espectaculo">Nombre Espectaculo</label>
                             <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
                             <validator [field]="form.textEspectaculo"></validator>
                         </div>
                         <div class="form-group">
-                            <label for="ciudadespectaculo">Ciudad</label>
-                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="ciudadespectaculo" name="ciudadespectaculo" formControlName="textCiudadEspectaculo" placeholder="">                                <validator [field]="form.textDocument"></validator>
+                            <label for="ciudad">Ciudad</label>
+                            <select id="ciudadespectaculo" name="ciudadespectaculo" 
+                                    [(ngModel)]="citys"class="form-control" placeholder="" formControlName="selectCiudad">
+                                <option *ngFor="let cit of citys" [value]="cit.id">
+                                    {{cit.name}}
+                                </option>
+                                </select>
+                            
                         </div>
                         <div class="form-group">
                             <label for="country">Pais</label>

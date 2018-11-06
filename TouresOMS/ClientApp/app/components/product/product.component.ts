@@ -5,6 +5,7 @@ import { StoreService } from '../../services/store.service';
 import { LoaderService } from '../../services/loader.service';
 import { CheckControl } from '../../models/check.control';
 import { Product } from '../../models/product.model';
+import { City } from '../../models/city.model';
 import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/map';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -28,6 +29,13 @@ export class ProductComponent {
     endPage: boolean = false;
     path: string = "";
 
+    citys: City[] = [
+        { id: 1, name: 'Bogota' },
+        { id: 2, name: 'Medellin' },
+        { id: 3, name: 'Madrid' },
+        { id: 4, name: 'Nueva York' }
+    ];
+
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
 
@@ -38,6 +46,8 @@ export class ProductComponent {
 
             if (this.textSearch) this.getSearch();
         });
+
+
     }
 
     getSearch(inner: boolean = false) {
@@ -105,6 +115,21 @@ export class ProductComponent {
         checkSearch: new FormControl(''),
     });
 
+    productForm = new FormGroup({
+        textNombreProduct: new FormControl(''),
+        textValueProducto: new FormControl(''),
+        fechaEspectaculo: new FormControl(''),
+        fechaSalida: new FormControl(''),
+        fechaRegreso: new FormControl(''),
+        textEspectaculo: new FormControl(''),
+        textTipoEspectaculo: new FormControl(''),
+        selectCiudad: new FormControl(''),
+        textCountry: new FormControl(''),
+        textPrecioCiudad: new FormControl(''),
+        textRutaimg: new FormControl(''),
+        textPrecioProducto: new FormControl('')
+    });
+
     sendSearch() {
         var text = this.searchForm.value.textSearch;
         var id = this.check.id;
@@ -117,6 +142,13 @@ export class ProductComponent {
                 type: id
             }
         ]);
+    }
+
+    get form() { return this.productForm.controls; }
+
+    sendProduct() {
+
+        this.loaderService.start();
     }
 
     changeFilter(id: number, text: string) {

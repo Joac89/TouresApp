@@ -34,6 +34,7 @@
     <None Remove="ClientApp\app\controls\itemprod\itemprod.component.ts" />
     <None Remove="ClientApp\app\controls\validator\validator.component.ts" />
     <None Remove="ClientApp\app\models\check.control.ts" />
+    <None Remove="ClientApp\app\models\City.model.ts" />
     <None Remove="ClientApp\app\models\creditcard.model.ts" />
     <None Remove="ClientApp\app\models\order.model.ts" />
     <None Remove="ClientApp\app\services\auth.service.ts" />
@@ -57,6 +58,7 @@
     <TypeScriptCompile Include="ClientApp\app\models\check.control.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\creditcard.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\order.model.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\city.model.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\auth.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\loader.service.ts" />
