@@ -6,6 +6,10 @@ import { LoaderService } from '../../services/loader.service';
 import { CheckControl } from '../../models/check.control';
 import { Product } from '../../models/product.model';
 import { City } from '../../models/city.model';
+import { Country } from '../../models/country.model';
+import { TypeSpect } from '../../models/typeSpect.model';
+import { TypeTrans } from '../../models/typeTrans.model';
+import { TypeHospedaje } from '../../models/typeHospedaje.model';
 import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/map';
 import { forEach } from '@angular/router/src/utils/collection';
@@ -32,9 +36,37 @@ export class ProductComponent {
     citys: City[] = [
         { id: 1, name: 'Bogota' },
         { id: 2, name: 'Medellin' },
-        { id: 3, name: 'Madrid' },
-        { id: 4, name: 'Nueva York' }
+        { id: 3, name: 'Barranquilla' },
+        { id: 4, name: 'Cali' },
+        { id: 5, name: 'Madrid' },
+        { id: 6, name: 'Nueva York' },
+        { id: 7, name: 'Paris' },
+        { id: 8, name: 'Berlin' }
     ];
+
+    conutry: Country[] = [
+        { id: 1, name: 'Colombia' },
+        { id: 2, name: 'España' },
+        { id: 3, name: 'USA' },
+        { id: 4, name: 'Francia' },
+        { id: 5, name: 'Alemania' }
+    ];
+
+    typespect: TypeSpect[] = [
+        { id: 1, name: 'Nacional' },
+        { id: 2, name: 'Internacional' },        
+    ];
+
+    typetrans: TypeTrans[] = [
+        { id: 1, name: 'Aereo' },
+        { id: 2, name: 'Terrestre' },
+    ];
+
+    typehospedaje: TypeHospedaje[] = [
+        { id: 1, name: 'Nacional' },
+        { id: 2, name: 'Internacional' },
+    ];
+
 
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
@@ -117,18 +149,31 @@ export class ProductComponent {
 
     productForm = new FormGroup({
         textNombreProduct: new FormControl(''),
-        textValueProducto: new FormControl(''),
+        textValueProduct: new FormControl(''),
         fechaEspectaculo: new FormControl(''),
         fechaSalida: new FormControl(''),
         fechaRegreso: new FormControl(''),
         textEspectaculo: new FormControl(''),
-        textTipoEspectaculo: new FormControl(''),
         selectCiudad: new FormControl(''),
         textCountry: new FormControl(''),
         textPrecioCiudad: new FormControl(''),
         textRutaimg: new FormControl(''),
-        textPrecioProducto: new FormControl('')
+        textPrecioProducto: new FormControl(''),
+        ////
+        textTipoEspectaculo: new FormControl(''),
+        textNombreEspectaculo: new FormControl(''),
+        textPrecioEspectaculo: new FormControl(''),
+        //
+        textTipoTransporte: new FormControl(''),
+        textNombreTransporte: new FormControl(''),
+        textPrecioTrasporte: new FormControl(''),
+        //
+        textTipoHospedaje: new FormControl(''),
+        textNombreHospedaje: new FormControl(''),
+        textPrecioHospedaje: new FormControl('') 
     });
+
+    error: any = { statusCode: 200 };
 
     sendSearch() {
         var text = this.searchForm.value.textSearch;
@@ -149,6 +194,13 @@ export class ProductComponent {
     sendProduct() {
 
         this.loaderService.start();
+
+        //    }, error => {
+        //    this.loaderService.end();
+        //    this.error = error;
+
+        //    console.error(error);
+        //});
     }
 
     changeFilter(id: number, text: string) {

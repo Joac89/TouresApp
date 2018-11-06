@@ -120,8 +120,8 @@
                         </div>
                         <div class="form-group">
                             <label for="valorproducto">Valor Producto</label>
-                            <input type="text" maxlength="20" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="valorproducto" formControlName="textValueProducto" placeholder="">
-                            <validator [field]="form.textValueProducto"></validator>
+                            <input type="text" maxlength="20" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="valorproducto" formControlName="textValueProduct" placeholder="">
+                            <validator [field]="form.textValueProduct"></validator>
                         </div>
 
                         <label for="espectaculo">Fecha Espectaculo</label>
@@ -261,7 +261,7 @@
                     </div>
                     <div *ngIf="error.statusCode != 200">
                         <div class="alert alert-danger text-left">
-                            <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar el usuario: {{error.statusText}}
+                            <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar el prodcuto: {{error.statusText}}
                         </div>
                     </div>
                     <hr />
