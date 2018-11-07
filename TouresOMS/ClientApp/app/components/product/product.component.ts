@@ -44,7 +44,7 @@ export class ProductComponent {
         { id: 8, name: 'Berlin' }
     ];
 
-    conutry: Country[] = [
+    country: Country[] = [
         { id: 1, name: 'Colombia' },
         { id: 2, name: 'España' },
         { id: 3, name: 'USA' },
@@ -155,20 +155,21 @@ export class ProductComponent {
         fechaRegreso: new FormControl(''),
         textEspectaculo: new FormControl(''),
         selectCiudad: new FormControl(''),
-        textCountry: new FormControl(''),
+        selectCountry: new FormControl(''),
         textPrecioCiudad: new FormControl(''),
         textRutaimg: new FormControl(''),
+        fileUImage: new FormControl(''),        
         textPrecioProducto: new FormControl(''),
         ////
-        textTipoEspectaculo: new FormControl(''),
+        selectTipoEspectaculo: new FormControl(''),
         textNombreEspectaculo: new FormControl(''),
         textPrecioEspectaculo: new FormControl(''),
         //
-        textTipoTransporte: new FormControl(''),
+        selectTipoTransporte: new FormControl(''),
         textNombreTransporte: new FormControl(''),
         textPrecioTrasporte: new FormControl(''),
         //
-        textTipoHospedaje: new FormControl(''),
+        selectTipoHospedaje: new FormControl(''),
         textNombreHospedaje: new FormControl(''),
         textPrecioHospedaje: new FormControl('') 
     });

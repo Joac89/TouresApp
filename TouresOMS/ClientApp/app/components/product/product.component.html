@@ -148,8 +148,12 @@
                         </div>
                         <div class="form-group">
                             <label for="country">Pais</label>
-                            <input type="text" required maxlength="40" minlenth="5" class="form-control" id="country" formControlName="textCountry" placeholder="">
-                            <validator [field]="form.textCountry"></validator>
+                            <select id="country" name="country"
+                                    [(ngModel)]="citys" class="form-control" placeholder="" formControlName="selectCountry">
+                                <option *ngFor="let cou of country" [value]="cou.id">
+                                    {{cou.name}}
+                                </option>
+                            </select>                           
                         </div>
                         <div class="form-group">
                             <label for="preciociudad">Precio Ciudad</label>
@@ -160,7 +164,7 @@
                         <div class="form-group">
                             <label for="rutaimg">Imagen</label>
                             <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="rutaimg" formControlName="textRutaimg" placeholder="">
-
+                            <!--<input type="file" name="photo"  formControlName="fileUImage" ng2FileSelect [uploader]="uploader" />-->
                             <validator [field]="form.textRutaimg"></validator>
                         </div>
                         <div class="form-group">
@@ -185,9 +189,12 @@
                             </div>                            
                             <div class="form-group">
                                 <label for="tipoespectaculo">Tipo Espectaculo</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="tipoespectaculo" formControlName="textTipoEspectaculo" placeholder="">
-
-                                <validator [field]="form.textTipoEspectaculo"></validator>
+                                <select id="tipoespectaculo" name="tipoespectaculo"
+                                        [(ngModel)]="typespect" class="form-control" placeholder="" formControlName="selectTipoEspectaculo">
+                                    <option *ngFor="let typs of typespect" [value]="typs.id">
+                                        {{typs.name}}
+                                    </option>
+                                </select>                               
                             </div>
                             <div class="form-group">
                                 <label for="nombreespectaculo">Nombre Espectaculo</label>
@@ -213,9 +220,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="tipotransporte">Tipo Transporte</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="tipotransporte" formControlName="textTipoTransporte" placeholder="">
-
-                                <validator [field]="form.textTipoTransporte"></validator>
+                                <select id="tipotransporte" name="tipotransporte"
+                                        [(ngModel)]="typetrans" class="form-control" placeholder="" formControlName="selectTipoTransporte">
+                                    <option *ngFor="let typt of typetrans" [value]="typt.id">
+                                        {{typt.name}}
+                                    </option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="nombretransporte">Nombre Transporte</label>
@@ -241,9 +251,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="tipohospedaje">Tipo Hospedaje</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="tipohospedaje" formControlName="textTipoHospedaje" placeholder="">
-
-                                <validator [field]="form.textTipoHospedaje"></validator>
+                                <select id="tipohospedaje" name="tipohospedaje"
+                                        [(ngModel)]="typehospedaje" class="form-control" placeholder="" formControlName="selectTipoHospedaje">
+                                    <option *ngFor="let typh of typehospedaje" [value]="typh.id">
+                                        {{typh.name}}
+                                    </option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="nombrehospedaje">Nombre Hospedaje</label>
