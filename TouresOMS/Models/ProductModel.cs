@@ -16,6 +16,7 @@ namespace TouresOMS.Models
 		public decimal ValorProducto { get; set; }
 		public int Route { get; set; }
 		public string CiudadEspectaculo { get; set; }
+        public string CuidadEspectaculo { get; set; }
 		public string NombreTarifaTrans { get; set; }
 		public decimal PrecioTransporte { get; set; }
 		public string FechaEspectaculo { get; set; }

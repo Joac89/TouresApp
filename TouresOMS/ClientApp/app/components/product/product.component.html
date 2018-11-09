@@ -115,36 +115,36 @@
                     <div class="step justify-content-md-center my-auto">
                         <div class="form-group">
                             <label for="nombrep">Nombre Producto</label>
-                            <input type="text" maxlength="20" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrep" formControlName="textNombreProduct" placeholder="">
-                            <validator [field]="form.textNombreProduct"></validator>                            
+                            <input type="text" maxlength="20" [(ngModel)]="product.nombre" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrep" formControlName="textNombreProduct" placeholder="">
+                            <validator [field]="form.textNombreProduct"></validator>
                         </div>
                         <div class="form-group">
-                            <label for="valorproducto">Valor Producto</label>
-                            <input type="text" maxlength="20" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="valorproducto" formControlName="textValueProduct" placeholder="">
-                            <validator [field]="form.textValueProduct"></validator>
+                            <label for="descripp">Descripcion Producto</label>
+                            <input type="text" maxlength="20" [(ngModel)]="product.espectaculo" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="descripp" formControlName="textDescripProduct" placeholder="">
+                            <validator [field]="form.textDescripProduct"></validator>
                         </div>
 
-                        <label for="espectaculo">Fecha Espectaculo</label>
-                        <input type="date" id="espectaculo" name="fechaespectaculo" min="2018-11-04" max="2020-05-25" step="2" formControlName="fechaEspectaculo">
+                        <label for="espectaculo">Fecha Espectaculo</label>                        
+                        <input type="date" id="espectaculo" [(ngModel)]="product.fechaEspectaculo" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="fechaespectaculo" step="2" formControlName="fechaEspectaculo">
                         <label for="salida">Fecha Salida</label>
-                        <input type="date" id="salida" name="salida" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaSalida">
+                        <input type="date" id="salida" name="salida" [ngModel]="product.fechaSalida | date:'dd/MM/yyyy'" step="3" formControlName="fechaSalida">
                         <label for="regreso">Fecha Regreso</label>
-                        <input type="date" id=" regreso" name="regreso" min="2018-11-04" max="2020-05-25" step="4" formControlName="fechaRegreso">
+                        <input type="date" id=" regreso" name="regreso" [ngModel]="product.fechaLlegada | date:'dd/MM/yyyy'" step="4" formControlName="fechaRegreso">
 
                         <div class="form-group">
                             <label for="espectaculo">Nombre Espectaculo</label>
-                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
+                            <input type="text" [(ngModel)]="product.espectaculo" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
                             <validator [field]="form.textEspectaculo"></validator>
                         </div>
                         <div class="form-group">
                             <label for="ciudad">Ciudad</label>
                             <select id="ciudadespectaculo" name="ciudadespectaculo" 
-                                    [(ngModel)]="citys"class="form-control" placeholder="" formControlName="selectCiudad">
-                                <option *ngFor="let cit of citys" [value]="cit.id">
+                                    [(ngModel)]="product.cuidadEspectaculo" class="form-control" placeholder="" formControlName="selectCiudad">
+                                <option *ngFor="let cit of citys"  [value]="cit.id" value="{{product.cuidadEspectaculo}}">
                                     {{cit.name}}
                                 </option>
-                                </select>
-                            
+                            </select>
+                            {{product.cuidadEspectaculo}}
                         </div>
                         <div class="form-group">
                             <label for="country">Pais</label>
@@ -153,25 +153,24 @@
                                 <option *ngFor="let cou of country" [value]="cou.id">
                                     {{cou.name}}
                                 </option>
-                            </select>                           
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="preciociudad">Precio Ciudad</label>
-                            <input type="text" required maxlength="40" minlength="5" class="form-control" id="preciociudad" formControlName="textPrecioCiudad" placeholder="">
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioCiudad" minlength="5" class="form-control" id="preciociudad" formControlName="textPrecioCiudad" placeholder="">
 
                             <validator [field]="form.textPrecioCiudad"></validator>
                         </div>
                         <div class="form-group">
                             <label for="rutaimg">Imagen</label>
-                            <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="rutaimg" formControlName="textRutaimg" placeholder="">
+                            <input type="text" required maxlength="40"[(ngModel)]="product.rutaImagen"  minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="rutaimg" formControlName="textRutaimg" placeholder="">
                             <!--<input type="file" name="photo"  formControlName="fileUImage" ng2FileSelect [uploader]="uploader" />-->
                             <validator [field]="form.textRutaimg"></validator>
                         </div>
                         <div class="form-group">
                             <label for="precioproducto">Precio Producto</label>
-                            <input type="text" required maxlength="40" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
-
-                            <validator [field]="form.textPrecioProducto"></validator>
+                            <input type="text" required maxlength="40"  [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
+                             <validator [field]="form.textPrecioProducto"></validator>
                         </div>
                     </div>               
 
@@ -198,13 +197,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombreespectaculo">Nombre Espectaculo</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombreespectaculo" formControlName="textNombreEspectaculo" placeholder="">
+                                <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaEsp"  minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombreespectaculo" formControlName="textNombreEspectaculo" placeholder="">
 
                                 <validator [field]="form.textNombreEspectaculo"></validator>
                             </div>
                             <div class="form-group">
                                 <label for="precioespectaculo">Precio Espectaculo</label>
-                                <input type="email" required maxlength="40" minlength="6" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
+                                <input type="email" required maxlength="40" [(ngModel)]="product.precioEsp" minlength="6" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
 
                                 <validator [field]="form.textPrecioEspectaculo"></validator>
                             </div>
@@ -229,13 +228,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombretransporte">Nombre Transporte</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombretransporte" formControlName="textNombreTransporte" placeholder="">
+                                <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaTrans" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombretransporte" formControlName="textNombreTransporte" placeholder="">
 
                                 <validator [field]="form.textNombreTransporte"></validator>
                             </div>
                             <div class="form-group">
                                 <label for="preciotrasporte">Precio Trasporte</label>
-                                <input type="text" required maxlength="40" minlength="6" class="form-control" id="preciotrasporte" formControlName="textPrecioTrasporte" placeholder="">
+                                <input type="text" required maxlength="40" [(ngModel)]="product.precioTransporte" minlength="6" class="form-control" id="preciotrasporte" formControlName="textPrecioTrasporte" placeholder="">
 
                                 <validator [field]="form.textPrecioTrasporte"></validator>
                             </div>
@@ -260,13 +259,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="nombrehospedaje">Nombre Hospedaje</label>
-                                <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrehospedaje" formControlName="textNombreHospedaje" placeholder="">
+                                <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaHosp" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrehospedaje" formControlName="textNombreHospedaje" placeholder="">
 
                                 <validator [field]="form.textNombreHospedaje"></validator>
                             </div>
                             <div class="form-group">
                                 <label for="preciohospedaje">Precio Hospedaje</label>
-                                <input type="text" required maxlength="40" minlength="6" class="form-control" id="preciohospedaje" formControlName="textPrecioHospedaje" placeholder="">
+                                <input type="text" required maxlength="40" [(ngModel)]="product.precioHospedaje" minlength="6" class="form-control" id="preciohospedaje" formControlName="textPrecioHospedaje" placeholder="">
 
                                 <validator [field]="form.textPrecioHospedaje"></validator>
                             </div>
