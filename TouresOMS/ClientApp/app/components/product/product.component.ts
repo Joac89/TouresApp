@@ -46,26 +46,26 @@ export class ProductComponent {
     ];
 
     country: Country[] = [
-        { id: 1, name: 'Colombia' },
-        { id: 2, name: 'España' },
-        { id: 3, name: 'USA' },
-        { id: 4, name: 'Francia' },
-        { id: 5, name: 'Alemania' }
+        { id: 'Colombia', name: 'Colombia' },
+        { id: 'España', name: 'España' },
+        { id: 'USA', name: 'USA' },
+        { id: 'Francia', name: 'Francia' },
+        { id: 'Alemania', name: 'Alemania' }
     ];
 
     typespect: TypeSpect[] = [
         { id: 1, name: 'Nacional' },
-        { id: 2, name: 'Internacional' },        
+        { id: 14, name: 'Internacional' },        
     ];
 
     typetrans: TypeTrans[] = [
         { id: 1, name: 'Aereo' },
-        { id: 2, name: 'Terrestre' },
+        { id: 14, name: 'Terrestre' },
     ];
 
     typehospedaje: TypeHospedaje[] = [
         { id: 1, name: 'Nacional' },
-        { id: 2, name: 'Internacional' },
+        { id: 14, name: 'Internacional' },
     ];
 
 
@@ -105,29 +105,17 @@ export class ProductComponent {
             this.product = result.data[0];
 
             this.product.fechaEspectaculo = this.transformDate(this.product.fechaEspectaculo);
+            this.product.fechaSalida = this.transformDate(this.product.fechaSalida);
+            this.product.fechaLlegada = this.transformDate(this.product.fechaLlegada);
 
             console.log(this.product);
-
+                       
             if (this.aux.data.length == 0 || this.aux.data.length < 4) this.endPage = true;
-
-            var carts = this.storeService.getItemsInCart();
-            for (var i = 0; i < this.aux.data.length; ++i) {
-                var find = carts.find(x => x.id == this.aux.data[i].id);
-                if (find) {
-                    this.aux.data[i].inCart = true;
-                    this.aux.data[i].countCart = find.count;
-                }
-            }
+                        
             for (var i = 0; i < this.aux.data.length; ++i) {
                 this.search.data.push(this.aux.data[i]);
             }
-
-            //console.log(this.product.fechaEspectaculo);
-
-            //this.productForm.value.textEspectaculo = this.product[0].espectaculo;
-
-            //console.log(this.productForm.value.textEspectaculo);
-
+                        
             this.loaderService.end();
 
         }, error => {

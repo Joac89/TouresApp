@@ -50,7 +50,7 @@
                                 <th scope="col">Tarifa Hospedaje</th>
                                 <th scope="col">Tarifa trasnporte</th>-->
                                 <th scope="col">Pais</th>
-                                <th scope="col">Precio Ciudad</th>
+                                <!--<th scope="col">Precio Ciudad</th>-->
                                 <th scope="col">Precio Espectaculo</th>
                                 <th scope="col">Precio Hospedaje</th>
                                 <th scope="col">Precio Trasnporte</th>
@@ -66,12 +66,8 @@
                                 <td scope="row" class="row-fil text-center">{{item.nombre}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.fechaEspectaculo | date: 'yyyy/MM/dd'}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.fechaLlegada | date: 'yyyy/MM/dd'}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaSalida | date: 'yyyy/MM/dd'}}</td>
-                                <!--<td scope="row" class="row-fil text-left">{{item.nombreTarifaEsp}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.nombreTarifaHosp}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.nombreTarifaTrans}}</td>-->
+                                <td scope="row" class="row-fil text-left">{{item.fechaSalida | date: 'yyyy/MM/dd'}}</td>                                
                                 <td scope="row" class="row-fil text-left">{{item.pais}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioCiudad}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.precioEsp}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.precioHospedaje}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.precioTransporte}}</td>
@@ -127,9 +123,9 @@
                         <label for="espectaculo">Fecha Espectaculo</label>                        
                         <input type="date" id="espectaculo" [(ngModel)]="product.fechaEspectaculo" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="fechaespectaculo" step="2" formControlName="fechaEspectaculo">
                         <label for="salida">Fecha Salida</label>
-                        <input type="date" id="salida" name="salida" [ngModel]="product.fechaSalida | date:'dd/MM/yyyy'" step="3" formControlName="fechaSalida">
+                        <input type="date" id="salida" name="salida" [ngModel]="product.fechaSalida" step="3" formControlName="fechaSalida">
                         <label for="regreso">Fecha Regreso</label>
-                        <input type="date" id=" regreso" name="regreso" [ngModel]="product.fechaLlegada | date:'dd/MM/yyyy'" step="4" formControlName="fechaRegreso">
+                        <input type="date" id=" regreso" name="regreso" [ngModel]="product.fechaLlegada" step="4" formControlName="fechaRegreso">
 
                         <div class="form-group">
                             <label for="espectaculo">Nombre Espectaculo</label>
@@ -143,17 +139,16 @@
                                 <option *ngFor="let cit of citys"  [value]="cit.id" value="{{product.cuidadEspectaculo}}">
                                     {{cit.name}}
                                 </option>
-                            </select>
-                            {{product.cuidadEspectaculo}}
+                            </select>                            
                         </div>
                         <div class="form-group">
                             <label for="country">Pais</label>
                             <select id="country" name="country"
-                                    [(ngModel)]="citys" class="form-control" placeholder="" formControlName="selectCountry">
-                                <option *ngFor="let cou of country" [value]="cou.id">
+                                    [(ngModel)]="product.pais" class="form-control" placeholder="" formControlName="selectCountry">
+                                <option *ngFor="let cou of country" [value]="cou.id" value="{{product.pais}}">
                                     {{cou.name}}
                                 </option>
-                            </select>
+                            </select>                            
                         </div>
                         <div class="form-group">
                             <label for="preciociudad">Precio Ciudad</label>
@@ -189,11 +184,12 @@
                             <div class="form-group">
                                 <label for="tipoespectaculo">Tipo Espectaculo</label>
                                 <select id="tipoespectaculo" name="tipoespectaculo"
-                                        [(ngModel)]="typespect" class="form-control" placeholder="" formControlName="selectTipoEspectaculo">
-                                    <option *ngFor="let typs of typespect" [value]="typs.id">
+                                        [(ngModel)]="product.tipoEspectaculo" class="form-control" placeholder="" formControlName="selectTipoEspectaculo">
+                                    <option *ngFor="let typs of typespect" [value]="typs.id" value="{{product.tipoEspectaculo}}">
                                         {{typs.name}}
                                     </option>
-                                </select>                               
+                                </select>
+                                {{product.pais}}
                             </div>
                             <div class="form-group">
                                 <label for="nombreespectaculo">Nombre Espectaculo</label>
@@ -220,8 +216,8 @@
                             <div class="form-group">
                                 <label for="tipotransporte">Tipo Transporte</label>
                                 <select id="tipotransporte" name="tipotransporte"
-                                        [(ngModel)]="typetrans" class="form-control" placeholder="" formControlName="selectTipoTransporte">
-                                    <option *ngFor="let typt of typetrans" [value]="typt.id">
+                                        [(ngModel)]="product.tipoTransporte" class="form-control" placeholder="" formControlName="selectTipoTransporte">
+                                    <option *ngFor="let typt of typetrans" [value]="typt.id" value="{{product.tipoTransporte}}">
                                         {{typt.name}}
                                     </option>
                                 </select>
@@ -251,8 +247,8 @@
                             <div class="form-group">
                                 <label for="tipohospedaje">Tipo Hospedaje</label>
                                 <select id="tipohospedaje" name="tipohospedaje"
-                                        [(ngModel)]="typehospedaje" class="form-control" placeholder="" formControlName="selectTipoHospedaje">
-                                    <option *ngFor="let typh of typehospedaje" [value]="typh.id">
+                                        [(ngModel)]="product.tipoHospedaje" class="form-control" placeholder="" formControlName="selectTipoHospedaje">
+                                    <option *ngFor="let typh of typehospedaje" [value]="typh.id" value="{{product.tipoHospedaje}}">
                                         {{typh.name}}
                                     </option>
                                 </select>
