@@ -9,6 +9,8 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" [routerLink]="['/home']">Inicio</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/campaign']">Campa&ntilde;as</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/product']">Mis Productos</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/productC']">Mis Consultas Productos </a>
                         <a class="dropdown-item" href="#" [routerLink]="['/order']">Mis ordenes</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/customer']">Reg&iacute;strate</a>
                     </div>
@@ -56,6 +58,9 @@
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/order']" class="nav-link" href="#">Mis ordenes</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                        <a [routerLink]="['/productC']" class="nav-link" href="#">Consulta Productos</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/product']" class="nav-link" href="#">Productos</a>

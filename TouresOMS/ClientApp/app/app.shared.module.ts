@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { ProductComponent } from './components/product/product.component';
+import { ProductCComponent } from './components/product/productC.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { StoreComponent } from './components/store/store.component';
 import { UserComponent } from './components/user/user.component';
@@ -35,6 +36,7 @@ import { DetailComponent } from './components/campaign/detail.component';
         StartComponent,
         HomeComponent,
         ProductComponent,
+        ProductCComponent,
         CustomerComponent,
         StoreComponent,
         UserComponent,
@@ -60,6 +62,7 @@ import { DetailComponent } from './components/campaign/detail.component';
             { path: 'detail', component: DetailComponent },
             { path: 'detail/:camp', component: DetailComponent },
             { path: 'product', component: ProductComponent },
+            { path: 'productC', component: ProductCComponent },
             { path: 'customer', component: CustomerComponent },
             { path: 'store', component: StoreComponent },
             { path: 'user', component: UserComponent, canActivate: [GuardService] },

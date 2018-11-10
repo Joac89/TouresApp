@@ -25,68 +25,6 @@
                     </form>
                 </li>
             </ul>
-            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
-                        [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
-                        [reference]="textSearch">
-            </page-title>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th colspan="8" class="text-left">
-                                    Productos
-                                </th>
-                            </tr>
-                            <tr>
-
-                                <th scope="col">#Espectaculo</th>
-                                <!--<th scope="col">Id</th>-->
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Fecha Espectaculo</th>
-                                <th scope="col">Fecha Llegada</th>
-                                <th scope="col">Fecha Salida</th>
-                                <!--<th scope="col">Tarifa Espectaculo</th>
-                                <th scope="col">Tarifa Hospedaje</th>
-                                <th scope="col">Tarifa trasnporte</th>-->
-                                <th scope="col">Pais</th>
-                                <!--<th scope="col">Precio Ciudad</th>-->
-                                <th scope="col">Precio Espectaculo</th>
-                                <th scope="col">Precio Hospedaje</th>
-                                <th scope="col">Precio Trasnporte</th>
-                                <!--<th scope="col">Imagen</th>-->
-                                <th scope="col">Valor Producto</th>
-                                <th scope="col">&nbsp;</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let item of search.data" [ngClass]="{'row-selected': selected == item.id}">
-                                <td scope="row" class="row-fil text-center">{{(item.espectaculo)}}</td>
-                                <td scope="row" class="row-fil text-center">{{item.nombre}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaEspectaculo | date: 'yyyy/MM/dd'}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaLlegada | date: 'yyyy/MM/dd'}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaSalida | date: 'yyyy/MM/dd'}}</td>                                
-                                <td scope="row" class="row-fil text-left">{{item.pais}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioEsp}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioHospedaje}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioTransporte}}</td>
-                                <!--<td scope="row" class="row-fil text-left">{{item.image}}</td>-->
-                                <td scope="row" class="row-fil text-left">{{item.valorProducto}}</td>
-                                <td scope="row" class="row-fil text-center">
-                                    <button class="btn btn-sm btn-danger" (click)="deleteProduct(item.id)" data-toggle="modal" data-target="#modalProduct_delete" [disabled]="item.state == 2">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-            <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch(true)">
-                <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
-            </button>
         </div>
     </div>
 </div>
@@ -157,21 +95,19 @@
                             <validator [field]="form.textPrecioCiudad"></validator>
                         </div>
                         <div class="form-group">
-                            <label for="rutaimg">Imagen</label>                            
-                            <img [src]="product.image" style="max-width:100px;max-height:100px" />
-                            <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
-                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
-                            <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
-                        </div>                       
-                        <div class="form-group">
                             <label for="precioproducto">Precio Producto</label>
                             <input type="text" required maxlength="40" [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
                             <validator [field]="form.textPrecioProducto"></validator>
                         </div>
-                    </div>               
-
-                </div>
-                
+                        <div class="form-group">
+                            <label for="rutaimg">Imagen</label>
+                            <img [src]="product.image" style="max-width:100px;max-height:100px" />
+                            <img [src]="imageSrc" style="max-width:100px;max-height:100px"/>
+                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)"  />
+                            <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
+                        </div>
+                    </div>    
+                </div>                
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12 text-left">
                             <div class="step justify-content-md-center my-auto">
@@ -200,7 +136,6 @@
                             <div class="form-group">
                                 <label for="precioespectaculo">Precio Espectaculo</label>
                                 <input type="email" required maxlength="40" [(ngModel)]="product.precioEsp" minlength="6" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
-
                                 <validator [field]="form.textPrecioEspectaculo"></validator>
                             </div>
                         </div>

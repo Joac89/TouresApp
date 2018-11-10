@@ -1,0 +1,94 @@
+﻿<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <ul class="nav justify-content-start">
+                <li class="nav-item">
+                    <form [formGroup]="searchForm" (ngSubmit)="sendSearch()" class="form-search">
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <div class="input-group-append show no-margin" id="button_event">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{check.text}}
+                                    </button>
+                                    <div id="dropdown" class="dropdown-menu">
+                                        <a class="dropdown-item" (click)="changeFilter(1, 'Sin filtro')">Sin filtro</a>
+                                        <a class="dropdown-item" (click)="changeFilter(2, 'Buscar por c&oacute;digo')">C&oacute;digo</a>
+                                    </div>
+                                </div>
+                                <input type="{{check.id == 2 ? 'number': 'text'}}"
+                                       placeholder="{{check.id == 2 ? 'ingrese el c&oacute;digo': 'escriba el texto'}} a buscar"
+                                       formControlName="textSearch" class="form-control" id="input_event" aria-describedby="event">
+                            </div>
+                            <button type="submit" class="btn btn-info btn xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                            <button type="submit" class="btn btn-light btn xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+                        [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
+                        [reference]="textSearch">
+            </page-title>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="8" class="text-left">
+                                    Productos
+                                </th>
+                            </tr>
+                            <tr>
+
+                                <th scope="col">#Espectaculo</th>
+                                <!--<th scope="col">Id</th>-->
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Fecha Espectaculo</th>
+                                <th scope="col">Fecha Llegada</th>
+                                <th scope="col">Fecha Salida</th>
+                                <!--<th scope="col">Tarifa Espectaculo</th>
+                                <th scope="col">Tarifa Hospedaje</th>
+                                <th scope="col">Tarifa trasnporte</th>-->
+                                <th scope="col">Pais</th>
+                                <!--<th scope="col">Precio Ciudad</th>-->
+                                <th scope="col">Precio Espectaculo</th>
+                                <th scope="col">Precio Hospedaje</th>
+                                <th scope="col">Precio Trasnporte</th>
+                                <!--<th scope="col">Imagen</th>-->
+                                <th scope="col">Valor Producto</th>
+                                <th scope="col">&nbsp;</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of search.data" [ngClass]="{'row-selected': selected == item.id}">
+                                <td scope="row" class="row-fil text-center">{{(item.espectaculo)}}</td>
+                                <td scope="row" class="row-fil text-center">{{item.nombre}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.fechaEspectaculo | date: 'yyyy/MM/dd'}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.fechaLlegada | date: 'yyyy/MM/dd'}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.fechaSalida | date: 'yyyy/MM/dd'}}</td>                                
+                                <td scope="row" class="row-fil text-left">{{item.pais}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.precioEsp}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.precioHospedaje}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.precioTransporte}}</td>
+                                <!--<td scope="row" class="row-fil text-left">{{item.image}}</td>-->
+                                <td scope="row" class="row-fil text-left">{{item.valorProducto}}</td>
+                                <td scope="row" class="row-fil text-center">
+                                    <button class="btn btn-sm btn-danger" (click)="deleteProduct(item.id)" data-toggle="modal" data-target="#modalProduct_delete" [disabled]="item.state == 2">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch(true)">
+                <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+            </button>
+        </div>
+    </div>
+</div>
+<detail-prod [item]="current" [modal]="'exampleModal1'" [callback]="update()"></detail-prod>
+
