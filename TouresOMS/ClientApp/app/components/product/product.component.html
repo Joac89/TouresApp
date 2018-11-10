@@ -54,7 +54,7 @@
                                 <th scope="col">Precio Espectaculo</th>
                                 <th scope="col">Precio Hospedaje</th>
                                 <th scope="col">Precio Trasnporte</th>
-                                <th scope="col">Imagen</th>
+                                <!--<th scope="col">Imagen</th>-->
                                 <th scope="col">Valor Producto</th>
                                 <th scope="col">&nbsp;</th>
 
@@ -71,7 +71,7 @@
                                 <td scope="row" class="row-fil text-left">{{item.precioEsp}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.precioHospedaje}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.precioTransporte}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.rutaImagen}}</td>
+                                <!--<td scope="row" class="row-fil text-left">{{item.image}}</td>-->
                                 <td scope="row" class="row-fil text-left">{{item.valorProducto}}</td>
                                 <td scope="row" class="row-fil text-center">
                                     <button class="btn btn-sm btn-danger" (click)="deleteProduct(item.id)" data-toggle="modal" data-target="#modalProduct_delete" [disabled]="item.state == 2">
@@ -120,7 +120,7 @@
                             <validator [field]="form.textDescripProduct"></validator>
                         </div>
 
-                        <label for="espectaculo">Fecha Espectaculo</label>                        
+                        <label for="espectaculo">Fecha Espectaculo</label>
                         <input type="date" id="espectaculo" [(ngModel)]="product.fechaEspectaculo" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="fechaespectaculo" step="2" formControlName="fechaEspectaculo">
                         <label for="salida">Fecha Salida</label>
                         <input type="date" id="salida" name="salida" [ngModel]="product.fechaSalida" step="3" formControlName="fechaSalida">
@@ -134,12 +134,12 @@
                         </div>
                         <div class="form-group">
                             <label for="ciudad">Ciudad</label>
-                            <select id="ciudadespectaculo" name="ciudadespectaculo" 
+                            <select id="ciudadespectaculo" name="ciudadespectaculo"
                                     [(ngModel)]="product.cuidadEspectaculo" class="form-control" placeholder="" formControlName="selectCiudad">
-                                <option *ngFor="let cit of citys"  [value]="cit.id" value="{{product.cuidadEspectaculo}}">
+                                <option *ngFor="let cit of citys" [value]="cit.id" value="{{product.cuidadEspectaculo}}">
                                     {{cit.name}}
                                 </option>
-                            </select>                            
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="country">Pais</label>
@@ -148,7 +148,7 @@
                                 <option *ngFor="let cou of country" [value]="cou.id" value="{{product.pais}}">
                                     {{cou.name}}
                                 </option>
-                            </select>                            
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="preciociudad">Precio Ciudad</label>
@@ -157,15 +157,16 @@
                             <validator [field]="form.textPrecioCiudad"></validator>
                         </div>
                         <div class="form-group">
-                            <label for="rutaimg">Imagen</label>
-                            <input type="text" required maxlength="40"[(ngModel)]="product.rutaImagen"  minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="rutaimg" formControlName="textRutaimg" placeholder="">
-                            <!--<input type="file" name="photo"  formControlName="fileUImage" ng2FileSelect [uploader]="uploader" />-->
-                            <validator [field]="form.textRutaimg"></validator>
-                        </div>
+                            <label for="rutaimg">Imagen</label>                            
+                            <img [src]="product.image" style="max-width:100px;max-height:100px" />
+                            <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
+                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
+                            <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
+                        </div>                       
                         <div class="form-group">
                             <label for="precioproducto">Precio Producto</label>
-                            <input type="text" required maxlength="40"  [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
-                             <validator [field]="form.textPrecioProducto"></validator>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
+                            <validator [field]="form.textPrecioProducto"></validator>
                         </div>
                     </div>               
 
@@ -188,8 +189,7 @@
                                     <option *ngFor="let typs of typespect" [value]="typs.id" value="{{product.tipoEspectaculo}}">
                                         {{typs.name}}
                                     </option>
-                                </select>
-                                {{product.pais}}
+                                </select>                                
                             </div>
                             <div class="form-group">
                                 <label for="nombreespectaculo">Nombre Espectaculo</label>

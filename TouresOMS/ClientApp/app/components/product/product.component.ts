@@ -34,6 +34,9 @@ export class ProductComponent {
     endPage: boolean = false;
     path: string = "";
 
+    inputFile: any;
+    imageSrc = '';    
+
     citys: City[] = [
         { id: 1, name: 'Bogota' },
         { id: 2, name: 'Medellin' },
@@ -240,6 +243,22 @@ export class ProductComponent {
 
         console.log(this.productForm.value.textEspectaculo);
         
+    }
+
+    handleInputChange(e: any) {
+        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        const pattern = /image-*/;
+        const reader = new FileReader();
+        if (!file.type.match(pattern)) {
+            alert('invalid format');
+            return;
+        }
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+    }
+    _handleReaderLoaded(e: any) {
+        const reader = e.target;
+        this.imageSrc = reader.result;
     }
 
 }
