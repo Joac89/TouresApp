@@ -18,7 +18,7 @@
                                 <input type="{{check.id == 2 ? 'number': 'text'}}"
                                        placeholder="{{check.id == 2 ? 'ingrese el c&oacute;digo': 'escriba el texto'}} a buscar"
                                        formControlName="textSearch" class="form-control" id="input_event" aria-describedby="event">
-                            </div>
+                            </div>                            
                             <button type="submit" class="btn btn-info btn xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
                             <button type="submit" class="btn btn-light btn xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
                         </div>
@@ -44,7 +44,7 @@
                         <p class="text">
                             Datos Producto
                         </p>
-                    </div>                  
+                    </div>
 
                     <div class="step justify-content-md-center my-auto">
                         <div class="form-group">
@@ -102,117 +102,122 @@
                         <div class="form-group">
                             <label for="rutaimg">Imagen</label>
                             <img [src]="product.image" style="max-width:100px;max-height:100px" />
-                            <img [src]="imageSrc" style="max-width:100px;max-height:100px"/>
-                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)"  />
+                            <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
+                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
                             <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
                         </div>
-                    </div>    
-                </div>                
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-12 text-left">
-                            <div class="step justify-content-md-center my-auto">
-                                <div class="number bg-info justify-content-md-center my-auto">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <p class="text">
-                                    Datos Espectaculo
-                                </p>
-                            </div>                            
-                            <div class="form-group">
-                                <label for="tipoespectaculo">Tipo Espectaculo</label>
-                                <select id="tipoespectaculo" name="tipoespectaculo"
-                                        [(ngModel)]="product.tipoEspectaculo" class="form-control" placeholder="" formControlName="selectTipoEspectaculo">
-                                    <option *ngFor="let typs of typespect" [value]="typs.id" value="{{product.tipoEspectaculo}}">
-                                        {{typs.name}}
-                                    </option>
-                                </select>                                
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+                        <div class="step justify-content-md-center my-auto">
+                            <div class="number bg-info justify-content-md-center my-auto">
+                                <i class="fa fa-user"></i>
                             </div>
-                            <div class="form-group">
-                                <label for="nombreespectaculo">Nombre Espectaculo</label>
-                                <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaEsp"  minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombreespectaculo" formControlName="textNombreEspectaculo" placeholder="">
-
-                                <validator [field]="form.textNombreEspectaculo"></validator>
-                            </div>
-                            <div class="form-group">
-                                <label for="precioespectaculo">Precio Espectaculo</label>
-                                <input type="email" required maxlength="40" [(ngModel)]="product.precioEsp" minlength="6" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
-                                <validator [field]="form.textPrecioEspectaculo"></validator>
-                            </div>
+                            <p class="text">
+                                Datos Espectaculo
+                            </p>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 text-left">
-                            <div class="step justify-content-md-center my-auto">
-                                <div class="number bg-info justify-content-md-center my-auto">
-                                    <i class="fa fa-address-card"></i>
-                                </div>
-                                <p class="text">
-                                    Datos de Transporte
-                                </p>
-                            </div>
-                            <div class="form-group">
-                                <label for="tipotransporte">Tipo Transporte</label>
-                                <select id="tipotransporte" name="tipotransporte"
-                                        [(ngModel)]="product.tipoTransporte" class="form-control" placeholder="" formControlName="selectTipoTransporte">
-                                    <option *ngFor="let typt of typetrans" [value]="typt.id" value="{{product.tipoTransporte}}">
-                                        {{typt.name}}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="nombretransporte">Nombre Transporte</label>
-                                <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaTrans" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombretransporte" formControlName="textNombreTransporte" placeholder="">
-
-                                <validator [field]="form.textNombreTransporte"></validator>
-                            </div>
-                            <div class="form-group">
-                                <label for="preciotrasporte">Precio Trasporte</label>
-                                <input type="text" required maxlength="40" [(ngModel)]="product.precioTransporte" minlength="6" class="form-control" id="preciotrasporte" formControlName="textPrecioTrasporte" placeholder="">
-
-                                <validator [field]="form.textPrecioTrasporte"></validator>
-                            </div>
+                        <div class="form-group">
+                            <label for="tipoespectaculo">Tipo Espectaculo</label>
+                            <select id="tipoespectaculo" name="tipoespectaculo"
+                                    [(ngModel)]="product.tipoEspectaculo" class="form-control" placeholder="" formControlName="selectTipoEspectaculo">
+                                <option *ngFor="let typs of typespect" [value]="typs.id" value="{{product.tipoEspectaculo}}">
+                                    {{typs.name}}
+                                </option>
+                            </select>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 text-left">
-                            <div class="step justify-content-md-center my-auto">
-                                <div class="number bg-info justify-content-md-center my-auto">
-                                    <i class="fa fa-lock"></i>
-                                </div>
-                                <p class="text">
-                                    Datos de Hospedaje
-                                </p>
-                            </div>
-                            <div class="form-group">
-                                <label for="tipohospedaje">Tipo Hospedaje</label>
-                                <select id="tipohospedaje" name="tipohospedaje"
-                                        [(ngModel)]="product.tipoHospedaje" class="form-control" placeholder="" formControlName="selectTipoHospedaje">
-                                    <option *ngFor="let typh of typehospedaje" [value]="typh.id" value="{{product.tipoHospedaje}}">
-                                        {{typh.name}}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="nombrehospedaje">Nombre Hospedaje</label>
-                                <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaHosp" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrehospedaje" formControlName="textNombreHospedaje" placeholder="">
+                        <div class="form-group">
+                            <label for="nombreespectaculo">Nombre Espectaculo</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaEsp" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombreespectaculo" formControlName="textNombreEspectaculo" placeholder="">
 
-                                <validator [field]="form.textNombreHospedaje"></validator>
-                            </div>
-                            <div class="form-group">
-                                <label for="preciohospedaje">Precio Hospedaje</label>
-                                <input type="text" required maxlength="40" [(ngModel)]="product.precioHospedaje" minlength="6" class="form-control" id="preciohospedaje" formControlName="textPrecioHospedaje" placeholder="">
-
-                                <validator [field]="form.textPrecioHospedaje"></validator>
-                            </div>
+                            <validator [field]="form.textNombreEspectaculo"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="precioespectaculo">Precio Espectaculo</label>
+                            <input type="email" required maxlength="40" [(ngModel)]="product.precioEsp" minlength="6" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
+                            <validator [field]="form.textPrecioEspectaculo"></validator>
                         </div>
                     </div>
-                    <div *ngIf="error.statusCode != 200">
-                        <div class="alert alert-danger text-left">
-                            <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar el prodcuto: {{error.statusText}}
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+                        <div class="step justify-content-md-center my-auto">
+                            <div class="number bg-info justify-content-md-center my-auto">
+                                <i class="fa fa-address-card"></i>
+                            </div>
+                            <p class="text">
+                                Datos de Transporte
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipotransporte">Tipo Transporte</label>
+                            <select id="tipotransporte" name="tipotransporte"
+                                    [(ngModel)]="product.tipoTransporte" class="form-control" placeholder="" formControlName="selectTipoTransporte">
+                                <option *ngFor="let typt of typetrans" [value]="typt.id" value="{{product.tipoTransporte}}">
+                                    {{typt.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombretransporte">Nombre Transporte</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaTrans" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombretransporte" formControlName="textNombreTransporte" placeholder="">
+
+                            <validator [field]="form.textNombreTransporte"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="preciotrasporte">Precio Trasporte</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioTransporte" minlength="6" class="form-control" id="preciotrasporte" formControlName="textPrecioTrasporte" placeholder="">
+
+                            <validator [field]="form.textPrecioTrasporte"></validator>
                         </div>
                     </div>
-                    <hr />
-                    <p>
-                        Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
-                    </p>
-                    <button type="submit" class="btn btn-info" [disabled]="formReg.form.invalid">Finalizar registro</button>
-</form>
+                    <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+                        <div class="step justify-content-md-center my-auto">
+                            <div class="number bg-info justify-content-md-center my-auto">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                            <p class="text">
+                                Datos de Hospedaje
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipohospedaje">Tipo Hospedaje</label>
+                            <select id="tipohospedaje" name="tipohospedaje"
+                                    [(ngModel)]="product.tipoHospedaje" class="form-control" placeholder="" formControlName="selectTipoHospedaje">
+                                <option *ngFor="let typh of typehospedaje" [value]="typh.id" value="{{product.tipoHospedaje}}">
+                                    {{typh.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombrehospedaje">Nombre Hospedaje</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.nombreTarifaHosp" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrehospedaje" formControlName="textNombreHospedaje" placeholder="">
+
+                            <validator [field]="form.textNombreHospedaje"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="preciohospedaje">Precio Hospedaje</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioHospedaje" minlength="6" class="form-control" id="preciohospedaje" formControlName="textPrecioHospedaje" placeholder="">
+
+                            <validator [field]="form.textPrecioHospedaje"></validator>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="error.statusCode != 200">
+                    <div class="alert alert-danger text-left">
+                        <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar el prodcuto: {{error.statusText}}
+                    </div>
+                </div>
+                <hr />
+                <p>
+                    Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
+                </p>
+                <button type="submit" (click)="sendProduct()" id="Guardar" aria-label="Close" class="btn btn-info">
+                    Guardar
+                </button>
+                <button type="button" (click)="clearProduct()" aria-label="Close" class="btn btn-outline-dark">
+                    Limpiar
+                </button>                              
+            </form>
 
             <div class="text-left" style="padding:0" *ngIf="saved">
                 <div class="alert alert-info" role="alert">

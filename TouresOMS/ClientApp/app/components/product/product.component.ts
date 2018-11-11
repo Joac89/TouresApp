@@ -206,6 +206,12 @@ export class ProductComponent {
 
         this.loaderService.start();
 
+        if (this.product) {
+
+        console.log(this.product);
+        
+        }
+        this.loaderService.end();
         //    }, error => {
         //    this.loaderService.end();
         //    this.error = error;
@@ -261,4 +267,8 @@ export class ProductComponent {
         this.imageSrc = reader.result;
     }
 
+    clearProduct() {
+        this.productForm.reset()
+        this.product = null;
+    }
 }
