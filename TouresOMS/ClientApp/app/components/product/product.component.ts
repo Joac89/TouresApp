@@ -206,18 +206,70 @@ export class ProductComponent {
 
         this.loaderService.start();
 
+        var json = {
+            Nombre: this.productForm.value.textNombreProduct,
+            Espectaculo: this.productForm.value.textEspectaculo,
+            FechaEspectaculo: this.productForm.value.fechaEspectaculo,
+            FechaSalida: this.productForm.value.fechaSalida,
+            FechaLLegada: this.productForm.value.fechaRegreso,
+            CiudadEspectaculo: this.productForm.value.ciudadEspectaculo,
+            Pais: this.productForm.value.pais,
+            PrecioCiudad: this.productForm.value.textPrecioCiudad,
+            ValorProducto: this.productForm.value.textPrecioProducto,
+            Image: this.imageSrc,
+            TipoEspectaculo: this.productForm.value.tipoEspectaculo,
+            NombreEspectaculo: this.productForm.value.textNombreEspectaculo,
+            PrecioEspectaculo: this.productForm.value.textPrecioEspectaculo,
+            TipoTransporte: this.productForm.value.tipoTransporte,
+            NombreTransporte: this.productForm.value.textNombreTransporte,
+            PrecioTransporte: this.productForm.value.textPrecioTransporte,
+            TipoHospedaje: this.productForm.value.TipoHospedaje,
+            NombreHospedaje: this.productForm.value.textNombreHospedaje,
+            PrecioHospedaje: this.productForm.value.textPrecioHospedaje,
+            //username: this.getUsername(),
+            Id: "" //this.registrationForm.value.textAddres
+        }
+        
         if (this.product) {
 
-        console.log(this.product);
+            json.Id = this.product.id;
+
+            console.log(this.product);
+            this.http.put(this.path + "api/Product/update", json).map(response => response.json()).subscribe(result => {
+                //this.saved = true;
+                this.loaderService.end();
+
+                //this.newprod = btoa(json.username);
+                //this.authService.login(JSON.stringify(result));
+            }, error => {
+                this.loaderService.end();
+                this.error = error;
+
+                console.error(error);
+            });
         
         }
-        this.loaderService.end();
-        //    }, error => {
-        //    this.loaderService.end();
-        //    this.error = error;
+        else
+        {
+            
+            this.http.post(this.path + "api/Product/create", json).map(response => response.json()).subscribe(result => {
+                //this.saved = true;
+                this.loaderService.end();
 
-        //    console.error(error);
-        //});
+                //this.newprod = btoa(json.username);
+                //this.authService.login(JSON.stringify(result));
+            }, error => {
+                this.loaderService.end();
+                this.error = error;
+
+                console.error(error);
+            });
+        }
+                    // if (result.code == 200) 
+            //this.sendSearch();
+
+           
+       
     }
 
     changeFilter(id: number, text: string) {

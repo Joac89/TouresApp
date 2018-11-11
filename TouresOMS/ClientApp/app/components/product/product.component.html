@@ -52,11 +52,11 @@
                             <input type="text" maxlength="20" [(ngModel)]="product.nombre" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombrep" formControlName="textNombreProduct" placeholder="">
                             <validator [field]="form.textNombreProduct"></validator>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label for="descripp">Descripcion Producto</label>
                             <input type="text" maxlength="20" [(ngModel)]="product.espectaculo" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="descripp" formControlName="textDescripProduct" placeholder="">
                             <validator [field]="form.textDescripProduct"></validator>
-                        </div>
+                        </div>-->
 
                         <label for="espectaculo">Fecha Espectaculo</label>
                         <input type="date" id="espectaculo" [(ngModel)]="product.fechaEspectaculo" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="fechaespectaculo" step="2" formControlName="fechaEspectaculo">

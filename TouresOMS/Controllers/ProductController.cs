@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TouresOMS.Services;
+using TouresOMS.Models;
 
 namespace TouresOMS.Controllers
 {
@@ -67,6 +68,28 @@ namespace TouresOMS.Controllers
             //var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
             var service = new ProductService(new HttpService($"{urlService}/{id}"));
             var response = await service.DeleteProduct();
+
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> InsertProduct([FromBody] ProductModel data)
+        {
+            ///var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new ProductService(new HttpService($"{urlService}"));
+            var response = await service.InsertProduct(data);
+
+            return this.Ok(response);
+        }
+
+        [HttpPut]
+        [Route("update")]
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductModel data)
+        {
+           // var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new ProductService(new HttpService($"{urlService}"));
+            var response = await service.UpdateProduct(data);
 
             return this.Ok(response);
         }
