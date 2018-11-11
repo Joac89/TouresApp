@@ -1,30 +1,7 @@
+
 <div class="text-center fadeIn slow animated">
     <div class="row justify-content-md-center no-margin">
         <div class="col-lg-11 col-md-11 col-sm-12 home">
-            <ul class="nav justify-content-start">
-                <li class="nav-item">
-                    <form [formGroup]="searchForm" (ngSubmit)="getCampaign()" class="form-search">
-                        <div class="form-inline">
-                            <div class="input-group">
-                                <div class="input-group-append show no-margin" id="button_event">
-                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{check.text}}
-                                    </button>
-                                    <div id="dropdown" class="dropdown-menu">
-                                        <a class="dropdown-item" (click)="changeFilter(1, 'Sin filtro')">Sin filtro</a>
-                                        <a class="dropdown-item" (click)="changeFilter(2, 'Buscar por c&oacute;digo')">C&oacute;digo</a>
-                                    </div>
-                                </div>
-                                <input type="{{check.id == 2 ? 'number': 'text'}}"
-                                       placeholder="{{check.id == 2 ? 'ingrese el c&oacute;digo': 'escriba el texto'}} a buscar"
-                                       formControlName="textSearch" class="form-control" id="input_event" aria-describedby="event">
-                            </div>
-                            <button type="submit" class="btn btn-info btn xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
-                            <button type="submit" class="btn btn-light btn xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
-                        </div>
-                    </form>
-                </li>
-            </ul>
             <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
                         [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
                         [reference]="textSearch">
@@ -35,7 +12,7 @@
                         <thead>
                             <tr>
                                 <th colspan="8" class="text-left">
-                                    Productos
+                                    Compa&ntilde;as
                                 </th>
                             </tr>
                             <tr>
@@ -54,7 +31,7 @@
                                 <td scope="row" class="row-fil text-left">{{item.fechaFin | date: 'yyyy/MM/dd'}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.rutaImagen}}</td>
                                 <td scope="row" class="row-fil text-center">
-                                    <button class="btn btn-sm btn-danger" (click)="orderForDelete = item.Id" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="item.state == 2">
+                                    <button class="btn btn-sm btn-danger" (click)="deletecampaign(item.id)" data-toggle="modal" data-target="#modalOrder_delete" [disabled]="item.state == 2">
                                         <i class="fa fa-times"></i>
                                     </button>
                                 </td>
@@ -71,3 +48,76 @@
     </div>
 </div>
 <!--<detail-prod [item]="current" [modal]="'exampleModal1'" [callback]="update()"></detail-prod>-->
+<div class="text-center fadeIn slow animated registration">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
+                        [subtitle]="'Reg&iacute;strate para poder realizar las compras de tus eventos deportivos preferidos'">
+            </page-title>
+            <form *ngIf="!saved" [formGroup]="registrationForm" (ngSubmit)="sendRegister()" #formReg="ngForm">
+                <div class="text-left">
+                    <div class="step justify-content-md-center my-auto">
+                        <div class="number bg-info justify-content-md-center my-auto">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <p class="text">
+                            Datos Campa&ntilde;a
+                        </p>
+                    </div>
+
+                    <div class="step justify-content-md-center my-auto">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Campa&ntilde;a</label>
+                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="nombre" name="nombre" formControlName="textNombre" placeholder="">
+                            <validator [field]="form.textNombre"></validator>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="espectaculo">Fecha Incial Campa&ntilde;a</label>
+                            <input type="date" name="fechaIni" min="2018-11-04" max="2020-05-25" step="2">
+                            <label for="espectaculo">Fecha Fin Campa&ntilde;a</label>
+                            <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3">
+                        </div>
+                        <div class="form-group">
+                            <label for="rutaimg">Imagen</label>
+                            <img [src]="product.image" style="max-width:100px;max-height:100px" />
+                            <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
+                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
+                            <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="error.statusCode != 200">
+                    <div class="alert alert-danger text-left">
+                        <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar la campa&ntilde;a: {{error.statusText}}
+                    </div>
+                </div>
+                <hr />
+                <p>
+                    Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
+                </p>
+                <button type="submit" class="btn btn-info" [disabled]="formReg.form.invalid">Finalizar registro</button>
+            </form>
+
+            <div class="text-left" style="padding:0" *ngIf="saved">
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">
+                        <i class="fa fa-check"></i>&nbsp;Felicitaciones!
+                    </h4>
+                    <p class="no-margin">
+                        Te has registrado correctamente como usuario
+                        <strong>{{newuser}}</strong> en
+                        <strong>TouresBalon</strong>. Desde ahora podrás disfrutar de la compra de tus Eventos Deportivos deseados.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <a href="#" [routerLink]="['/login', newuser]" class="btn btn-info">
+                        Iniciar sesi&oacute;n
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

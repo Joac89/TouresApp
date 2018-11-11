@@ -60,5 +60,14 @@ namespace TouresOMS.Controllers
 
 			return Ok(response);
 		}
-	}
+
+        [HttpDelete]
+        [Route("delete/{id}")]
+        public async Task<IActionResult> DeleteCampaign(long id)
+        {
+            var service = new CampaignService(new HttpService($"{urlService}/{id}/4"));
+            var response = await service.DeleteCampaign();
+            return this.Ok(response);
+        }
+    }
 }

@@ -20,6 +20,7 @@ export class NavMenuComponent {
     products: Product[] = [];
     //subscription: Subscription;
     authenticate: any = { status: false };
+    rol1: any = { status: false };
 
     constructor(private router: Router, private storeService: StoreService, private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object) {
         this.watcherStore = this.watcherMethod();
