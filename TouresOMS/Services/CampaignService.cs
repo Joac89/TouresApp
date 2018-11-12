@@ -14,7 +14,12 @@ namespace TouresOMS.Services
 		private IHttpService httpService;
 		private string urlImages = "";
 
-		public CampaignService(IHttpService httpService_, string images)
+        public CampaignService(IHttpService httpService_)
+        {
+            httpService = httpService_;
+        }
+
+        public CampaignService(IHttpService httpService_, string images)
 		{
 			httpService = httpService_;
 			urlImages = images;
@@ -115,5 +120,14 @@ namespace TouresOMS.Services
 
 			return lst;
 		}
-	}
+
+        public async Task<ResponseBase<bool>> DeleteCampaign()
+        {
+            var response = new ResponseBase<bool>();
+
+            response = await httpService.Send<bool>(UriMethod.Delete);
+
+            return await Task.Run(() => response);
+        }
+    }
 }

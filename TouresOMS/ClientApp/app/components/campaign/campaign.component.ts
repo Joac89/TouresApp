@@ -17,19 +17,16 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class CampaignComponent {
     search: any = {};
     aux: any = {};
-    textSearch: string = "";
-    typeSearch: number = 0;
     current: any = {};
     pag: number = 0;
     endPage: boolean = false;
     path: string = "";
-
+    inputFile: any;
+    imageSrc = '';  
 
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
         this.route.params.subscribe(params => {
-            this.textSearch = params['search'];
-            this.typeSearch = params['type'];
             this.search.data = [];
             this.getCampaign();
         }); 
@@ -37,14 +34,9 @@ export class CampaignComponent {
 
     getCampaign() {
         this.loaderService.start();
+        
         this.pag += 1;
-        if (this.pag > 1) {
-            this.textSearch = btoa(this.textSearch);
-        } else {
-            this.pag = 1;
-            this.endPage = false;
-        }
-        //this.http.get(this.path + "api/campaign/all").map(response => response.json()).subscribe(result => {
+       
           this.http.get(this.path + "api/campaign/all").map(response => response.json()).subscribe(result => {
             this.aux = result;
 
@@ -83,6 +75,13 @@ export class CampaignComponent {
         checkSearch: new FormControl(''),
     });
 
+    productForm = new FormGroup({
+        textNombre: new FormControl(''),
+        fechaIni: new FormControl(''),
+        fechaFin: new FormControl(''),
+        imageUrl: new FormControl(''),
+    });
+
     sendSearch() {
         var text = this.searchForm.value.textSearch;
         var id = this.check.id;
@@ -102,4 +101,35 @@ export class CampaignComponent {
         this.check.text = text;
     }
 
+    deletecampaign(id: number) {
+        this.loaderService.start();
+
+        this.http.delete(this.path + "api/campaign/delete/" + id).map(response => response.json()).subscribe(result => {
+
+            // if (result.code == 200) 
+            //this.sendSearch();
+
+            this.loaderService.end();
+        }, error => {
+            this.loaderService.end();
+            console.error(error);
+        });
+
+    }
+
+    handleInputChange(e: any) {
+        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        const pattern = /image-*/;
+        const reader = new FileReader();
+        if (!file.type.match(pattern)) {
+            alert('invalid format');
+            return;
+        }
+        reader.onload = this._handleReaderLoaded.bind(this);
+        reader.readAsDataURL(file);
+    }
+    _handleReaderLoaded(e: any) {
+        const reader = e.target;
+        this.imageSrc = reader.result;
+    }
 }
