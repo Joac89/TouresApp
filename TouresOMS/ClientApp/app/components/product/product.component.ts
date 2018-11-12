@@ -212,29 +212,29 @@ export class ProductComponent {
             FechaEspectaculo: this.productForm.value.fechaEspectaculo,
             FechaSalida: this.productForm.value.fechaSalida,
             FechaLLegada: this.productForm.value.fechaRegreso,
-            CiudadEspectaculo: this.productForm.value.ciudadEspectaculo,
-            Pais: this.productForm.value.pais,
+            CiudadEspectaculo: this.productForm.value.selectCiudad,
+            Pais: this.productForm.value.selectCountry,
             PrecioCiudad: this.productForm.value.textPrecioCiudad,
             ValorProducto: this.productForm.value.textPrecioProducto,
             Image: this.imageSrc,
-            TipoEspectaculo: this.productForm.value.tipoEspectaculo,
+            TipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
             NombreEspectaculo: this.productForm.value.textNombreEspectaculo,
             PrecioEspectaculo: this.productForm.value.textPrecioEspectaculo,
-            TipoTransporte: this.productForm.value.tipoTransporte,
+            TipoTransporte: this.productForm.value.selectTipoTransporte,
             NombreTransporte: this.productForm.value.textNombreTransporte,
-            PrecioTransporte: this.productForm.value.textPrecioTransporte,
-            TipoHospedaje: this.productForm.value.TipoHospedaje,
+            PrecioTransporte: this.productForm.value.textPrecioTrasporte,
+            TipoHospedaje: this.productForm.value.selectTipoHospedaje,
             NombreHospedaje: this.productForm.value.textNombreHospedaje,
             PrecioHospedaje: this.productForm.value.textPrecioHospedaje,
-            //username: this.getUsername(),
-            Id: "" //this.registrationForm.value.textAddres
+            Id: ""
         }
         
         if (this.product) {
 
             json.Id = this.product.id;
 
-            console.log(this.product);
+            //console.log(this.product);
+            console.log(json);
             this.http.put(this.path + "api/Product/update", json).map(response => response.json()).subscribe(result => {
                 //this.saved = true;
                 this.loaderService.end();

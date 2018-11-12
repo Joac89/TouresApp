@@ -85,10 +85,10 @@ namespace TouresOMS.Controllers
 
         [HttpPut]
         [Route("update")]
-        public async Task<IActionResult> UpdateProduct([FromBody] ProductModel data)
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductModel data, long id)
         {
            // var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
-            var service = new ProductService(new HttpService($"{urlService}"));
+            var service = new ProductService(new HttpService($"{urlService}/{id}"));
             var response = await service.UpdateProduct(data);
 
             return this.Ok(response);
