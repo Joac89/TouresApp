@@ -207,31 +207,33 @@ export class ProductComponent {
         this.loaderService.start();
 
         var json = {
-            Nombre: this.productForm.value.textNombreProduct,
-            Espectaculo: this.productForm.value.textEspectaculo,
-            FechaEspectaculo: this.productForm.value.fechaEspectaculo,
-            FechaSalida: this.productForm.value.fechaSalida,
-            FechaLLegada: this.productForm.value.fechaRegreso,
-            CiudadEspectaculo: this.productForm.value.selectCiudad,
-            Pais: this.productForm.value.selectCountry,
-            PrecioCiudad: this.productForm.value.textPrecioCiudad,
-            ValorProducto: this.productForm.value.textPrecioProducto,
-            Image: this.imageSrc,
-            TipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
+            id: "",
             NombreEspectaculo: this.productForm.value.textNombreEspectaculo,
-            PrecioEspectaculo: this.productForm.value.textPrecioEspectaculo,
-            TipoTransporte: this.productForm.value.selectTipoTransporte,
-            NombreTransporte: this.productForm.value.textNombreTransporte,
             PrecioTransporte: this.productForm.value.textPrecioTrasporte,
-            TipoHospedaje: this.productForm.value.selectTipoHospedaje,
+            NombreTransporte: this.productForm.value.textNombreTransporte,
+            FechaEspectaculo: this.productForm.value.fechaEspectaculo,
+            CiudadEspectaculo: this.productForm.value.selectCiudad,
             NombreHospedaje: this.productForm.value.textNombreHospedaje,
             PrecioHospedaje: this.productForm.value.textPrecioHospedaje,
-            Id: ""
+            TipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
+            TipoTransporte: this.productForm.value.selectTipoTransporte,
+            Nombre: this.productForm.value.textNombreProduct,
+            Espectaculo: this.productForm.value.textEspectaculo,
+            TipoHospedaje: this.productForm.value.selectTipoHospedaje,
+            rutaImagen:"",
+            Image: this.imageSrc,
+            Pais: this.productForm.value.selectCountry,
+            PrecioCiudad: this.productForm.value.textPrecioCiudad,
+            FechaSalida: this.productForm.value.fechaSalida,
+            FechaLLegada: this.productForm.value.fechaRegreso,
+            PrecioEspectaculo: this.productForm.value.textPrecioEspectaculo,
+            ValorProducto: this.productForm.value.textPrecioProducto              
         }
         
         if (this.product) {
 
-            json.Id = this.product.id;
+            json.id = this.product.id;
+            json.rutaImagen = this.product.rutaImagen,
 
             //console.log(this.product);
             console.log(json);
