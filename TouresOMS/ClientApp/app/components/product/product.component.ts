@@ -58,17 +58,17 @@ export class ProductComponent {
 
     typespect: TypeSpect[] = [
         { id: 1, name: 'Nacional' },
-        { id: 14, name: 'Internacional' },        
+        { id: 2, name: 'Internacional' },        
     ];
 
     typetrans: TypeTrans[] = [
         { id: 1, name: 'Aereo' },
-        { id: 14, name: 'Terrestre' },
+        { id: 2, name: 'Terrestre' },
     ];
 
     typehospedaje: TypeHospedaje[] = [
         { id: 1, name: 'Nacional' },
-        { id: 14, name: 'Internacional' },
+        { id: 2, name: 'Internacional' },
     ];
 
 
@@ -207,7 +207,7 @@ export class ProductComponent {
         this.loaderService.start();
 
         var json = {
-            id: "",
+            id: 0,
             nombre: this.productForm.value.textNombreProduct,
             espectaculo: this.productForm.value.textEspectaculo,
             fechaSalida: this.productForm.value.fechaSalida,
@@ -219,20 +219,8 @@ export class ProductComponent {
             tipoTransporte: this.productForm.value.selectTipoTransporte,
             rutaImagen: "",
             image: this.imageSrc,
-            route: "0",
-            
-            nombreTarifaEsp: this.productForm.value.textNombreEspectaculo,
-            precioTransporte: this.productForm.value.textPrecioTrasporte,
-            nombreTarifaTrans: this.productForm.value.textNombreTransporte,
+            route: 0,         
                         
-            nombreTarifaHosp: this.productForm.value.textNombreHospedaje,
-            precioHospedaje: this.productForm.value.textPrecioHospedaje,
-
-            pais: this.productForm.value.selectCountry,
-            precioCiudad: this.productForm.value.textPrecioCiudad,
-            
-            precioEsp: this.productForm.value.textPrecioEspectaculo,
-            valorProducto: this.productForm.value.textPrecioProducto              
         }
         
         if (this.product) {
@@ -242,7 +230,7 @@ export class ProductComponent {
 
             //console.log(this.product);
             console.log(json);
-            this.http.put(this.path + "api/Product/update", json).map(response => response.json()).subscribe(result => {
+            this.http.put(this.path + "api/Product/update", json, this.product.id).map(response => response.json()).subscribe(result => {
                 //this.saved = true;
                 this.loaderService.end();
 

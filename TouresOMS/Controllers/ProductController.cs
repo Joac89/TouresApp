@@ -78,7 +78,22 @@ namespace TouresOMS.Controllers
         {
             ///var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
             var service = new ProductService(new HttpService($"{urlService}"));
-            ProductSModel data1 = data;
+            ProductSModel data1 = new ProductSModel();
+
+            data1.id = data.id;
+            data1.nombre = data.nombre;
+            data1.espectaculo = data.espectaculo;
+            data1.fechaSalida = data.fechaSalida + " 00:00:00";
+            data1.cuidadEspectaculo = data.cuidadEspectaculo;
+            data1.fechaLlegada = data.fechaLlegada + " 00:00:00";
+            data1.fechaEspectaculo = data.fechaEspectaculo + " 00:00:00";
+            data1.tipoEspectaculo = data.tipoEspectaculo;
+            data1.tipoHospedaje = data.tipoHospedaje;
+            data1.tipoTransporte = data.tipoTransporte;
+            data1.rutaImagen = data.rutaImagen;
+            data1.route = data.route;
+
+
             var response = await service.InsertProduct(data1);
 
             return this.Ok(response);
@@ -90,7 +105,21 @@ namespace TouresOMS.Controllers
         {
            // var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
             var service = new ProductService(new HttpService($"{urlService}/{id}"));
-            ProductSModel data1 = data;
+            ProductSModel data1 = new ProductSModel();
+
+            data1.id = data.id;
+            data1.nombre = data.nombre;
+            data1.espectaculo = data.espectaculo;
+            data1.fechaSalida = data.fechaSalida + " 00:00:00";
+            data1.cuidadEspectaculo = data.cuidadEspectaculo;
+            data1.fechaLlegada = data.fechaLlegada + " 00:00:00";
+            data1.fechaEspectaculo = data.fechaEspectaculo + " 00:00:00";
+            data1.tipoEspectaculo = data.tipoEspectaculo;
+            data1.tipoHospedaje = data.tipoHospedaje;
+            data1.tipoTransporte = data.tipoTransporte;
+            data1.rutaImagen = data.rutaImagen;
+            data1.route = data.route;
+
             var response = await service.UpdateProduct(data1);
 
             return this.Ok(response);

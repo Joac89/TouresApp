@@ -17,7 +17,7 @@ namespace TouresOMS.Models
         public string rutaImagen { get; set; }
         public int route { get; set; }				
 	}
-	public class ProductImgModel: ProductSModel
+	public class ProductImgModel : ProductSModel
     {
 		public string image { get; set; }		
 	}
