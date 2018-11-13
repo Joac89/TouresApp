@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c7f22fc9a294505bd3da566ab818b94" Name="Diagram1">
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_CAMPANA_PRODUCTO" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_CAMPANAS" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_CIUDAD" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_LOAD_CIUDAD" Width="1.5" PointX="10" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_LOAD_PRODUCTO" Width="1.5" PointX="12.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_LOAD_TARIFA_CIUDAD" Width="1.5" PointX="7.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_LOAD_TARIFA_ESPECTACULO" Width="1.5" PointX="10" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_LOAD_TARIFA_HOSPEDAJE" Width="1.5" PointX="10" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_LOAD_TARIFA_TRANSPORTE" Width="1.5" PointX="10" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_MENU" Width="1.5" PointX="9.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_PRODUCTO" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_ROL" Width="1.5" PointX="12" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_TARIFA_CIUDAD" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_TARIFA_ESPECTACULO" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_TARIFA_HOSPEDAJE" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OMSModelSQL.OMS_TARIFA_TRANSPORTE" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_PRODUCTO_OMS_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE" ManuallyRouted="false" />
+        <AssociationConnector Association="OMSModelSQL.OMS_ROL_MENU" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

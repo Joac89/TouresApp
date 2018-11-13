@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ReportOMS.OMS_PRODUCTO>
+
+@{
+    ViewBag.Title = "ReporteData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reporte Listado</h2>
+
+<div class="col-md-12 col-sm-12 col-xs-12" style="margin:0; padding:0">
+    <table class="table table-striped table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NOMBRE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ESPECTACULO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FECHA_ESPECTACULO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FECHA_LLEGADA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FECHA_SALIDA)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NOMBRE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ESPECTACULO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FECHA_ESPECTACULO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FECHA_LLEGADA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FECHA_SALIDA)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Volver a buscar", "ReporteIndex", "Reporte", new { @class="btn btn-primary", @style="margin-bottom:20px;"})
+</div>
+

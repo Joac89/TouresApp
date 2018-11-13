@@ -1,0 +1,1004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OMSModelSQL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OMS_CAMPANA_PRODUCTO">
+          <Key>
+            <PropertyRef Name="Id_Campana_Producto" />
+          </Key>
+          <Property Name="Id_Campana_Producto" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCampana" Type="bigint" Nullable="false" />
+          <Property Name="IdProducto" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OMS_CAMPANAS">
+          <Key>
+            <PropertyRef Name="IdCampana" />
+          </Key>
+          <Property Name="IdCampana" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RutaImagen" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="FechaInicial" Type="datetime" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="OMS_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="varchar" MaxLength="900" Nullable="false" />
+          <Property Name="PAIS" Type="varchar" MaxLength="400" />
+          <Property Name="TIPO_CIUDAD" Type="int" />
+          <Property Name="NOMBRE_CIUDAD" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="varchar" MaxLength="900" Nullable="false" />
+          <Property Name="PAIS" Type="varchar" MaxLength="400" />
+          <Property Name="TIPO_CIUDAD" Type="int" />
+          <Property Name="NOMBRE_CIUDAD" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="ESPECTACULO" Type="varchar" MaxLength="4000" />
+          <Property Name="FECHA_ESPECTACULO" Type="datetime" />
+          <Property Name="CIUDAD_ESPECTACULO" Type="varchar" MaxLength="900" />
+          <Property Name="FECHA_LLEGADA" Type="datetime" />
+          <Property Name="FECHA_SALIDA" Type="datetime" />
+          <Property Name="TIPO_TRANSPORTE" Type="int" />
+          <Property Name="TIPO_ESPECTACULO" Type="int" />
+          <Property Name="TIPO_HOSPEDAJE" Type="int" />
+          <Property Name="RUTA_IMAGEN" Type="varchar" MaxLength="500" />
+          <Property Name="ROUTE" Type="smallint" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_CIUDAD" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_ESPECTACULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA_ESP" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_ESPECTACULO" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_HOSPEDAJE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA_HOSP" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_HOSPEDAJE" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_TRANSPORTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA_TRANS" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_TRANSPORTE" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_MENU">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreMenu" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="OMS_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="150" />
+          <Property Name="ESPECTACULO" Type="varchar" MaxLength="4000" />
+          <Property Name="FECHA_ESPECTACULO" Type="datetime" />
+          <Property Name="CIUDAD_ESPECTACULO" Type="varchar" MaxLength="900" />
+          <Property Name="FECHA_LLEGADA" Type="datetime" />
+          <Property Name="FECHA_SALIDA" Type="datetime" />
+          <Property Name="TIPO_TRANSPORTE" Type="int" />
+          <Property Name="TIPO_ESPECTACULO" Type="int" />
+          <Property Name="TIPO_HOSPEDAJE" Type="int" />
+          <Property Name="RUTA_IMAGEN" Type="varchar" MaxLength="500" />
+          <Property Name="ROUTE" Type="smallint" />
+        </EntityType>
+        <EntityType Name="OMS_ROL">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRol" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OMS_ROL_MENU">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="IdMenu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_CIUDAD" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_ESPECTACULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA_ESP" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_ESPECTACULO" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_HOSPEDAJE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA_HOSP" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_HOSPEDAJE" Type="money" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_TRANSPORTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TARIFA_TRANS" Type="varchar" MaxLength="4000" />
+          <Property Name="PRECIO_TRANSPORTE" Type="money" />
+        </EntityType>
+        <Association Name="FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS">
+          <End Role="OMS_CAMPANAS" Type="Self.OMS_CAMPANAS" Multiplicity="1" />
+          <End Role="OMS_CAMPANA_PRODUCTO" Type="Self.OMS_CAMPANA_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_CAMPANAS">
+              <PropertyRef Name="IdCampana" />
+            </Principal>
+            <Dependent Role="OMS_CAMPANA_PRODUCTO">
+              <PropertyRef Name="IdCampana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO">
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="1" />
+          <End Role="OMS_CAMPANA_PRODUCTO" Type="Self.OMS_CAMPANA_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_CAMPANA_PRODUCTO">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD">
+          <End Role="OMS_TARIFA_CIUDAD" Type="Self.OMS_TARIFA_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_CIUDAD" Type="Self.OMS_CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_CIUDAD">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_CIUDAD">
+              <PropertyRef Name="TIPO_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD">
+          <End Role="OMS_LOAD_TARIFA_CIUDAD" Type="Self.OMS_LOAD_TARIFA_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_CIUDAD" Type="Self.OMS_LOAD_CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_CIUDAD">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_CIUDAD">
+              <PropertyRef Name="TIPO_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO">
+          <End Role="OMS_LOAD_CIUDAD" Type="Self.OMS_LOAD_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="CIUDAD_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO">
+          <End Role="OMS_LOAD_TARIFA_ESPECTACULO" Type="Self.OMS_LOAD_TARIFA_ESPECTACULO" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_ESPECTACULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="TIPO_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE">
+          <End Role="OMS_LOAD_TARIFA_HOSPEDAJE" Type="Self.OMS_LOAD_TARIFA_HOSPEDAJE" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_HOSPEDAJE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="TIPO_HOSPEDAJE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE">
+          <End Role="OMS_LOAD_TARIFA_TRANSPORTE" Type="Self.OMS_LOAD_TARIFA_TRANSPORTE" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_TRANSPORTE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="TIPO_TRANSPORTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_PRODUCTO">
+          <End Role="OMS_CIUDAD" Type="Self.OMS_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="CIUDAD_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO">
+          <End Role="OMS_TARIFA_ESPECTACULO" Type="Self.OMS_TARIFA_ESPECTACULO" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_ESPECTACULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="TIPO_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE">
+          <End Role="OMS_TARIFA_HOSPEDAJE" Type="Self.OMS_TARIFA_HOSPEDAJE" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_HOSPEDAJE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="TIPO_HOSPEDAJE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE">
+          <End Role="OMS_TARIFA_TRANSPORTE" Type="Self.OMS_TARIFA_TRANSPORTE" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_TRANSPORTE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="TIPO_TRANSPORTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_ROL_MENU_OMS_MENU">
+          <End Role="OMS_MENU" Type="Self.OMS_MENU" Multiplicity="1" />
+          <End Role="OMS_ROL_MENU" Type="Self.OMS_ROL_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_MENU">
+              <PropertyRef Name="IdMenu" />
+            </Principal>
+            <Dependent Role="OMS_ROL_MENU">
+              <PropertyRef Name="IdMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_ROL_MENU_OMS_ROL">
+          <End Role="OMS_ROL" Type="Self.OMS_ROL" Multiplicity="1" />
+          <End Role="OMS_ROL_MENU" Type="Self.OMS_ROL_MENU" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_ROL">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="OMS_ROL_MENU">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OMSModelSQLStoreContainer">
+          <EntitySet Name="OMS_CAMPANA_PRODUCTO" EntityType="Self.OMS_CAMPANA_PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_CAMPANAS" EntityType="Self.OMS_CAMPANAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_CIUDAD" EntityType="Self.OMS_CIUDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_LOAD_CIUDAD" EntityType="Self.OMS_LOAD_CIUDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_LOAD_PRODUCTO" EntityType="Self.OMS_LOAD_PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_LOAD_TARIFA_CIUDAD" EntityType="Self.OMS_LOAD_TARIFA_CIUDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_LOAD_TARIFA_ESPECTACULO" EntityType="Self.OMS_LOAD_TARIFA_ESPECTACULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_LOAD_TARIFA_HOSPEDAJE" EntityType="Self.OMS_LOAD_TARIFA_HOSPEDAJE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_LOAD_TARIFA_TRANSPORTE" EntityType="Self.OMS_LOAD_TARIFA_TRANSPORTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_MENU" EntityType="Self.OMS_MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_PRODUCTO" EntityType="Self.OMS_PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_ROL" EntityType="Self.OMS_ROL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_ROL_MENU" EntityType="Self.OMS_ROL_MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_TARIFA_CIUDAD" EntityType="Self.OMS_TARIFA_CIUDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_TARIFA_ESPECTACULO" EntityType="Self.OMS_TARIFA_ESPECTACULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_TARIFA_HOSPEDAJE" EntityType="Self.OMS_TARIFA_HOSPEDAJE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OMS_TARIFA_TRANSPORTE" EntityType="Self.OMS_TARIFA_TRANSPORTE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS" Association="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS">
+            <End Role="OMS_CAMPANAS" EntitySet="OMS_CAMPANAS" />
+            <End Role="OMS_CAMPANA_PRODUCTO" EntitySet="OMS_CAMPANA_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO" Association="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO">
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+            <End Role="OMS_CAMPANA_PRODUCTO" EntitySet="OMS_CAMPANA_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD" Association="Self.FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD">
+            <End Role="OMS_TARIFA_CIUDAD" EntitySet="OMS_TARIFA_CIUDAD" />
+            <End Role="OMS_CIUDAD" EntitySet="OMS_CIUDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD" Association="Self.FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD">
+            <End Role="OMS_LOAD_TARIFA_CIUDAD" EntitySet="OMS_LOAD_TARIFA_CIUDAD" />
+            <End Role="OMS_LOAD_CIUDAD" EntitySet="OMS_LOAD_CIUDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO">
+            <End Role="OMS_LOAD_CIUDAD" EntitySet="OMS_LOAD_CIUDAD" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO">
+            <End Role="OMS_LOAD_TARIFA_ESPECTACULO" EntitySet="OMS_LOAD_TARIFA_ESPECTACULO" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE">
+            <End Role="OMS_LOAD_TARIFA_HOSPEDAJE" EntitySet="OMS_LOAD_TARIFA_HOSPEDAJE" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE">
+            <End Role="OMS_LOAD_TARIFA_TRANSPORTE" EntitySet="OMS_LOAD_TARIFA_TRANSPORTE" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_PRODUCTO" Association="Self.FK_OMS_PRODUCTO_OMS_PRODUCTO">
+            <End Role="OMS_CIUDAD" EntitySet="OMS_CIUDAD" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO" Association="Self.FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO">
+            <End Role="OMS_TARIFA_ESPECTACULO" EntitySet="OMS_TARIFA_ESPECTACULO" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE" Association="Self.FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE">
+            <End Role="OMS_TARIFA_HOSPEDAJE" EntitySet="OMS_TARIFA_HOSPEDAJE" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE" Association="Self.FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE">
+            <End Role="OMS_TARIFA_TRANSPORTE" EntitySet="OMS_TARIFA_TRANSPORTE" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_ROL_MENU_OMS_MENU" Association="Self.FK_OMS_ROL_MENU_OMS_MENU">
+            <End Role="OMS_MENU" EntitySet="OMS_MENU" />
+            <End Role="OMS_ROL_MENU" EntitySet="OMS_ROL_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_ROL_MENU_OMS_ROL" Association="Self.FK_OMS_ROL_MENU_OMS_ROL">
+            <End Role="OMS_ROL" EntitySet="OMS_ROL" />
+            <End Role="OMS_ROL_MENU" EntitySet="OMS_ROL_MENU" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OMSModelSQL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OMS_CAMPANA_PRODUCTO">
+          <Key>
+            <PropertyRef Name="Id_Campana_Producto" />
+          </Key>
+          <Property Name="Id_Campana_Producto" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCampana" Type="Int64" Nullable="false" />
+          <Property Name="IdProducto" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="OMS_CAMPANAS" Relationship="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS" FromRole="OMS_CAMPANA_PRODUCTO" ToRole="OMS_CAMPANAS" />
+          <NavigationProperty Name="OMS_PRODUCTO" Relationship="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO" FromRole="OMS_CAMPANA_PRODUCTO" ToRole="OMS_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_CAMPANAS">
+          <Key>
+            <PropertyRef Name="IdCampana" />
+          </Key>
+          <Property Name="IdCampana" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RutaImagen" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaInicial" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OMS_CAMPANA_PRODUCTO" Relationship="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS" FromRole="OMS_CAMPANAS" ToRole="OMS_CAMPANA_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAIS" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_CIUDAD" Type="Int32" />
+          <Property Name="NOMBRE_CIUDAD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OMS_TARIFA_CIUDAD" Relationship="Self.FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD" FromRole="OMS_CIUDAD" ToRole="OMS_TARIFA_CIUDAD" />
+          <NavigationProperty Name="OMS_PRODUCTO" Relationship="Self.FK_OMS_PRODUCTO_OMS_PRODUCTO" FromRole="OMS_CIUDAD" ToRole="OMS_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID_CIUDAD" />
+          </Key>
+          <Property Name="ID_CIUDAD" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAIS" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_CIUDAD" Type="Int32" />
+          <Property Name="NOMBRE_CIUDAD" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OMS_LOAD_TARIFA_CIUDAD" Relationship="Self.FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD" FromRole="OMS_LOAD_CIUDAD" ToRole="OMS_LOAD_TARIFA_CIUDAD" />
+          <NavigationProperty Name="OMS_LOAD_PRODUCTO" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO" FromRole="OMS_LOAD_CIUDAD" ToRole="OMS_LOAD_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECTACULO" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ESPECTACULO" Type="DateTime" Precision="3" />
+          <Property Name="CIUDAD_ESPECTACULO" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_LLEGADA" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_SALIDA" Type="DateTime" Precision="3" />
+          <Property Name="TIPO_TRANSPORTE" Type="Int32" />
+          <Property Name="TIPO_ESPECTACULO" Type="Int32" />
+          <Property Name="TIPO_HOSPEDAJE" Type="Int32" />
+          <Property Name="RUTA_IMAGEN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ROUTE" Type="Int16" />
+          <NavigationProperty Name="OMS_LOAD_CIUDAD" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO" FromRole="OMS_LOAD_PRODUCTO" ToRole="OMS_LOAD_CIUDAD" />
+          <NavigationProperty Name="OMS_LOAD_TARIFA_ESPECTACULO" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO" FromRole="OMS_LOAD_PRODUCTO" ToRole="OMS_LOAD_TARIFA_ESPECTACULO" />
+          <NavigationProperty Name="OMS_LOAD_TARIFA_HOSPEDAJE" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE" FromRole="OMS_LOAD_PRODUCTO" ToRole="OMS_LOAD_TARIFA_HOSPEDAJE" />
+          <NavigationProperty Name="OMS_LOAD_TARIFA_TRANSPORTE" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE" FromRole="OMS_LOAD_PRODUCTO" ToRole="OMS_LOAD_TARIFA_TRANSPORTE" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_CIUDAD" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_LOAD_CIUDAD" Relationship="Self.FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD" FromRole="OMS_LOAD_TARIFA_CIUDAD" ToRole="OMS_LOAD_CIUDAD" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_ESPECTACULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA_ESP" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_ESPECTACULO" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_LOAD_PRODUCTO" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO" FromRole="OMS_LOAD_TARIFA_ESPECTACULO" ToRole="OMS_LOAD_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_HOSPEDAJE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA_HOSP" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_HOSPEDAJE" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_LOAD_PRODUCTO" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE" FromRole="OMS_LOAD_TARIFA_HOSPEDAJE" ToRole="OMS_LOAD_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_LOAD_TARIFA_TRANSPORTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA_TRANS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_TRANSPORTE" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_LOAD_PRODUCTO" Relationship="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE" FromRole="OMS_LOAD_TARIFA_TRANSPORTE" ToRole="OMS_LOAD_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_MENU">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreMenu" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OMS_ROL" Relationship="Self.OMS_ROL_MENU" FromRole="OMS_MENU" ToRole="OMS_ROL" />
+        </EntityType>
+        <EntityType Name="OMS_PRODUCTO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ESPECTACULO" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_ESPECTACULO" Type="DateTime" Precision="3" />
+          <Property Name="CIUDAD_ESPECTACULO" Type="String" MaxLength="900" FixedLength="false" Unicode="false" />
+          <Property Name="FECHA_LLEGADA" Type="DateTime" Precision="3" />
+          <Property Name="FECHA_SALIDA" Type="DateTime" Precision="3" />
+          <Property Name="TIPO_TRANSPORTE" Type="Int32" />
+          <Property Name="TIPO_ESPECTACULO" Type="Int32" />
+          <Property Name="TIPO_HOSPEDAJE" Type="Int32" />
+          <Property Name="RUTA_IMAGEN" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ROUTE" Type="Int16" />
+          <NavigationProperty Name="OMS_CAMPANA_PRODUCTO" Relationship="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO" FromRole="OMS_PRODUCTO" ToRole="OMS_CAMPANA_PRODUCTO" />
+          <NavigationProperty Name="OMS_CIUDAD" Relationship="Self.FK_OMS_PRODUCTO_OMS_PRODUCTO" FromRole="OMS_PRODUCTO" ToRole="OMS_CIUDAD" />
+          <NavigationProperty Name="OMS_TARIFA_ESPECTACULO" Relationship="Self.FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO" FromRole="OMS_PRODUCTO" ToRole="OMS_TARIFA_ESPECTACULO" />
+          <NavigationProperty Name="OMS_TARIFA_HOSPEDAJE" Relationship="Self.FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE" FromRole="OMS_PRODUCTO" ToRole="OMS_TARIFA_HOSPEDAJE" />
+          <NavigationProperty Name="OMS_TARIFA_TRANSPORTE" Relationship="Self.FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE" FromRole="OMS_PRODUCTO" ToRole="OMS_TARIFA_TRANSPORTE" />
+        </EntityType>
+        <EntityType Name="OMS_ROL">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="OMS_MENU" Relationship="Self.OMS_ROL_MENU" FromRole="OMS_ROL" ToRole="OMS_MENU" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_CIUDAD">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_CIUDAD" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_CIUDAD" Relationship="Self.FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD" FromRole="OMS_TARIFA_CIUDAD" ToRole="OMS_CIUDAD" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_ESPECTACULO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA_ESP" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_ESPECTACULO" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_PRODUCTO" Relationship="Self.FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO" FromRole="OMS_TARIFA_ESPECTACULO" ToRole="OMS_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_HOSPEDAJE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA_HOSP" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_HOSPEDAJE" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_PRODUCTO" Relationship="Self.FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE" FromRole="OMS_TARIFA_HOSPEDAJE" ToRole="OMS_PRODUCTO" />
+        </EntityType>
+        <EntityType Name="OMS_TARIFA_TRANSPORTE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TARIFA_TRANS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PRECIO_TRANSPORTE" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="OMS_PRODUCTO" Relationship="Self.FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE" FromRole="OMS_TARIFA_TRANSPORTE" ToRole="OMS_PRODUCTO" />
+        </EntityType>
+        <Association Name="FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS">
+          <End Role="OMS_CAMPANAS" Type="Self.OMS_CAMPANAS" Multiplicity="1" />
+          <End Role="OMS_CAMPANA_PRODUCTO" Type="Self.OMS_CAMPANA_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_CAMPANAS">
+              <PropertyRef Name="IdCampana" />
+            </Principal>
+            <Dependent Role="OMS_CAMPANA_PRODUCTO">
+              <PropertyRef Name="IdCampana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO">
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="1" />
+          <End Role="OMS_CAMPANA_PRODUCTO" Type="Self.OMS_CAMPANA_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_PRODUCTO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_CAMPANA_PRODUCTO">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD">
+          <End Role="OMS_TARIFA_CIUDAD" Type="Self.OMS_TARIFA_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_CIUDAD" Type="Self.OMS_CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_CIUDAD">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_CIUDAD">
+              <PropertyRef Name="TIPO_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_PRODUCTO">
+          <End Role="OMS_CIUDAD" Type="Self.OMS_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="CIUDAD_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD">
+          <End Role="OMS_LOAD_TARIFA_CIUDAD" Type="Self.OMS_LOAD_TARIFA_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_CIUDAD" Type="Self.OMS_LOAD_CIUDAD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_CIUDAD">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_CIUDAD">
+              <PropertyRef Name="TIPO_CIUDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO">
+          <End Role="OMS_LOAD_CIUDAD" Type="Self.OMS_LOAD_CIUDAD" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_CIUDAD">
+              <PropertyRef Name="ID_CIUDAD" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="CIUDAD_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO">
+          <End Role="OMS_LOAD_TARIFA_ESPECTACULO" Type="Self.OMS_LOAD_TARIFA_ESPECTACULO" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_ESPECTACULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="TIPO_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE">
+          <End Role="OMS_LOAD_TARIFA_HOSPEDAJE" Type="Self.OMS_LOAD_TARIFA_HOSPEDAJE" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_HOSPEDAJE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="TIPO_HOSPEDAJE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE">
+          <End Role="OMS_LOAD_TARIFA_TRANSPORTE" Type="Self.OMS_LOAD_TARIFA_TRANSPORTE" Multiplicity="0..1" />
+          <End Role="OMS_LOAD_PRODUCTO" Type="Self.OMS_LOAD_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_LOAD_TARIFA_TRANSPORTE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_LOAD_PRODUCTO">
+              <PropertyRef Name="TIPO_TRANSPORTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO">
+          <End Role="OMS_TARIFA_ESPECTACULO" Type="Self.OMS_TARIFA_ESPECTACULO" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_ESPECTACULO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="TIPO_ESPECTACULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE">
+          <End Role="OMS_TARIFA_HOSPEDAJE" Type="Self.OMS_TARIFA_HOSPEDAJE" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_HOSPEDAJE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="TIPO_HOSPEDAJE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE">
+          <End Role="OMS_TARIFA_TRANSPORTE" Type="Self.OMS_TARIFA_TRANSPORTE" Multiplicity="0..1" />
+          <End Role="OMS_PRODUCTO" Type="Self.OMS_PRODUCTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OMS_TARIFA_TRANSPORTE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OMS_PRODUCTO">
+              <PropertyRef Name="TIPO_TRANSPORTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OMS_ROL_MENU">
+          <End Role="OMS_MENU" Type="Self.OMS_MENU" Multiplicity="0..1" />
+          <End Role="OMS_ROL" Type="Self.OMS_ROL" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="OMSEntitiesSQL" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OMS_CAMPANA_PRODUCTO" EntityType="Self.OMS_CAMPANA_PRODUCTO" />
+          <EntitySet Name="OMS_CAMPANAS" EntityType="Self.OMS_CAMPANAS" />
+          <EntitySet Name="OMS_CIUDAD" EntityType="Self.OMS_CIUDAD" />
+          <EntitySet Name="OMS_LOAD_CIUDAD" EntityType="Self.OMS_LOAD_CIUDAD" />
+          <EntitySet Name="OMS_LOAD_PRODUCTO" EntityType="Self.OMS_LOAD_PRODUCTO" />
+          <EntitySet Name="OMS_LOAD_TARIFA_CIUDAD" EntityType="Self.OMS_LOAD_TARIFA_CIUDAD" />
+          <EntitySet Name="OMS_LOAD_TARIFA_ESPECTACULO" EntityType="Self.OMS_LOAD_TARIFA_ESPECTACULO" />
+          <EntitySet Name="OMS_LOAD_TARIFA_HOSPEDAJE" EntityType="Self.OMS_LOAD_TARIFA_HOSPEDAJE" />
+          <EntitySet Name="OMS_LOAD_TARIFA_TRANSPORTE" EntityType="Self.OMS_LOAD_TARIFA_TRANSPORTE" />
+          <EntitySet Name="OMS_MENU" EntityType="Self.OMS_MENU" />
+          <EntitySet Name="OMS_PRODUCTO" EntityType="Self.OMS_PRODUCTO" />
+          <EntitySet Name="OMS_ROL" EntityType="Self.OMS_ROL" />
+          <EntitySet Name="OMS_TARIFA_CIUDAD" EntityType="Self.OMS_TARIFA_CIUDAD" />
+          <EntitySet Name="OMS_TARIFA_ESPECTACULO" EntityType="Self.OMS_TARIFA_ESPECTACULO" />
+          <EntitySet Name="OMS_TARIFA_HOSPEDAJE" EntityType="Self.OMS_TARIFA_HOSPEDAJE" />
+          <EntitySet Name="OMS_TARIFA_TRANSPORTE" EntityType="Self.OMS_TARIFA_TRANSPORTE" />
+          <AssociationSet Name="FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS" Association="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_CAMPANAS">
+            <End Role="OMS_CAMPANAS" EntitySet="OMS_CAMPANAS" />
+            <End Role="OMS_CAMPANA_PRODUCTO" EntitySet="OMS_CAMPANA_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO" Association="Self.FK_OMS_CAMPANA_PRODUCTO_OMS_PRODUCTO">
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+            <End Role="OMS_CAMPANA_PRODUCTO" EntitySet="OMS_CAMPANA_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD" Association="Self.FK_OMS_CIUDAD_OMS_TARIFA_CIUDAD">
+            <End Role="OMS_TARIFA_CIUDAD" EntitySet="OMS_TARIFA_CIUDAD" />
+            <End Role="OMS_CIUDAD" EntitySet="OMS_CIUDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_PRODUCTO" Association="Self.FK_OMS_PRODUCTO_OMS_PRODUCTO">
+            <End Role="OMS_CIUDAD" EntitySet="OMS_CIUDAD" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD" Association="Self.FK_OMS_LOAD_CIUDAD_OMS_LOAD_TARIFA_CIUDAD">
+            <End Role="OMS_LOAD_TARIFA_CIUDAD" EntitySet="OMS_LOAD_TARIFA_CIUDAD" />
+            <End Role="OMS_LOAD_CIUDAD" EntitySet="OMS_LOAD_CIUDAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_PRODUCTO">
+            <End Role="OMS_LOAD_CIUDAD" EntitySet="OMS_LOAD_CIUDAD" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_ESPECTACULO">
+            <End Role="OMS_LOAD_TARIFA_ESPECTACULO" EntitySet="OMS_LOAD_TARIFA_ESPECTACULO" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_HOSPEDAJE">
+            <End Role="OMS_LOAD_TARIFA_HOSPEDAJE" EntitySet="OMS_LOAD_TARIFA_HOSPEDAJE" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE" Association="Self.FK_OMS_LOAD_PRODUCTO_OMS_LOAD_TARIFA_TRANSPORTE">
+            <End Role="OMS_LOAD_TARIFA_TRANSPORTE" EntitySet="OMS_LOAD_TARIFA_TRANSPORTE" />
+            <End Role="OMS_LOAD_PRODUCTO" EntitySet="OMS_LOAD_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO" Association="Self.FK_OMS_PRODUCTO_OMS_TARIFA_ESPECTACULO">
+            <End Role="OMS_TARIFA_ESPECTACULO" EntitySet="OMS_TARIFA_ESPECTACULO" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE" Association="Self.FK_OMS_PRODUCTO_OMS_TARIFA_HOSPEDAJE">
+            <End Role="OMS_TARIFA_HOSPEDAJE" EntitySet="OMS_TARIFA_HOSPEDAJE" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE" Association="Self.FK_OMS_PRODUCTO_OMS_TARIFA_TRANSPORTE">
+            <End Role="OMS_TARIFA_TRANSPORTE" EntitySet="OMS_TARIFA_TRANSPORTE" />
+            <End Role="OMS_PRODUCTO" EntitySet="OMS_PRODUCTO" />
+          </AssociationSet>
+          <AssociationSet Name="OMS_ROL_MENU" Association="Self.OMS_ROL_MENU">
+            <End Role="OMS_MENU" EntitySet="OMS_MENU" />
+            <End Role="OMS_ROL" EntitySet="OMS_ROL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OMSModelSQLStoreContainer" CdmEntityContainer="OMSEntitiesSQL">
+          <EntitySetMapping Name="OMS_CAMPANA_PRODUCTO">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_CAMPANA_PRODUCTO">
+              <MappingFragment StoreEntitySet="OMS_CAMPANA_PRODUCTO">
+                <ScalarProperty Name="Id_Campana_Producto" ColumnName="Id_Campana_Producto" />
+                <ScalarProperty Name="IdCampana" ColumnName="IdCampana" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_CAMPANAS">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_CAMPANAS">
+              <MappingFragment StoreEntitySet="OMS_CAMPANAS">
+                <ScalarProperty Name="IdCampana" ColumnName="IdCampana" />
+                <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_CIUDAD">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_CIUDAD">
+              <MappingFragment StoreEntitySet="OMS_CIUDAD">
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="TIPO_CIUDAD" ColumnName="TIPO_CIUDAD" />
+                <ScalarProperty Name="NOMBRE_CIUDAD" ColumnName="NOMBRE_CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_LOAD_CIUDAD">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_LOAD_CIUDAD">
+              <MappingFragment StoreEntitySet="OMS_LOAD_CIUDAD">
+                <ScalarProperty Name="ID_CIUDAD" ColumnName="ID_CIUDAD" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="TIPO_CIUDAD" ColumnName="TIPO_CIUDAD" />
+                <ScalarProperty Name="NOMBRE_CIUDAD" ColumnName="NOMBRE_CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_LOAD_PRODUCTO">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_LOAD_PRODUCTO">
+              <MappingFragment StoreEntitySet="OMS_LOAD_PRODUCTO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESPECTACULO" ColumnName="ESPECTACULO" />
+                <ScalarProperty Name="FECHA_ESPECTACULO" ColumnName="FECHA_ESPECTACULO" />
+                <ScalarProperty Name="CIUDAD_ESPECTACULO" ColumnName="CIUDAD_ESPECTACULO" />
+                <ScalarProperty Name="FECHA_LLEGADA" ColumnName="FECHA_LLEGADA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+                <ScalarProperty Name="TIPO_TRANSPORTE" ColumnName="TIPO_TRANSPORTE" />
+                <ScalarProperty Name="TIPO_ESPECTACULO" ColumnName="TIPO_ESPECTACULO" />
+                <ScalarProperty Name="TIPO_HOSPEDAJE" ColumnName="TIPO_HOSPEDAJE" />
+                <ScalarProperty Name="RUTA_IMAGEN" ColumnName="RUTA_IMAGEN" />
+                <ScalarProperty Name="ROUTE" ColumnName="ROUTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_LOAD_TARIFA_CIUDAD">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_LOAD_TARIFA_CIUDAD">
+              <MappingFragment StoreEntitySet="OMS_LOAD_TARIFA_CIUDAD">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA" ColumnName="NOMBRE_TARIFA" />
+                <ScalarProperty Name="PRECIO_CIUDAD" ColumnName="PRECIO_CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_LOAD_TARIFA_ESPECTACULO">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_LOAD_TARIFA_ESPECTACULO">
+              <MappingFragment StoreEntitySet="OMS_LOAD_TARIFA_ESPECTACULO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA_ESP" ColumnName="NOMBRE_TARIFA_ESP" />
+                <ScalarProperty Name="PRECIO_ESPECTACULO" ColumnName="PRECIO_ESPECTACULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_LOAD_TARIFA_HOSPEDAJE">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_LOAD_TARIFA_HOSPEDAJE">
+              <MappingFragment StoreEntitySet="OMS_LOAD_TARIFA_HOSPEDAJE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA_HOSP" ColumnName="NOMBRE_TARIFA_HOSP" />
+                <ScalarProperty Name="PRECIO_HOSPEDAJE" ColumnName="PRECIO_HOSPEDAJE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_LOAD_TARIFA_TRANSPORTE">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_LOAD_TARIFA_TRANSPORTE">
+              <MappingFragment StoreEntitySet="OMS_LOAD_TARIFA_TRANSPORTE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA_TRANS" ColumnName="NOMBRE_TARIFA_TRANS" />
+                <ScalarProperty Name="PRECIO_TRANSPORTE" ColumnName="PRECIO_TRANSPORTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_MENU">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_MENU">
+              <MappingFragment StoreEntitySet="OMS_MENU">
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="NombreMenu" ColumnName="NombreMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_PRODUCTO">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_PRODUCTO">
+              <MappingFragment StoreEntitySet="OMS_PRODUCTO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ESPECTACULO" ColumnName="ESPECTACULO" />
+                <ScalarProperty Name="FECHA_ESPECTACULO" ColumnName="FECHA_ESPECTACULO" />
+                <ScalarProperty Name="CIUDAD_ESPECTACULO" ColumnName="CIUDAD_ESPECTACULO" />
+                <ScalarProperty Name="FECHA_LLEGADA" ColumnName="FECHA_LLEGADA" />
+                <ScalarProperty Name="FECHA_SALIDA" ColumnName="FECHA_SALIDA" />
+                <ScalarProperty Name="TIPO_TRANSPORTE" ColumnName="TIPO_TRANSPORTE" />
+                <ScalarProperty Name="TIPO_ESPECTACULO" ColumnName="TIPO_ESPECTACULO" />
+                <ScalarProperty Name="TIPO_HOSPEDAJE" ColumnName="TIPO_HOSPEDAJE" />
+                <ScalarProperty Name="RUTA_IMAGEN" ColumnName="RUTA_IMAGEN" />
+                <ScalarProperty Name="ROUTE" ColumnName="ROUTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_ROL">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_ROL">
+              <MappingFragment StoreEntitySet="OMS_ROL">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_TARIFA_CIUDAD">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_TARIFA_CIUDAD">
+              <MappingFragment StoreEntitySet="OMS_TARIFA_CIUDAD">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA" ColumnName="NOMBRE_TARIFA" />
+                <ScalarProperty Name="PRECIO_CIUDAD" ColumnName="PRECIO_CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_TARIFA_ESPECTACULO">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_TARIFA_ESPECTACULO">
+              <MappingFragment StoreEntitySet="OMS_TARIFA_ESPECTACULO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA_ESP" ColumnName="NOMBRE_TARIFA_ESP" />
+                <ScalarProperty Name="PRECIO_ESPECTACULO" ColumnName="PRECIO_ESPECTACULO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_TARIFA_HOSPEDAJE">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_TARIFA_HOSPEDAJE">
+              <MappingFragment StoreEntitySet="OMS_TARIFA_HOSPEDAJE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA_HOSP" ColumnName="NOMBRE_TARIFA_HOSP" />
+                <ScalarProperty Name="PRECIO_HOSPEDAJE" ColumnName="PRECIO_HOSPEDAJE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OMS_TARIFA_TRANSPORTE">
+            <EntityTypeMapping TypeName="OMSModelSQL.OMS_TARIFA_TRANSPORTE">
+              <MappingFragment StoreEntitySet="OMS_TARIFA_TRANSPORTE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE_TARIFA_TRANS" ColumnName="NOMBRE_TARIFA_TRANS" />
+                <ScalarProperty Name="PRECIO_TRANSPORTE" ColumnName="PRECIO_TRANSPORTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="OMS_ROL_MENU" TypeName="OMSModelSQL.OMS_ROL_MENU" StoreEntitySet="OMS_ROL_MENU">
+            <EndProperty Name="OMS_MENU">
+              <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+            </EndProperty>
+            <EndProperty Name="OMS_ROL">
+              <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
