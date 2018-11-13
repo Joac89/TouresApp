@@ -1,11 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Http } from '@angular/http';
 import { StoreService } from '../../services/store.service';
 import { LoaderService } from '../../services/loader.service';
 import { CheckControl } from '../../models/check.control';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AuthService } from '../../services/auth.service';
+import { forEach } from '@angular/router/src/utils/collection';
+import { isPlatformBrowser, DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -17,10 +18,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class CampaignComponent {
     search: any = {};
     aux: any = {};
+    Campaign: any = {};
+    textSearch: string = "";
+    typeSearch: number = 0;
     current: any = {};
     pag: number = 0;
     endPage: boolean = false;
     path: string = "";
+
     inputFile: any;
     imageSrc = '';  
 
@@ -67,6 +72,19 @@ export class CampaignComponent {
         this.current.count = 1;
     }
 
+    update() {
+        var carts = this.storeService.getItemsInCart();
+        if (this.search.data) {
+            for (var i = 0; i < this.search.data.length; ++i) {
+                var find = carts.find(x => x.id == this.search.data[i].id);
+                if (find) {
+                    this.search.data[i].inCart = true;
+                    this.search.data[i].countCart = find.count;
+                }
+            }
+        }
+    }
+
     check = new CheckControl(1, "Sin filtro");
 
     searchForm = new FormGroup({
@@ -75,12 +93,14 @@ export class CampaignComponent {
         checkSearch: new FormControl(''),
     });
 
-    productForm = new FormGroup({
+    campaingForm = new FormGroup({
         textNombre: new FormControl(''),
         fechaIni: new FormControl(''),
         fechaFin: new FormControl(''),
         imageUrl: new FormControl(''),
     });
+
+    error: any = { statusCode: 200 };
 
     sendSearch() {
         var text = this.searchForm.value.textSearch;
@@ -96,6 +116,48 @@ export class CampaignComponent {
         ]);
     }
 
+    get form() { return this.campaingForm.controls; }
+
+    sendProduct() {
+
+        this.loaderService.start();
+
+        var json = {
+            Name: this.campaingForm.value.textNombre,
+            StartDate: this.campaingForm.value.fechaIni,
+            EndDate: this.campaingForm.value.fechaFin,
+            Image: this.imageSrc,
+            Id: 0
+        }
+
+        if (this.Campaign.id != null) {
+
+            json.Id = this.Campaign.id;
+
+            console.log(this.Campaign);
+            this.http.put(this.path + "api/campaign/update", json).map(response => response.json()).subscribe(result => {
+                this.loaderService.end();
+            }, error => {
+                this.loaderService.end();
+                this.error = error;
+
+                console.error(error);
+            });
+
+        }
+        else {
+
+            this.http.post(this.path + "api/campaign/create", json).map(response => response.json()).subscribe(result => {
+                this.loaderService.end();
+            }, error => {
+                this.loaderService.end();
+                this.error = error;
+
+                console.error(error);
+            });
+        }
+    }
+    
     changeFilter(id: number, text: string) {
         this.check.id = id;
         this.check.text = text;

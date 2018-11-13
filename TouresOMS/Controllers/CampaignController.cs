@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using TouresOMS.Services;
 using TouresCommon;
+using TouresOMS.Models;
 
 namespace TouresOMS.Controllers
 {
@@ -67,6 +68,24 @@ namespace TouresOMS.Controllers
         {
             var service = new CampaignService(new HttpService($"{urlService}/{id}/4"));
             var response = await service.DeleteCampaign();
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> InsertCampaign([FromBody] CampaignModel data)
+        {
+            var service = new CampaignService(new HttpService($"{urlService}"));
+            var response = await service.InsertCampaign(data);
+            return this.Ok(response);
+        }
+
+        [HttpPost]
+        [Route("update")]
+        public async Task<IActionResult> UpdateCampaign([FromBody] CampaignModel data)
+        {
+            var service = new CampaignService(new HttpService($"{urlService}"));
+            var response = await service.UpdateCampaign(data);
             return this.Ok(response);
         }
     }

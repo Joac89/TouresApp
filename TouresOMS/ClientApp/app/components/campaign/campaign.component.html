@@ -47,14 +47,14 @@
         </div>
     </div>
 </div>
-<!--<detail-prod [item]="current" [modal]="'exampleModal1'" [callback]="update()"></detail-prod>-->
+<detail-prod [item]="current" [modal]="'exampleModal1'" [callback]="update()"></detail-prod>
 <div class="text-center fadeIn slow animated registration">
     <div class="row justify-content-md-center no-margin">
         <div class="col-lg-11 col-md-11 col-sm-12 home">
             <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
                         [subtitle]="'Reg&iacute;strate para poder realizar las compras de tus eventos deportivos preferidos'">
             </page-title>
-            <form *ngIf="!saved" [formGroup]="registrationForm" (ngSubmit)="sendRegister()" #formReg="ngForm">
+            <form *ngIf="!saved" [formGroup]="campaingForm" (ngSubmit)="sendProduct()" #formReg="ngForm">
                 <div class="text-left">
                     <div class="step justify-content-md-center my-auto">
                         <div class="number bg-info justify-content-md-center my-auto">
@@ -72,12 +72,12 @@
                             <validator [field]="form.textNombre"></validator>
 
                         </div>
-                        <div class="form-group">
-                            <label for="espectaculo">Fecha Incial Campa&ntilde;a</label>
-                            <input type="date" name="fechaIni" min="2018-11-04" max="2020-05-25" step="2">
-                            <label for="espectaculo">Fecha Fin Campa&ntilde;a</label>
-                            <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3">
-                        </div>
+
+                        <label for="campana">Fecha Incial Campa&ntilde;a</label>
+                        <input type="date" name="fechaIni" min="2018-11-04" max="2020-05-25" step="2" formControlName="fechaIni">
+                        <label for="campana">Fecha Fin Campa&ntilde;a</label>
+                        <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaFin">
+
                         <div class="form-group">
                             <label for="rutaimg">Imagen</label>
                             <img [src]="product.image" style="max-width:100px;max-height:100px" />
@@ -88,7 +88,6 @@
                     </div>
 
                 </div>
-
                 <div *ngIf="error.statusCode != 200">
                     <div class="alert alert-danger text-left">
                         <strong>Lo sentimos!</strong> Hubo un inconveniente al registrar la campa&ntilde;a: {{error.statusText}}
@@ -98,7 +97,12 @@
                 <p>
                     Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
                 </p>
-                <button type="submit" class="btn btn-info" [disabled]="formReg.form.invalid">Finalizar registro</button>
+                <button type="submit" (click)="sendProduct()" id="Guardar" aria-label="Close" class="btn btn-info">
+                    Guardar
+                </button>
+                <button type="button" (click)="clearProduct()" aria-label="Close" class="btn btn-outline-dark">
+                    Limpiar
+                </button>
             </form>
 
             <div class="text-left" style="padding:0" *ngIf="saved">
@@ -106,11 +110,7 @@
                     <h4 class="alert-heading">
                         <i class="fa fa-check"></i>&nbsp;Felicitaciones!
                     </h4>
-                    <p class="no-margin">
-                        Te has registrado correctamente como usuario
-                        <strong>{{newuser}}</strong> en
-                        <strong>TouresBalon</strong>. Desde ahora podrás disfrutar de la compra de tus Eventos Deportivos deseados.
-                    </p>
+                    <p class="no-margin">Se a actualizado el sistema correctamente.</p>
                 </div>
                 <div class="text-center">
                     <a href="#" [routerLink]="['/login', newuser]" class="btn btn-info">
