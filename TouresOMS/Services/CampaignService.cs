@@ -1,7 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using TouresOMS.Models;
@@ -126,6 +125,22 @@ namespace TouresOMS.Services
             var response = new ResponseBase<bool>();
 
             response = await httpService.Send<bool>(UriMethod.Delete);
+
+            return await Task.Run(() => response);
+        }
+
+        public async Task<ResponseBase<bool>> InsertCampaign(CampaignModel data)
+        {
+            var response = new ResponseBase<bool>();
+            response = await httpService.Send<bool, CampaignModel>(data, BodyMethod.Post);
+
+            return await Task.Run(() => response);
+        }
+
+        public async Task<ResponseBase<bool>> UpdateCampaign(CampaignModel data)
+        {
+            var response = new ResponseBase<bool>();
+            response = await httpService.Send<bool, CampaignModel>(data, BodyMethod.Put);
 
             return await Task.Run(() => response);
         }
