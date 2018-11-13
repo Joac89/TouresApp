@@ -148,18 +148,18 @@ namespace TouresOMS.Services
             return await Task.Run(() => response);
         }
 
-        public async Task<ResponseBase<bool>> InsertProduct(ProductModel data)
+        public async Task<ResponseBase<bool>> InsertProduct(ProductSModel data)
         {
             var response = new ResponseBase<bool>();
-            response = await httpService.Send<bool, ProductModel>(data, BodyMethod.Post);
+            response = await httpService.Send<bool, ProductSModel>(data, BodyMethod.Post);
 
             return await Task.Run(() => response);
         }
 
-        public async Task<ResponseBase<bool>> UpdateProduct(ProductModel data)
+        public async Task<ResponseBase<bool>> UpdateProduct(ProductSModel data)
         {
             var response = new ResponseBase<bool>();
-            response = await httpService.Send<bool, ProductModel>(data, BodyMethod.Put);
+            response = await httpService.Send<bool, ProductSModel>(data, BodyMethod.Put);
 
             return await Task.Run(() => response);
         }

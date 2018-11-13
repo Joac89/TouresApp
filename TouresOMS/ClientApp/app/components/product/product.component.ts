@@ -208,26 +208,31 @@ export class ProductComponent {
 
         var json = {
             id: "",
-            NombreEspectaculo: this.productForm.value.textNombreEspectaculo,
-            PrecioTransporte: this.productForm.value.textPrecioTrasporte,
-            NombreTransporte: this.productForm.value.textNombreTransporte,
-            FechaEspectaculo: this.productForm.value.fechaEspectaculo,
-            CiudadEspectaculo: this.productForm.value.selectCiudad,
-            NombreHospedaje: this.productForm.value.textNombreHospedaje,
-            PrecioHospedaje: this.productForm.value.textPrecioHospedaje,
-            TipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
-            TipoTransporte: this.productForm.value.selectTipoTransporte,
-            Nombre: this.productForm.value.textNombreProduct,
-            Espectaculo: this.productForm.value.textEspectaculo,
-            TipoHospedaje: this.productForm.value.selectTipoHospedaje,
-            rutaImagen:"",
-            Image: this.imageSrc,
-            Pais: this.productForm.value.selectCountry,
-            PrecioCiudad: this.productForm.value.textPrecioCiudad,
-            FechaSalida: this.productForm.value.fechaSalida,
-            FechaLLegada: this.productForm.value.fechaRegreso,
-            PrecioEspectaculo: this.productForm.value.textPrecioEspectaculo,
-            ValorProducto: this.productForm.value.textPrecioProducto              
+            nombre: this.productForm.value.textNombreProduct,
+            espectaculo: this.productForm.value.textEspectaculo,
+            fechaSalida: this.productForm.value.fechaSalida,
+            cuidadEspectaculo: this.productForm.value.selectCiudad,
+            fechaLlegada: this.productForm.value.fechaRegreso,
+            fechaEspectaculo: this.productForm.value.fechaEspectaculo,
+            tipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
+            tipoHospedaje: this.productForm.value.selectTipoHospedaje,
+            tipoTransporte: this.productForm.value.selectTipoTransporte,
+            rutaImagen: "",
+            image: this.imageSrc,
+            route: "0",
+            
+            nombreTarifaEsp: this.productForm.value.textNombreEspectaculo,
+            precioTransporte: this.productForm.value.textPrecioTrasporte,
+            nombreTarifaTrans: this.productForm.value.textNombreTransporte,
+                        
+            nombreTarifaHosp: this.productForm.value.textNombreHospedaje,
+            precioHospedaje: this.productForm.value.textPrecioHospedaje,
+
+            pais: this.productForm.value.selectCountry,
+            precioCiudad: this.productForm.value.textPrecioCiudad,
+            
+            precioEsp: this.productForm.value.textPrecioEspectaculo,
+            valorProducto: this.productForm.value.textPrecioProducto              
         }
         
         if (this.product) {

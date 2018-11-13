@@ -74,22 +74,24 @@ namespace TouresOMS.Controllers
 
         [HttpPost]
         [Route("create")]
-        public async Task<IActionResult> InsertProduct([FromBody] ProductModel data)
+        public async Task<IActionResult> InsertProduct([FromBody] ProductImgModel data)
         {
             ///var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
             var service = new ProductService(new HttpService($"{urlService}"));
-            var response = await service.InsertProduct(data);
+            ProductSModel data1 = data;
+            var response = await service.InsertProduct(data1);
 
             return this.Ok(response);
         }
 
         [HttpPut]
         [Route("update")]
-        public async Task<IActionResult> UpdateProduct([FromBody] ProductModel data, long id)
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductImgModel data, long id)
         {
            // var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
             var service = new ProductService(new HttpService($"{urlService}/{id}"));
-            var response = await service.UpdateProduct(data);
+            ProductSModel data1 = data;
+            var response = await service.UpdateProduct(data1);
 
             return this.Ok(response);
         }
