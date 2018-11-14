@@ -54,16 +54,16 @@
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/home']" class="nav-link" href="#">Inicio</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/campaign']" class="nav-link" href="#">Campa&ntilde;as</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/order']" class="nav-link" href="#">Mis ordenes</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/productC']" class="nav-link" href="#">Consulta Productos</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/product']" class="nav-link" href="#">Productos</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">

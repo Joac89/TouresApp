@@ -223,7 +223,7 @@ export class ProductComponent {
                         
         }
         
-        if (this.product) {
+        if (this.product.id !== undefined) {
 
             json.id = this.product.id;
             json.rutaImagen = this.product.rutaImagen,
@@ -316,6 +316,6 @@ export class ProductComponent {
 
     clearProduct() {
         this.productForm.reset()
-        this.product = null;
+        this.product = {};
     }
 }

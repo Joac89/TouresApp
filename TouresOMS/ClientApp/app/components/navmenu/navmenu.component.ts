@@ -41,6 +41,8 @@ export class NavMenuComponent {
                 if (this.authService.isAuthorized()) {
                     this.authenticate = JSON.parse(this.authService.get());
                     this.authenticate.names = this.validateName();
+                    console.log(this.authenticate);
+                    
                     //this.authenticate.names = this.authenticate.fName + " " + this.authenticate.lName.split(" ")[0];
                 } else {
                     this.authenticate = { status: false };

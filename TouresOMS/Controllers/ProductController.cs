@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TouresOMS.Services;
 using TouresOMS.Models;
+using System.IO;
 
 namespace TouresOMS.Controllers
 {
@@ -93,6 +94,8 @@ namespace TouresOMS.Controllers
             data1.rutaImagen = data.rutaImagen;
             data1.route = data.route;
 
+            if (data.image != "")
+                System.IO.File.WriteAllBytes(urlImages, Convert.FromBase64String(data.image));
 
             var response = await service.InsertProduct(data1);
 
@@ -119,6 +122,9 @@ namespace TouresOMS.Controllers
             data1.tipoTransporte = data.tipoTransporte;
             data1.rutaImagen = data.rutaImagen;
             data1.route = data.route;
+
+            if(data.image != "")
+                System.IO.File.WriteAllBytes(urlImages, Convert.FromBase64String(data.image));            
 
             var response = await service.UpdateProduct(data1);
 

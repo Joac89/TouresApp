@@ -51,7 +51,7 @@ namespace TouresOMS.Services
 					switch (type)
 					{
 						case BodyMethod.Post:
-							result = await client.PostAsync(urlService, content);
+						result = await client.PostAsync(urlService, content);
 							break;
 						case BodyMethod.Put:
 							result = await client.PutAsync(urlService, content);
