@@ -155,6 +155,7 @@ export class ProductComponent {
         textSearch: new FormControl(''),
         dateSearch: new FormControl(''),
         checkSearch: new FormControl(''),
+        selectProducto: new FormControl(''),
     });
 
     productForm = new FormGroup({
@@ -188,8 +189,12 @@ export class ProductComponent {
 
     sendSearch() {
         var text = this.searchForm.value.textSearch;
-        var id = this.check.id;
-
+        var id: any ;
+       
+        if (this.searchForm.value.selectProducto == 2) {
+            this.check.id = 2
+            id = this.check.id;
+        }
         this.searchForm.reset();
         this.changeFilter(1, "Sin filtro");
         this.router.navigate(["product",
@@ -270,6 +275,7 @@ export class ProductComponent {
     changeFilter(id: number, text: string) {
         this.check.id = id;
         this.check.text = text;
+        
     }
 
     deleteProduct(id: number) {
@@ -318,4 +324,6 @@ export class ProductComponent {
         this.productForm.reset()
         this.product = {};
     }
+
+
 }

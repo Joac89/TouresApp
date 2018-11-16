@@ -68,3 +68,226 @@
     font-size: 12px;
     padding: 5px;
 }
+@media (max-width: 767px) {
+    .h-menu {
+        display: none !important;
+    }
+
+    .button-menu {
+        display: block !important;
+    }
+}
+
+#input_event {
+    margin-right: 10px;
+    min-width: 250px;
+}
+
+#button_event {
+    margin-left: 10px;
+}
+
+    #button_event .btn {
+        border-radius: 3px 0 0 3px;
+        border-right: 0;
+        border-color: #ced4da;
+        background-color: transparent;
+    }
+
+#input_date {
+    margin-right: 10px;
+}
+
+.content-cart {
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    padding: 10px;
+    border-radius: 3px 0 0 0;
+    color: #fff;
+    text-decoration: none;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.75);
+}
+
+    .content-cart i, .content-cart strong {
+        /*font-size: 18px;*/
+    }
+
+.button-menu {
+    display: none;
+}
+
+.nav-user {
+    border-right: 1px solid #c0c0c0;
+    border-left: 1px solid #c0c0c0;
+}
+
+.nav-logout {
+}
+
+.h-menu {
+    background-color: #fff;
+    margin: 0;
+    padding: 5px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+    .h-menu .nav-item a {
+        font-weight: normal;
+    }
+
+    .h-menu .row {
+        margin: 0;
+    }
+
+    .h-menu .nav-item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+        .h-menu .nav-item .nav-link {
+            color: #000;
+        }
+
+            .h-menu .nav-item .nav-link.title {
+                color: #000;
+                font-weight: bold;
+            }
+
+        .h-menu .nav-item.active .nav-link {
+            /*color: #dc3545;*/
+            /*color: #138496;*/
+            color: #000;
+            font-weight: bolder;
+        }
+
+    .h-menu .cart {
+        padding-right: 0;
+    }
+
+        .h-menu .cart .cart-item {
+            padding: 2px;
+            padding-left: 7px;
+            padding-right: 7px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 16px;
+            margin-top: -4px;
+        }
+/*OLD*/
+li .glyphicon {
+    margin-right: 10px;
+}
+
+li.link-active a,
+li.link-active a:hover,
+li.link-active a:focus {
+    /*background-color: #4189C7;
+    color: white;*/
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    .main-nav {
+        height: 100%;
+        width: calc(25% - 20px);
+    }
+
+    .navbar {
+        border-radius: 0px;
+        border-width: 0px;
+        height: 100%;
+    }
+
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-collapse {
+        border-top: 1px solid #444;
+        padding: 0px;
+    }
+
+    .navbar ul {
+        float: none;
+    }
+
+    .navbar li {
+        float: none;
+        font-size: 15px;
+        margin: 6px;
+    }
+
+        .navbar li a {
+            padding: 10px 16px;
+            border-radius: 4px;
+        }
+
+    .navbar a {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+    /* Dropdown button on hover & focus */
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd
+        }
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display: block;
+}
+
