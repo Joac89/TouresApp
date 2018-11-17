@@ -95,6 +95,7 @@ export class ProductComponent {
     getSearch(inner: boolean = false) {
         this.loaderService.start();
         this.pag += 1;
+        this.imageSrc = "";
 
         if (inner && this.pag > 1) {
             this.textSearch = btoa(this.textSearch);
@@ -155,6 +156,7 @@ export class ProductComponent {
         textSearch: new FormControl(''),
         dateSearch: new FormControl(''),
         checkSearch: new FormControl(''),
+        selectProducto: new FormControl(''),
     });
 
     productForm = new FormGroup({
@@ -188,8 +190,12 @@ export class ProductComponent {
 
     sendSearch() {
         var text = this.searchForm.value.textSearch;
-        var id = this.check.id;
-
+        var id: any ;
+       
+        if (this.searchForm.value.selectProducto == 2) {
+            this.check.id = 2
+            id = this.check.id;
+        }
         this.searchForm.reset();
         this.changeFilter(1, "Sin filtro");
         this.router.navigate(["product",
@@ -217,7 +223,7 @@ export class ProductComponent {
             tipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
             tipoHospedaje: this.productForm.value.selectTipoHospedaje,
             tipoTransporte: this.productForm.value.selectTipoTransporte,
-            rutaImagen: "",
+            rutaImagen: "/products/" + this.file.name,
             image: this.imageSrc,
             route: 0,         
                         
@@ -226,7 +232,9 @@ export class ProductComponent {
         if (this.product.id !== undefined) {
 
             json.id = this.product.id;
-            json.rutaImagen = this.product.rutaImagen,
+
+            if (json.rutaImagen == "")
+                json.rutaImagen = this.product.rutaImagen,
 
             //console.log(this.product);
             console.log(json);
@@ -261,7 +269,8 @@ export class ProductComponent {
             });
         }
                     // if (result.code == 200) 
-            //this.sendSearch();
+            this.product.image = "";
+           
 
            
        
@@ -270,6 +279,7 @@ export class ProductComponent {
     changeFilter(id: number, text: string) {
         this.check.id = id;
         this.check.text = text;
+        
     }
 
     deleteProduct(id: number) {
@@ -298,16 +308,18 @@ export class ProductComponent {
         
     }
 
+    file: any;
+
     handleInputChange(e: any) {
-        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        this.file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
         const pattern = /image-*/;
         const reader = new FileReader();
-        if (!file.type.match(pattern)) {
+        if (!this.file.type.match(pattern)) {
             alert('invalid format');
             return;
         }
         reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(this.file);
     }
     _handleReaderLoaded(e: any) {
         const reader = e.target;
@@ -318,4 +330,6 @@ export class ProductComponent {
         this.productForm.reset()
         this.product = {};
     }
+
+
 }
