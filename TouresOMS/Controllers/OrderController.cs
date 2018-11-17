@@ -30,7 +30,7 @@ namespace TouresOMS.Controllers
 			return this.Result(response.Code, response);
 		}
 
-		[HttpPost]
+        [HttpPost]
 		[Route("create")]
 		public async Task<IActionResult> InsertOrder([FromBody] OrderModel data)
 		{

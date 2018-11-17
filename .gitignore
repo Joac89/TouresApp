@@ -329,3 +329,4 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 TouresOMS/TouresOMS.csproj
+TouresOMS/ClientApp/app/components/navmenu/navmenu.component.html

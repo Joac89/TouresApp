@@ -29,21 +29,15 @@ namespace TouresOMS.Services
 			response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
 			return await Task.Run(() => response);
-
-
-			//var response = new ResponseBase<List<OrderModel>>();
-			//var search = new List<OrderModel>();
-			//var lst = new List<OrderModel>();
-
-			//lst = GetList();
-
-			//response.Code = 200;
-			//response.Data = lst;
-
-			//Thread.Sleep(500);
-
-			//return await Task.Run(() => response);
 		}
+
+        public async Task<ResponseBase<List<OrderReportModel>>> GetReportOrden()
+        {
+            var response = new ResponseBase<List<OrderReportModel>>();
+            response = await httpService.Send<List<OrderReportModel>>(UriMethod.Get);
+
+            return await Task.Run(() => response);
+        }
 
 		public async Task<ResponseBase<bool>> DeleteOrder()
 		{
