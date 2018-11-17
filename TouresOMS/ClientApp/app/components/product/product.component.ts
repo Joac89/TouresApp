@@ -95,6 +95,7 @@ export class ProductComponent {
     getSearch(inner: boolean = false) {
         this.loaderService.start();
         this.pag += 1;
+        this.imageSrc = "";
 
         if (inner && this.pag > 1) {
             this.textSearch = btoa(this.textSearch);
@@ -222,7 +223,7 @@ export class ProductComponent {
             tipoEspectaculo: this.productForm.value.selectTipoEspectaculo,
             tipoHospedaje: this.productForm.value.selectTipoHospedaje,
             tipoTransporte: this.productForm.value.selectTipoTransporte,
-            rutaImagen: "",
+            rutaImagen: "/products/" + this.file.name,
             image: this.imageSrc,
             route: 0,         
                         
@@ -231,7 +232,9 @@ export class ProductComponent {
         if (this.product.id !== undefined) {
 
             json.id = this.product.id;
-            json.rutaImagen = this.product.rutaImagen,
+
+            if (json.rutaImagen == "")
+                json.rutaImagen = this.product.rutaImagen,
 
             //console.log(this.product);
             console.log(json);
@@ -266,7 +269,8 @@ export class ProductComponent {
             });
         }
                     // if (result.code == 200) 
-            //this.sendSearch();
+            this.product.image = "";
+           
 
            
        
@@ -304,16 +308,18 @@ export class ProductComponent {
         
     }
 
+    file: any;
+
     handleInputChange(e: any) {
-        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+        this.file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
         const pattern = /image-*/;
         const reader = new FileReader();
-        if (!file.type.match(pattern)) {
+        if (!this.file.type.match(pattern)) {
             alert('invalid format');
             return;
         }
         reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(this.file);
     }
     _handleReaderLoaded(e: any) {
         const reader = e.target;

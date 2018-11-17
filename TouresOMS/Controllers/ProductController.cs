@@ -17,14 +17,16 @@ namespace TouresOMS.Controllers
 	{
 		private IConfiguration config;
 		private string urlService = "";
-		private string urlImages = "";
+		private string urlImageslocal = "";
+        private string urlImages = "";
 
-		public ProductController(IConfiguration configuration)
+        public ProductController(IConfiguration configuration)
 		{
 			config = configuration;
 			urlService = config["services:productos"];
-			urlImages = config["services:images"];
-		}
+			urlImageslocal = config["services:imageslocal"];
+            urlImages = config["services:images"];
+        }
 
 		[HttpGet]
 		public async Task<IActionResult> GetPrincipals()
@@ -94,8 +96,7 @@ namespace TouresOMS.Controllers
             data1.rutaImagen = data.rutaImagen;
             data1.route = data.route;
 
-            if (data.image != "")
-                System.IO.File.WriteAllBytes(urlImages, Convert.FromBase64String(data.image));
+            saveImg(data.image, data.rutaImagen);
 
             var response = await service.InsertProduct(data1);
 
@@ -123,13 +124,57 @@ namespace TouresOMS.Controllers
             data1.rutaImagen = data.rutaImagen;
             data1.route = data.route;
 
-            if(data.image != "")
-                System.IO.File.WriteAllBytes(urlImages, Convert.FromBase64String(data.image));            
-
+            saveImg(data.image, data.rutaImagen);
+              
+            
             var response = await service.UpdateProduct(data1);
 
             return this.Ok(response);
         }
+
+        private bool saveImg(string img, string rutaimg)
+        {
+            bool success = false;
+
+            if (img != "")
+            {
+                //string converted = data.image.Replace('-', '+');
+                //converted = converted.Replace('_', '/');
+
+                string[] urlImages = img.Split(',');
+                string[] uriext = urlImages[0].Split(';');
+                string[] ext = uriext[0].Split('/');
+
+                
+                string fullPath = urlImageslocal + rutaimg;
+
+                if (Directory.Exists(urlImageslocal))
+                {
+                    try
+                    {
+                        using (FileStream fs = new FileStream(fullPath, FileMode.CreateNew, FileAccess.Write))
+                        {
+                            byte[] bytes = Convert.FromBase64String(urlImages[1]);
+                            fs.Write(bytes, 0, bytes.Length);
+                            //System.IO.File.WriteAllBytes(urlImageslocal, Convert.FromBase64String(urlImages[1]));
+                        }
+
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            //System.IO.File.Delete(fullPath);
+                            success = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                      success = false;
+                    }
+                }                            
+            }
+
+            return success;
+        }
+
 
     }
 }
