@@ -196,6 +196,10 @@ export class ProductComponent {
             this.check.id = 2
             id = this.check.id;
         }
+        else {
+            this.check.id = 1
+            id = this.check.id;
+        }
         this.searchForm.reset();
         this.changeFilter(1, "Sin filtro");
         this.router.navigate(["product",
