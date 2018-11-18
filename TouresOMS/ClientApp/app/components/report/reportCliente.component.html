@@ -21,12 +21,12 @@
 
                 <br />
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th colspan="8" class="text-left">
-                                        Ordenes
+                                        Ranking Clientes Por Facturacion
                                     </th>
                                 </tr>
                                 <tr>
@@ -42,7 +42,7 @@
                                     <td scope="row" class="row-fil text-left">{{item.fname}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.total}}</td>
                                     <td scope="row" class="row-fil text-center">
-                                        <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.ordId)">
+                                        <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.custid)">
                                             Detalles
                                         </button>
                                     </td>
@@ -50,11 +50,42 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="8" class="text-left">
+                                        Ordenes
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">ordid</th>
+                                    <th scope="col">Fecha Inicial</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Comentarios</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of showItems.data">
+                                    <td scope="row" class="row-fil text-center">{{item.ordid}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.ordendate | date: 'yyyy/MM/dd'}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.price}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.comments}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.nombre_estado}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
                 <!--<button *ngIf="!endPage" class="btn btn-info" (click)="getCampaign()">
-        <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
-    </button>-->
+            <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+        </button>-->
+                
+            </form>
+            <form *ngIf="!saved" #formReg="ngForm">
+                
             </form>
         </div>
     </div>

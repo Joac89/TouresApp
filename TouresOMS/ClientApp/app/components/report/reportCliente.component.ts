@@ -15,12 +15,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class reportClienteComponent {
     search: any = {};
-    typeSearch: number = 0;
-    current: any = {};
-    pag: number = 0;
-    endPage: boolean = false;
     path: string = "";  
     aux: any;
+    showItems: any[] = [];
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
         this.route.params.subscribe(params => {
@@ -39,12 +36,9 @@ export class reportClienteComponent {
         else if (text == "Ranking Productos") {
             tipo = 4;
         }
-
-        this.pag += 1;
             
         this.http.get(this.path + "api/report/get/cliente/" + tipo.toString()).map(response => response.json()).subscribe(result => {           
             this.aux = result;
-            if (result.data.length == 0 || result.data.length < 4) this.endPage = true;
             this.loaderService.end();
         }, error => {
             this.loaderService.end();
@@ -60,16 +54,23 @@ export class reportClienteComponent {
 
     reportForm = new FormGroup({
         textSearch: new FormControl(''),
-        grillaOrden: new FormControl(''),
     });
 
 
 
     error: any = { statusCode: 200 };
 
-    showOrderItems(order: number) {
-        //this.orderItem = order;
-        //this.showItems = items;
-        //this.selected = order;
+    showOrderItems(custid: number) {
+        var p_cusid = custid;
+
+        this.loaderService.start();
+
+        this.http.get(this.path + "api/report/get/clienteRanking/" + p_cusid.toString()).map(response => response.json()).subscribe(result2 => {
+            this.showItems = result2;
+            this.loaderService.end();
+        }, error => {
+            this.loaderService.end();
+            console.error(error);
+        });
     }
 }

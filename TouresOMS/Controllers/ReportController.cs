@@ -36,6 +36,14 @@ namespace TouresOMS.Controllers
             return this.Result(response.Code, response);
         }
 
+        [HttpGet("get/clienteRanking/{cusid}")]
+        public async Task<IActionResult> GetReportRankingCliente(int cusid)
+        {
+            var service = new ReportService(new HttpService($"{urlService}/cliente/{cusid}"));
+            var response = await service.GetReportOrden();
+            return this.Result(response.Code, response);
+            //PRUEBAS
+        }
 
     }
 }
