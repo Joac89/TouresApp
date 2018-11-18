@@ -30,9 +30,6 @@ namespace TouresOMS.Controllers
 
 			return this.Result(response.Code, response);
 		}
-
-<<<<<<< HEAD
-<<<<<<< HEAD
         [HttpGet("get/all/{Id}")]
         public async Task<IActionResult> GetOrdersById(long Id)
         {
@@ -67,11 +64,7 @@ namespace TouresOMS.Controllers
 
             return this.Result(response.Code, response);
         }
-
-=======
->>>>>>> f691a8a0865f78ac5d64cf3761840358e29b9534
-=======
->>>>>>> master
+        
         [HttpPost]
 		[Route("create")]
 		public async Task<IActionResult> InsertOrder([FromBody] OrderModel data)
