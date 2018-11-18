@@ -1,0 +1,61 @@
+
+<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+                        [subtitle]="'Se encontraron ' + (aux && aux.data ? aux.data.length : 0) + ' coincidencias para '"
+                        [reference]="textSearch">
+            </page-title>
+            <label for="sel1">Seleccione el reporte a consultar:</label>
+            <br />
+            <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
+                <div class="row">
+                    <select class="form-control col-lg-11 col-md-11 col-sm-11" formControlName="textSearch">
+                        <option>Ranking Ordenes Abiertas</option>
+                        <option>Ranking Cerradas</option>
+                    </select>
+                    <button class="btn btn-info" (click)="getReport()">
+                        <i class="fa fa-download"></i>Buscar..
+                    </button>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="8" class="text-left">
+                                        Ordenes
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">ordid</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Fecha Inicial</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Comentarios</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of aux.data">
+                                    <td scope="row" class="row-fil text-center">{{item.ordid}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.fname}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.ordendate | date: 'yyyy/MM/dd'}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.price}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.comments}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.nombre_estado}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!--<button *ngIf="!endPage" class="btn btn-info" (click)="getCampaign()">
+        <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+    </button>-->
+            </form>
+        </div>
+    </div>
+</div>

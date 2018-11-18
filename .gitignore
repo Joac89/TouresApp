@@ -329,6 +329,7 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 TouresOMS/TouresOMS.csproj
+<<<<<<< HEAD
 TouresOMS/appsettings.json
 TouresOMS/ClientApp/app/app.shared.module.ts
 TouresOMS/ClientApp/app/components/navmenu/navmenu.component.html
@@ -343,3 +344,6 @@ TouresOMS/TouresOMS.csproj
 TouresOMS/appsettings.json
 *.json
 *.json
+=======
+TouresOMS/ClientApp/app/components/navmenu/navmenu.component.html
+>>>>>>> master
