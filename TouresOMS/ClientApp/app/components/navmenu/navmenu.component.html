@@ -9,6 +9,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" [routerLink]="['/home']">Inicio</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/campaign']">Campa&ntilde;as</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/report']">Mis Reportes</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/product']">Productos</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/productC']">Consultas Productos </a>
                         <a class="dropdown-item" href="#" [routerLink]="['/customer']">Clientes</a>
@@ -60,6 +61,9 @@
                         <a [routerLink]="['/campaign']" class="nav-link" href="#">Campa&ntilde;as</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/report']" class="nav-link" href="#">Mis reportes</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/order']" class="nav-link" href="#">Ordenes</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
@@ -74,9 +78,9 @@
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/user']" class="nav-link" href="#">Usuarios</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                    <!--<li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/orders']" class="nav-link" href="#">Ordenes</a>
-                    </li>
+                    </li>-->
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/customer']" class="nav-link" style="padding-right:0" href="#">Reg&iacute;strate</a>
                     </li>

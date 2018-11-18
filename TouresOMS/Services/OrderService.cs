@@ -29,23 +29,42 @@ namespace TouresOMS.Services
 			response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
 			return await Task.Run(() => response);
-
-
-			//var response = new ResponseBase<List<OrderModel>>();
-			//var search = new List<OrderModel>();
-			//var lst = new List<OrderModel>();
-
-			//lst = GetList();
-
-			//response.Code = 200;
-			//response.Data = lst;
-
-			//Thread.Sleep(500);
-
-			//return await Task.Run(() => response);
 		}
+<<<<<<< HEAD
+        public async Task<ResponseBase<List<OrderModel>>> GetOrdersById()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
+            return await Task.Run(() => response);
+        }
+        public async Task<ResponseBase<List<OrderModel>>> GetOrdersByProduct()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
+
+            return await Task.Run(() => response);
+        }
+        public async Task<ResponseBase<List<OrderModel>>> GetAllOrders()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
+=======
+
+        public async Task<ResponseBase<List<OrderReportModel>>> GetReportOrden()
+        {
+            var response = new ResponseBase<List<OrderReportModel>>();
+            response = await httpService.Send<List<OrderReportModel>>(UriMethod.Get);
+>>>>>>> f691a8a0865f78ac5d64cf3761840358e29b9534
+
+            return await Task.Run(() => response);
+        }
+
+<<<<<<< HEAD
+        public async Task<ResponseBase<bool>> DeleteOrder()
+=======
 		public async Task<ResponseBase<bool>> DeleteOrder()
+>>>>>>> f691a8a0865f78ac5d64cf3761840358e29b9534
 		{
 			var response = new ResponseBase<bool>();
 			response = await httpService.Send<bool>(UriMethod.Delete);

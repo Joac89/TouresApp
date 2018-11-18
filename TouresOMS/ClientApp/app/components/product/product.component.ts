@@ -81,9 +81,7 @@ export class ProductComponent {
             this.search.data = [];
 
             if (this.textSearch) this.getSearch();
-        });
-
-
+        });        
     }
 
     //get form() { return this.productForm.controls; }
