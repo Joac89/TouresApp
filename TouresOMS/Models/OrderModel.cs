@@ -41,4 +41,12 @@ namespace TouresOMS.Models
         public double total { get; set; }
         public int custid { get; set; }
     }
+
+    public class ReportProductModel
+    {
+        public string productname { get; set; }
+        public int Cantidad { get; set; }
+        public int proid { get; set; }
+        public double valor { get; set; }
+    }
 }
