@@ -6,15 +6,15 @@
                         [subtitle]="'Se encontraron ' + (aux && aux.data ? aux.data.length : 0) + ' coincidencias para '"
                         [reference]="textSearch">
             </page-title>
-            <label for="sel1">Seleccione el reporte a consultar:</label>
+            <label for="sel1">Seleccione la fecha a consultar:</label>
             <br />
             <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
-                <div class="row">
+                <!--<div class="row">
                     <select class="form-control col-lg-12 col-md-12 col-sm-12" formControlName="textSearch">
                         <option>Ranking Clientes</option>
                         <option>Ranking Productos</option>
                     </select>  
-                </div>
+                </div>-->
                 <br />
                 <div class="row">
                     <label for="campana">Fecha Incial Campa&ntilde;a</label>

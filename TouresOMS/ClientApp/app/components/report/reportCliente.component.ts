@@ -16,6 +16,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class reportClienteComponent {
     search: any = {};
     path: string = "";  
+    date1: string = "";
+    date2: string = "";
     aux: any;
     showItems: any[] = [];
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
@@ -29,18 +31,18 @@ export class reportClienteComponent {
     getReport() {
         this.loaderService.start();
         this.showItems = [];
-        var text = this.reportForm.value.textSearch;
-        var date1 = this.reportForm.value.fechaIni;
-        var date2 = this.reportForm.value.fechaFin;
-        var tipo = 0;
-        if (text == "Ranking Clientes") {
-            tipo = 3;
-        }
-        else if (text == "Ranking Productos") {
-            tipo = 4;
-        }
+        //var text = this.reportForm.value.textSearch;
+        this.date1 = this.reportForm.value.fechaIni;
+        this.date2 = this.reportForm.value.fechaFin;
+        var tipo = 3;
+        //if (text == "Ranking Clientes") {
+        //    tipo = 3;
+        //}
+        //else if (text == "Ranking Productos") {
+        //    tipo = 4;
+        //}
             
-        this.http.get(this.path + "api/report/get/cliente/" + tipo.toString() + "/" + date1 + "/" + date2).map(response => response.json()).subscribe(result => {           
+        this.http.get(this.path + "api/report/get/cliente/" + tipo.toString() + "/" + this.date1 + "/" + this.date2).map(response => response.json()).subscribe(result => {           
             this.aux = result;
             this.loaderService.end();
         }, error => {
@@ -56,7 +58,7 @@ export class reportClienteComponent {
     });
 
     reportForm = new FormGroup({
-        textSearch: new FormControl(''),
+        //textSearch: new FormControl(''),
         fechaIni: new FormControl(''),
         fechaFin: new FormControl(''),
     });
@@ -70,7 +72,7 @@ export class reportClienteComponent {
 
         this.loaderService.start();
 
-        this.http.get(this.path + "api/report/get/clienteRanking/" + p_cusid.toString()).map(response => response.json()).subscribe(result2 => {
+        this.http.get(this.path + "api/report/get/clienteRanking/" + p_cusid.toString()+ "/" + this.date1 + "/" + this.date2).map(response => response.json()).subscribe(result2 => {
             this.showItems = result2;
             this.loaderService.end();
         }, error => {
