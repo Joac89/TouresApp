@@ -29,7 +29,7 @@ export class CustomerComponent {
         //cmbCreditYear: new FormControl(''),
         //textCreditCvv: new FormControl('')
     });
-
+     
     cardtype: string = "";
     path: string = "";
     saved: boolean = false;
@@ -40,11 +40,33 @@ export class CustomerComponent {
     private first: string = "";
     private last: string = "";
     private franchise: number = 0;
+        
+    id: string = "";
+    user: any = {};    
+    update: boolean = false;    
+    authorize: boolean = false;
 
     constructor(@Inject('BASE_URL') baseUrl: string, private router: Router, private http: Http, private loaderService: LoaderService, private tokenService: TokenService, private authService: AuthService, private commonService: CommonService) {
         this.cardtype = "otra";
-        this.path = baseUrl;
+        this.path = baseUrl;    
+        
+        if (typeof window !== 'undefined') {
+
+            if (this.authService.isAuthorized()) {
+                var info = JSON.parse(this.authService.get());
+
+                this.authorize = true;
+                this.getUserInfo(info.docNumber);
+            }
+        }        
     }
+
+    searchForm = new FormGroup({
+        textSearch: new FormControl(''),
+        dateSearch: new FormControl(''),
+        checkSearch: new FormControl(''),
+        selectSearch: new FormControl(''),
+    });
 
     get form() { return this.registrationForm.controls; }
 
@@ -105,4 +127,40 @@ export class CustomerComponent {
     getMonths() {
         return this.commonService.getMonths();
     }
+
+    getUserInfo(id: string) {
+            this.loaderService.start();
+            this.id = id;
+
+            var token = this.tokenService.getTokenHeader();
+            this.http.get(this.path + "api/Customer/get/" + this.id, token).map(response => response.json()).subscribe(result => {
+                this.loaderService.end();
+                this.user = result.data;
+
+                this.user.creditType = this.commonService.getCreditCard(this.user.creditCardType);
+                this.user.names = (this.user.fName + ' ' + this.user.lName).toUpperCase();
+
+                this.reloadInfo();
+
+            }, error => {
+                this.loaderService.end();
+                console.error(error);
+            });
+        }
+
+        reloadInfo() {
+            this.registrationForm.value.textName = this.user.fName;
+            this.registrationForm.value.textSurname = this.user.lName;
+            //this.updateForm.value.textAddres = "";
+            this.registrationForm.value.textPhone = this.user.phoneNumber;
+            this.registrationForm.value.textEmail = this.user.email;
+            this.registrationForm.value.textPassword1 = "";
+            this.registrationForm.value.textCreditCard = this.user.creditCardNumber;
+            this.registrationForm.value.textDocument = this.user.docNumber;
+
+            //this.user.address = "";
+            this.user.password = "";
+
+            this.getCreditCardType(<number>this.user.creditCardNumber);
+        }
 }
