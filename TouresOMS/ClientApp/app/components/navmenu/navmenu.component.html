@@ -78,9 +78,6 @@
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/user']" class="nav-link" href="#">Usuarios</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
-                        <a [routerLink]="['/orders']" class="nav-link" href="#">Ordenes</a>
-                    </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/customer']" class="nav-link" style="padding-right:0" href="#">Reg&iacute;strate</a>
                     </li>
