@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using TouresOMS.Services;
-using TouresOMS.Models;
 using TouresCommon;
 
 namespace TouresOMS.Controllers
@@ -23,12 +22,19 @@ namespace TouresOMS.Controllers
         [HttpGet("get/{tipo}")]
         public async Task<IActionResult> GetReportOrden(int tipo)
         {
-            var service = new OrderService(new HttpService($"{urlService}/{tipo}"));
+            var service = new ReportService(new HttpService($"{urlService}/{tipo}"));
+            var response = await service.GetReportOrden();
+            return this.Result(response.Code, response);
+            //PRUEBAS
+        }
+
+        [HttpGet("get/cliente/{tipo}")]
+        public async Task<IActionResult> GetReportCliente(int tipo)
+        {
+            var service = new ReportService(new HttpService($"{urlService}/{tipo}"));
             var response = await service.GetReportOrden();
             return this.Result(response.Code, response);
         }
-
-
 
 
     }

@@ -52,14 +52,6 @@ namespace TouresOMS.Services
             return await Task.Run(() => response);
         }
 
-        public async Task<ResponseBase<List<OrderReportModel>>> GetReportOrden()
-        {
-            var response = new ResponseBase<List<OrderReportModel>>();
-            response = await httpService.Send<List<OrderReportModel>>(UriMethod.Get);
-
-            return await Task.Run(() => response);
-        }
-
         public async Task<ResponseBase<bool>> DeleteOrder()
         {
             var response = new ResponseBase<bool>();
