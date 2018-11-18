@@ -15,6 +15,7 @@ import { CampaignComponent } from './components/campaign/campaign.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductCComponent } from './components/product/productC.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerPComponent } from './components/customer/customerP.component';
 import { StoreComponent } from './components/store/store.component';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
@@ -42,6 +43,7 @@ import { DetailComponent } from './components/campaign/detail.component';
         ProductComponent,
         ProductCComponent,
         CustomerComponent,
+        CustomerPComponent,
         StoreComponent,
         UserComponent,
         LoginComponent,
@@ -71,6 +73,7 @@ import { DetailComponent } from './components/campaign/detail.component';
             { path: 'product', component: ProductComponent },
             { path: 'productC', component: ProductCComponent },
             { path: 'customer', component: CustomerComponent },
+            { path: 'customerP', component: CustomerPComponent },
             { path: 'store', component: StoreComponent },
             { path: 'user', component: UserComponent, canActivate: [GuardService] },
             { path: 'login', component: LoginComponent },
