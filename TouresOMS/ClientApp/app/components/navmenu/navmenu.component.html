@@ -9,7 +9,8 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" [routerLink]="['/home']">Inicio</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/campaign']">Campa&ntilde;as</a>
-                        <a class="dropdown-item" href="#" [routerLink]="['/report']">Mis Reportes</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/report']">Reportes Orden</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/reportCliente']">Reportes Otros</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/product']">Productos</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/productC']">Consultas Productos </a>
                         <a class="dropdown-item" href="#" [routerLink]="['/customer']">Clientes</a>
@@ -61,7 +62,10 @@
                         <a [routerLink]="['/campaign']" class="nav-link" href="#">Campa&ntilde;as</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
-                        <a [routerLink]="['/report']" class="nav-link" href="#">Mis reportes</a>
+                        <a [routerLink]="['/report']" class="nav-link" href="#">Reportes Orden</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/reportCliente']" class="nav-link" href="#">Reportes Otros</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/order']" class="nav-link" href="#">Ordenes</a>
