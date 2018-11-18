@@ -14,7 +14,7 @@
                         <a class="dropdown-item" href="#" [routerLink]="['/product']">Productos</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/productC']">Consultas Productos </a>
                         <a class="dropdown-item" href="#" [routerLink]="['/customer']">Clientes</a>
-                        <a class="dropdown-item" href="#" [routerLink]="['/user']">Usuarios</a>
+                        <!--<a class="dropdown-item" href="#" [routerLink]="['/user']">Usuarios</a>-->
                         <a class="dropdown-item" href="#" [routerLink]="['/order']">Ordenes</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/customer']">Reg&iacute;strate</a>
                         <a class="dropdown-item" href="http://localhost:62440/Reporte/ReporteIndex" target="_blank">Reporte</a>
@@ -79,9 +79,9 @@
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/customer']" class="nav-link" href="#">Cliente</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                    <!--<li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/user']" class="nav-link" href="#">Usuarios</a>
-                    </li>
+                    </li>-->
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/customer']" class="nav-link" style="padding-right:0" href="#">Reg&iacute;strate</a>
                     </li>
