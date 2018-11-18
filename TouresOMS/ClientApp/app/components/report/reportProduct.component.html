@@ -10,25 +10,47 @@
             <br />
             <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
                 <div class="row">
-                    <select class="form-control col-lg-11 col-md-11 col-sm-11" formControlName="textSearch">
-                        <option>Ranking Ordenes Abiertas</option>
-                        <option>Ranking Cerradas</option>
-                    </select>
-                    
-                </div>
-                <br />
-                <div class="row">
                     <label for="campana">Fecha Incial Campa&ntilde;a</label>
-                    <input type="date" name="fechaIni" min="2018-11-04" max="2020-05-25" step="2" formControlName="fechaIni">
-                    <label for="campana">Fecha Fin Campa&ntilde;a</label>
-                    <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaFin">
+                        <input type="date" name="fechaIni" min="2018-11-04" max="2020-05-25" step="2" formControlName="fechaIni">
+                        <label for="campana">Fecha Fin Campa&ntilde;a</label>
+                        <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaFin">
                     <button class="btn btn-info" (click)="getReport()">
                         <i class="fa fa-download"></i>Buscar..
                     </button>
                 </div>
+
                 <br />
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th colspan="8" class="text-left">
+                                        Ranking Clientes Por Facturacion
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Codigo</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of aux.data">
+                                    <td scope="row" class="row-fil text-left">{{item.custid}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.fname}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.total}}</td>
+                                    <td scope="row" class="row-fil text-center">
+                                        <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.custid)">
+                                            Detalles
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -38,7 +60,6 @@
                                 </tr>
                                 <tr>
                                     <th scope="col">ordid</th>
-                                    <th scope="col">Nombre</th>
                                     <th scope="col">Fecha Inicial</th>
                                     <th scope="col">Valor</th>
                                     <th scope="col">Comentarios</th>
@@ -46,9 +67,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let item of aux.data">
+                                <tr *ngFor="let item of showItems.data">
                                     <td scope="row" class="row-fil text-center">{{item.ordid}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.fname}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.ordendate | date: 'yyyy/MM/dd'}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.price}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.comments}}</td>
@@ -60,8 +80,12 @@
 
                 </div>
                 <!--<button *ngIf="!endPage" class="btn btn-info" (click)="getCampaign()">
-        <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
-    </button>-->
+            <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+        </button>-->
+                
+            </form>
+            <form *ngIf="!saved" #formReg="ngForm">
+                
             </form>
         </div>
     </div>

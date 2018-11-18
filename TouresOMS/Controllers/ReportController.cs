@@ -19,19 +19,19 @@ namespace TouresOMS.Controllers
             urlService = config["services:report"];
         }
 
-        [HttpGet("get/{tipo}")]
-        public async Task<IActionResult> GetReportOrden(int tipo)
+        [HttpGet("get/{tipo}/{fecha1}/{fecha2}")]
+        public async Task<IActionResult> GetReportOrden(int tipo, string fecha1, string fecha2)
         {
-            var service = new ReportService(new HttpService($"{urlService}/{tipo}"));
+            var service = new ReportService(new HttpService($"{urlService}/{tipo}/{fecha1}/{fecha2}"));
             var response = await service.GetReportOrden();
             return this.Result(response.Code, response);
             //PRUEBAS
         }
 
-        [HttpGet("get/cliente/{tipo}")]
-        public async Task<IActionResult> GetReportCliente(int tipo)
+        [HttpGet("get/cliente/{tipo}/{fecha1}/{fecha2}")]
+        public async Task<IActionResult> GetReportCliente(int tipo, string fecha1, string fecha2)
         {
-            var service = new ReportService(new HttpService($"{urlService}/{tipo}"));
+            var service = new ReportService(new HttpService($"{urlService}/{tipo}/{fecha1}/{fecha2}"));
             var response = await service.GetReportCliente();
             return this.Result(response.Code, response);
         }
@@ -42,8 +42,14 @@ namespace TouresOMS.Controllers
             var service = new ReportService(new HttpService($"{urlService}/cliente/{cusid}"));
             var response = await service.GetReportOrden();
             return this.Result(response.Code, response);
-            //PRUEBAS
         }
 
+        [HttpGet("get/product/{tipo}")]
+        public async Task<IActionResult> GetReportRankingProduct(int tipo)
+        {
+            var service = new ReportService(new HttpService($"{urlService}/product/{tipo}"));
+            var response = await service.GetReportOrden();
+            return this.Result(response.Code, response);
+        }
     }
 }

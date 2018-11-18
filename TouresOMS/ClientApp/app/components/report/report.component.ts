@@ -33,6 +33,8 @@ export class reportComponent {
     getReport() {
         this.loaderService.start();
         var text = this.reportForm.value.textSearch;
+        var date1 = this.reportForm.value.fechaIni;
+        var date2 = this.reportForm.value.fechaFin;
         var tipo = 0;
         if (text == "Ranking Ordenes Abiertas") {
             tipo = 1;
@@ -43,7 +45,7 @@ export class reportComponent {
 
         this.pag += 1;
             
-        this.http.get(this.path + "api/report/get/" + tipo.toString()).map(response => response.json()).subscribe(result => {           
+        this.http.get(this.path + "api/report/get/" + tipo.toString() + "/" + date1 + "/" + date2).map(response => response.json()).subscribe(result => {           
             this.aux = result;
             if (result.data.length == 0 || result.data.length < 4) this.endPage = true;
             this.loaderService.end();
@@ -61,7 +63,8 @@ export class reportComponent {
 
     reportForm = new FormGroup({
         textSearch: new FormControl(''),
-        grillaOrden: new FormControl(''),
+        fechaIni: new FormControl(''),
+        fechaFin: new FormControl(''),
     });
 
 
