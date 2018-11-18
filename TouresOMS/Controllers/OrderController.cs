@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TouresOMS.Services;
 using TouresOMS.Models;
 using TouresCommon;
+using System.Collections.Generic;
 
 namespace TouresOMS.Controllers
 {
@@ -30,7 +31,45 @@ namespace TouresOMS.Controllers
 			return this.Result(response.Code, response);
 		}
 
-		[HttpPost]
+<<<<<<< HEAD
+        [HttpGet("get/all/{Id}")]
+        public async Task<IActionResult> GetOrdersById(long Id)
+        {
+            var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new OrderService(new HttpService($"{urlService}/{"all"}/{Id}"));
+            var response = await service.GetOrdersById();
+
+            return this.Result(response.Code, response);
+        }
+
+        [HttpGet("get/all/Product/{Product}")]
+        public async Task<IActionResult> GetOrdersByProduct(long Product)
+        {
+            var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new OrderService(new HttpService($"{urlService}/{"all/Product"}/{Product}"));
+            var response = await service.GetOrdersByProduct();                      
+
+            return this.Result(response.Code, response);
+        }
+
+        [HttpGet("get/all")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new OrderService(new HttpService($"{urlService}/{"all"}"));
+            var response = await service.GetAllOrders();
+
+            //var response1 = response.Data.Find(x => x.OrdId.Equals(68));
+
+            //List<OrderModel> result = new List<OrderModel>();
+            //result.Add(response1);
+
+            return this.Result(response.Code, response);
+        }
+
+=======
+>>>>>>> f691a8a0865f78ac5d64cf3761840358e29b9534
+        [HttpPost]
 		[Route("create")]
 		public async Task<IActionResult> InsertOrder([FromBody] OrderModel data)
 		{
