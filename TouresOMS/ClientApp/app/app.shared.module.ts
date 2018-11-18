@@ -60,6 +60,7 @@ import { DetailComponent } from './components/campaign/detail.component';
             { path: '', component: LoginComponent },
             { path: 'home', component: HomeComponent },
             { path: 'order', component: OrderComponent, canActivate: [GuardService] },
+            
             { path: 'report', component: reportComponent},
             { path: 'campaign', component: CampaignComponent },
             { path: 'detail', component: DetailComponent },
