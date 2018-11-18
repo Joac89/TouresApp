@@ -32,7 +32,7 @@ namespace TouresOMS.Controllers
         public async Task<IActionResult> GetReportCliente(int tipo)
         {
             var service = new ReportService(new HttpService($"{urlService}/{tipo}"));
-            var response = await service.GetReportOrden();
+            var response = await service.GetReportCliente();
             return this.Result(response.Code, response);
         }
 

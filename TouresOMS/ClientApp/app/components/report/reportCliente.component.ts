@@ -9,11 +9,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'report',
-    templateUrl: './report.component.html',
-    styleUrls: ['./report.component.css', '../../style/general.css'],
+    templateUrl: './reportCliente.component.html',
+    styleUrls: ['./reportCliente.component.css', '../../style/general.css'],
     providers: [StoreService]
 })
-export class reportComponent {
+export class reportClienteComponent {
     search: any = {};
     typeSearch: number = 0;
     current: any = {};
@@ -21,7 +21,6 @@ export class reportComponent {
     endPage: boolean = false;
     path: string = "";  
     aux: any;
-    aux2: any;
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
         this.route.params.subscribe(params => {
@@ -34,16 +33,16 @@ export class reportComponent {
         this.loaderService.start();
         var text = this.reportForm.value.textSearch;
         var tipo = 0;
-        if (text == "Ranking Ordenes Abiertas") {
-            tipo = 1;
+        if (text == "Ranking Clientes") {
+            tipo = 3;
         }
-        else if (text == "Ranking Cerradas") {
-            tipo = 2;
+        else if (text == "Ranking Productos") {
+            tipo = 4;
         }
 
         this.pag += 1;
             
-        this.http.get(this.path + "api/report/get/" + tipo.toString()).map(response => response.json()).subscribe(result => {           
+        this.http.get(this.path + "api/report/get/cliente/" + tipo.toString()).map(response => response.json()).subscribe(result => {           
             this.aux = result;
             if (result.data.length == 0 || result.data.length < 4) this.endPage = true;
             this.loaderService.end();
@@ -68,5 +67,9 @@ export class reportComponent {
 
     error: any = { statusCode: 200 };
 
-   
+    showOrderItems(order: number) {
+        //this.orderItem = order;
+        //this.showItems = items;
+        //this.selected = order;
+    }
 }

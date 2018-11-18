@@ -11,8 +11,8 @@
             <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
                 <div class="row">
                     <select class="form-control col-lg-11 col-md-11 col-sm-11" formControlName="textSearch">
-                        <option>Ranking Ordenes Abiertas</option>
-                        <option>Ranking Cerradas</option>
+                        <option>Ranking Clientes</option>
+                        <option>Ranking Productos</option>
                     </select>
                     <button class="btn btn-info" (click)="getReport()">
                         <i class="fa fa-download"></i>Buscar..
@@ -30,22 +30,22 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th scope="col">ordid</th>
+                                    <th scope="col">Codigo</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Fecha Inicial</th>
                                     <th scope="col">Valor</th>
-                                    <th scope="col">Comentarios</th>
-                                    <th scope="col">Estado</th>
+                                    <th scope="col">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of aux.data">
-                                    <td scope="row" class="row-fil text-center">{{item.ordid}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.custid}}</td>
                                     <td scope="row" class="row-fil text-left">{{item.fname}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.ordendate | date: 'yyyy/MM/dd'}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.price}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.comments}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.nombre_estado}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.total}}</td>
+                                    <td scope="row" class="row-fil text-center">
+                                        <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.ordId)">
+                                            Detalles
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

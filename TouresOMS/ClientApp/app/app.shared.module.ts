@@ -10,6 +10,7 @@ import { StartComponent } from './components/start/start.component';
 import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { reportComponent } from './components/report/report.component';
+import { reportClienteComponent } from './components/report/reportCliente.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductCComponent } from './components/product/productC.component';
@@ -33,6 +34,7 @@ import { DetailComponent } from './components/campaign/detail.component';
         NavMenuComponent,
         OrderComponent,
         reportComponent,
+        reportClienteComponent,
         CampaignComponent,
         DetailComponent,
         StartComponent,
@@ -61,7 +63,8 @@ import { DetailComponent } from './components/campaign/detail.component';
             { path: 'home', component: HomeComponent },
             { path: 'order', component: OrderComponent, canActivate: [GuardService] },
             
-            { path: 'report', component: reportComponent},
+            { path: 'report', component: reportComponent },
+            { path: 'reportCliente', component: reportClienteComponent },
             { path: 'campaign', component: CampaignComponent },
             { path: 'detail', component: DetailComponent },
             { path: 'detail/:camp', component: DetailComponent },

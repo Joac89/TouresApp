@@ -39,5 +39,6 @@ namespace TouresOMS.Models
     {
         public string fname { get; set; }
         public double total { get; set; }
+        public int custid { get; set; }
     }
 }
