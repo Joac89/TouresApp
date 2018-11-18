@@ -43,52 +43,65 @@
                             Datos Producto
                         </p>
                     </div>
-
                     <div class="step justify-content-md-center my-auto">
                         <div class="form-group">
                             <label for="nombrep">Nombre Producto</label>
                             <input type="text" maxlength="20" [(ngModel)]="product.nombre" class="form-control" id="nombrep" formControlName="textNombreProduct" placeholder="">
                             <validator [field]="form.textNombreProduct"></validator>
                         </div>
-                        <label for="espectaculo">Fecha Espectaculo</label>
-                        <input type="date" id="espectaculo" [(ngModel)]="product.fechaEspectaculo" name="fechaespectaculo" step="2" formControlName="fechaEspectaculo">
-                        <label for="salida">Fecha Salida</label>
-                        <input type="date" id="salida" name="salida" [ngModel]="product.fechaSalida" step="3" formControlName="fechaSalida">
-                        <label for="regreso">Fecha Regreso</label>
-                        <input type="date" id=" regreso" name="regreso" [ngModel]="product.fechaLlegada" step="4" formControlName="fechaRegreso">
+                        <div class="row">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                <label for="espectaculo">Fecha Espectaculo</label>
+                                <input class="form-control" type="date" id="espectaculo" [(ngModel)]="product.fechaEspectaculo" name="fechaespectaculo" step="2" formControlName="fechaEspectaculo">
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                <label for="salida">Fecha Salida</label>
+                                <input class="form-control" type="date" id="salida" name="salida" [ngModel]="product.fechaSalida" step="3" formControlName="fechaSalida">
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                <label for="regreso">Fecha Regreso</label>
+                                <input class="form-control" type="date" id=" regreso" name="regreso" [ngModel]="product.fechaLlegada" step="4" formControlName="fechaRegreso">
+                            </div>
+                        </div>                      
+                                <div class="form-group">
+                                    <label for="espectaculo">Nombre Espectaculo</label>
+                                    <input type="text" [(ngModel)]="product.espectaculo" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
+                                    <validator [field]="form.textEspectaculo"></validator>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ciudad">Ciudad</label>
+                                    <select id="ciudadespectaculo" name="ciudadespectaculo"
+                                            [(ngModel)]="product.cuidadEspectaculo" class="form-control" placeholder="" formControlName="selectCiudad">
+                                        <option *ngFor="let cit of citys" [value]="cit.id" value="{{product.cuidadEspectaculo}}">
+                                            {{cit.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preciociudad">Precio Ciudad</label>
+                                    <input type="text" required maxlength="40" [(ngModel)]="product.precioCiudad" minlength="5" class="form-control" id="preciociudad" formControlName="textPrecioCiudad" placeholder="">
+                                    <validator [field]="form.textPrecioCiudad"></validator>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precioproducto">Precio Producto</label>
+                                    <input type="text" required maxlength="40" [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
 
-                        <div class="form-group">
-                            <label for="espectaculo">Nombre Espectaculo</label>
-                            <input type="text" [(ngModel)]="product.espectaculo" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
-                            <validator [field]="form.textEspectaculo"></validator>
-                        </div>
-                        <div class="form-group">
-                            <label for="ciudad">Ciudad</label>
-                            <select id="ciudadespectaculo" name="ciudadespectaculo"
-                                    [(ngModel)]="product.cuidadEspectaculo" class="form-control" placeholder="" formControlName="selectCiudad">
-                                <option *ngFor="let cit of citys" [value]="cit.id" value="{{product.cuidadEspectaculo}}">
-                                    {{cit.name}}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="preciociudad">Precio Ciudad</label>
-                            <input type="text" required maxlength="40" [(ngModel)]="product.precioCiudad" minlength="5" class="form-control" id="preciociudad" formControlName="textPrecioCiudad" placeholder="">
-                            <validator [field]="form.textPrecioCiudad"></validator>
-                        </div>
-                        <div class="form-group">
-                            <label for="precioproducto">Precio Producto</label>
-                            <input type="text" required maxlength="40" [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
-
-                        </div>
-                        <div class="form-group">
-                            <label for="rutaimg">Imagen</label>
-                            <img [src]="product.image" style="max-width:200px;max-height:200px" />
-                            <img [src]="imageSrc" style="max-width:200px;max-height:200px" />
-                            <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
-                            <!--<button type="button" class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>-->
-                        </div>
-                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                        <label for="rutaimg">Imagen a Almacenada</label>
+                                        <img [src]="product.image" style="max-width:100px;max-height:100px" />
+                                    </div>
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                            <label for="rutaimg">Imagen a Cargar</label>                                            
+                                            <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
+                                        </div>
+                                        <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                            <label for="rutaimg">File Upload</label>
+                                            <input class="form-control-file" name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
+                                        </div>
+                                    </div>
+                                </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 text-left">

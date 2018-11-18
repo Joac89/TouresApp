@@ -77,8 +77,7 @@ export class OrderComponent {
         selectProducto: new FormControl(''),
     });
 
-    getOrders() {
-        console.log("prueba");
+    getOrders() {        
         this.loaderService.start();
 
         if (typeof window !== 'undefined') {

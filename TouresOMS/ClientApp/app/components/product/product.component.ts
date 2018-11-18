@@ -71,7 +71,6 @@ export class ProductComponent {
         { id: 2, name: 'Internacional' },
     ];
 
-
     constructor(private datePipe: DatePipe, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
 
@@ -82,8 +81,6 @@ export class ProductComponent {
 
             if (this.textSearch) this.getSearch();
         });
-
-
     }
 
     //get form() { return this.productForm.controls; }
