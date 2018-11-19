@@ -38,7 +38,7 @@
                                     Clientes
                                 </th>
                             </tr>
-                            <tr>                                 
+                            <tr>
                                 <th scope="col">#Cliente</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Apellido</th>
@@ -50,6 +50,8 @@
                                 <th scope="col">Numero Documento</th>
                                 <th scope="col">Nombre de Usuario</th>
                                 <th scope="col">Tipo Cliente</th>
+                                <th scope="col">Orden</th>
+                                <th scope="col">Item</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,9 +64,11 @@
                                 <td scope="row" class="row-fil text-left">{{item.creditCardType}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.creditCardNumber}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.status}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.docNumber}}</td>                                
+                                <td scope="row" class="row-fil text-left">{{item.docNumber}}</td>
                                 <td scope="row" class="row-fil text-left">{{item.userName}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.tipoCliente}}</td>                                
+                                <td scope="row" class="row-fil text-left">{{item.tipoCliente}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.ordId}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.itemId}}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -15,5 +15,7 @@
 		public string UserName { get; set; }
         public string TipoCliente { get; set; }
         public string clientType { get; set; }
-	}
+        public string ordId { get; set; }
+        public string itemId { get; set; }
+    }
 }
