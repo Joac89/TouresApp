@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using TouresOMS.Models;
 using TouresCommon;
+using System.Collections.Generic;
 
 namespace TouresOMS.Services
 {
@@ -36,10 +37,10 @@ namespace TouresOMS.Services
 
 			return await Task.Run(() => response);
 		}
-        public async Task<ResponseBase<CustomerModel>> GetCustomerByProduct()
+        public async Task<ResponseBase<List<CustomerModel>>> GetCustomerByProduct()
         {
-            var response = new ResponseBase<CustomerModel>();
-            response = await httpService.Send<CustomerModel>(UriMethod.Get);
+            var response = new ResponseBase<List<CustomerModel>>();
+            response = await httpService.Send<List<CustomerModel>>(UriMethod.Get);
 
             return await Task.Run(() => response);
         }
