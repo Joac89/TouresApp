@@ -183,17 +183,19 @@ export class CustomerPComponent {
         this.loaderService.start();
 
         //var token = this.tokenService.getTokenHeader();
-        this.http.get(this.path + "api/Customer/get/product" + this.searchForm.value.textSearch).map(response => response.json()).subscribe(result => {
+        this.http.get(this.path + "api/Customer/get/product/" + this.searchForm.value.textSearch).map(response => response.json()).subscribe(result => {
             this.loaderService.end();
             this.user = result.data;
+            
+            //this.user.creditType = this.commonService.getCreditCard(this.user.creditCardType);
+            //this.user.names = (this.user.fName + ' ' + this.user.lName).toUpperCase();
 
-            this.user.creditType = this.commonService.getCreditCard(this.user.creditCardType);
-            this.user.names = (this.user.fName + ' ' + this.user.lName).toUpperCase();
-
+           
         }, error => {
             this.loaderService.end();
             console.error(error);
-        });
+            });
+        
     }
 
  }

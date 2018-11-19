@@ -35,49 +35,36 @@
                         <thead>
                             <tr>
                                 <th colspan="8" class="text-left">
-                                    Productos
+                                    Clientes
                                 </th>
                             </tr>
-                            <tr>
-
-                                <th scope="col">#Espectaculo</th>
-                                <!--<th scope="col">Id</th>-->
+                            <tr>                                 
+                                <th scope="col">#Cliente</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Fecha Espectaculo</th>
-                                <th scope="col">Fecha Llegada</th>
-                                <th scope="col">Fecha Salida</th>
-                                <!--<th scope="col">Tarifa Espectaculo</th>
-                                <th scope="col">Tarifa Hospedaje</th>
-                                <th scope="col">Tarifa trasnporte</th>-->
-                                <th scope="col">Pais</th>
-                                <!--<th scope="col">Precio Ciudad</th>-->
-                                <th scope="col">Precio Espectaculo</th>
-                                <th scope="col">Precio Hospedaje</th>
-                                <th scope="col">Precio Trasnporte</th>
-                                <!--<th scope="col">Imagen</th>-->
-                                <th scope="col">Valor Producto</th>
-                                <th scope="col">&nbsp;</th>
-
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Tipo Tarjeta</th>
+                                <th scope="col">Numero Tarjeta</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Numero Documento</th>
+                                <th scope="col">Nombre de Usuario</th>
+                                <th scope="col">Tipo Cliente</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of search.data" [ngClass]="{'row-selected': selected == item.id}">
-                                <td scope="row" class="row-fil text-center">{{(item.espectaculo)}}</td>
-                                <td scope="row" class="row-fil text-center">{{item.nombre}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaEspectaculo | date: 'yyyy/MM/dd'}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaLlegada | date: 'yyyy/MM/dd'}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.fechaSalida | date: 'yyyy/MM/dd'}}</td>                                
-                                <td scope="row" class="row-fil text-left">{{item.pais}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioEsp}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioHospedaje}}</td>
-                                <td scope="row" class="row-fil text-left">{{item.precioTransporte}}</td>
-                                <!--<td scope="row" class="row-fil text-left">{{item.image}}</td>-->
-                                <td scope="row" class="row-fil text-left">{{item.valorProducto}}</td>
-                                <td scope="row" class="row-fil text-center">
-                                    <button class="btn btn-sm btn-danger" (click)="deleteProduct(item.id)" data-toggle="modal" data-target="#modalProduct_delete" [disabled]="item.state == 2">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </td>
+                            <tr *ngFor="let item of user" [ngClass]="{'row-selected': selected == item.custId}">
+                                <td scope="row" class="row-fil text-center">{{(item.custId)}}</td>
+                                <td scope="row" class="row-fil text-center">{{item.fName}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.lName}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.phoneNumber}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.email}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.creditCardType}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.creditCardNumber}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.status}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.docNumber}}</td>                                
+                                <td scope="row" class="row-fil text-left">{{item.userName}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.tipoCliente}}</td>                                
                             </tr>
                         </tbody>
                     </table>
@@ -90,5 +77,5 @@
         </div>
     </div>
 </div>
-<detail-prod [item]="current" [modal]="'exampleModal1'" [callback]="update()"></detail-prod>
+
 

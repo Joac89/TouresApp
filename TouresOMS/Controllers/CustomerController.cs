@@ -47,7 +47,7 @@ namespace TouresOMS.Controllers
         {
             var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
             var service = new CustomerService(new HttpService($"{urlService}/product/{id}"));
-            var response = await service.GetCustomer();
+            var response = await service.GetCustomerByProduct();
 
             return this.Result(response.Code, response);
         }
