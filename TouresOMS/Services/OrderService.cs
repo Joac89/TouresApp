@@ -6,84 +6,91 @@ using TouresCommon;
 
 namespace TouresOMS.Services
 {
-	public class OrderService
+    public class OrderService
     {
-		private IHttpService httpService;
+        private IHttpService httpService;
 
-		public OrderService(IHttpService httpService_)
-		{
-			httpService = httpService_;
-		}
+        public OrderService(IHttpService httpService_)
+        {
+            httpService = httpService_;
+        }
 
-		public async Task<ResponseBase<bool>> InsertOrder(OrderModel data)
-		{
-			var response = new ResponseBase<bool>();
-			response = await httpService.Send<bool, OrderModel>(data, BodyMethod.Post);
+        public async Task<ResponseBase<bool>> InsertOrder(OrderModel data)
+        {
+            var response = new ResponseBase<bool>();
+            response = await httpService.Send<bool, OrderModel>(data, BodyMethod.Post);
 
-			return await Task.Run(() => response);
-		}
+            return await Task.Run(() => response);
+        }
 
-		public async Task<ResponseBase<List<OrderModel>>> GetOrders()
-		{
-			var response = new ResponseBase<List<OrderModel>>();
-			response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
+        public async Task<ResponseBase<List<OrderModel>>> GetOrders()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
-			return await Task.Run(() => response);
+            return await Task.Run(() => response);
+        }
+        public async Task<ResponseBase<List<OrderModel>>> GetOrdersById()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
+            return await Task.Run(() => response);
+        }
+        public async Task<ResponseBase<List<OrderModel>>> GetOrdersByProduct()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
-			//var response = new ResponseBase<List<OrderModel>>();
-			//var search = new List<OrderModel>();
-			//var lst = new List<OrderModel>();
+            return await Task.Run(() => response);
+        }
+        public async Task<ResponseBase<List<OrderModel>>> GetAllOrders()
+        {
+            var response = new ResponseBase<List<OrderModel>>();
+            response = await httpService.Send<List<OrderModel>>(UriMethod.Get);
 
-			//lst = GetList();
+            return await Task.Run(() => response);
+        }
 
-			//response.Code = 200;
-			//response.Data = lst;
+        public async Task<ResponseBase<bool>> DeleteOrder()
+        {
+            var response = new ResponseBase<bool>();
+            response = await httpService.Send<bool>(UriMethod.Delete);
 
-			//Thread.Sleep(500);
+            return await Task.Run(() => response);
+        }
 
-			//return await Task.Run(() => response);
-		}
+        private List<OrderModel> GetList()
+        {
+            var lst = new List<OrderModel>
+            {
+                //new OrderModel()
+                //{
+                //	Code = 9001,
+                //	Price = 91000000,
+                //	Count = 10,
+                //	State = 1,
+                //	StateName = "En Proceso"
+                //},
+                //new OrderModel()
+                //{
+                //	Code = 9001,
+                //	Price = 76000000,
+                //	Count = 8,
+                //	State = 2,
+                //	StateName = "Aprobada"
+                //},
+                //new OrderModel()
+                //{
+                //	Code = 9001,
+                //	Price = 23000000,
+                //	Count = 4,
+                //	State = 2,
+                //	StateName = "Aprobada"
+                //}
+            };
 
-		public async Task<ResponseBase<bool>> DeleteOrder()
-		{
-			var response = new ResponseBase<bool>();
-			response = await httpService.Send<bool>(UriMethod.Delete);
-
-			return await Task.Run(() => response);
-		}
-
-		private List<OrderModel> GetList()
-		{
-			var lst = new List<OrderModel>
-			{
-				//new OrderModel()
-				//{
-				//	Code = 9001,
-				//	Price = 91000000,
-				//	Count = 10,
-				//	State = 1,
-				//	StateName = "En Proceso"
-				//},
-				//new OrderModel()
-				//{
-				//	Code = 9001,
-				//	Price = 76000000,
-				//	Count = 8,
-				//	State = 2,
-				//	StateName = "Aprobada"
-				//},
-				//new OrderModel()
-				//{
-				//	Code = 9001,
-				//	Price = 23000000,
-				//	Count = 4,
-				//	State = 2,
-				//	StateName = "Aprobada"
-				//}
-			};
-
-			return lst;
-		}
-	}
+            return lst;
+        }
+    }
 }

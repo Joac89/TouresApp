@@ -21,6 +21,7 @@ export class NavMenuComponent {
     //subscription: Subscription;
     authenticate: any = { status: false };
     rol1: any = { status: false };
+    isAdmin: any;
 
     constructor(private router: Router, private storeService: StoreService, private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object) {
         this.watcherStore = this.watcherMethod();
@@ -41,6 +42,13 @@ export class NavMenuComponent {
                 if (this.authService.isAuthorized()) {
                     this.authenticate = JSON.parse(this.authService.get());
                     this.authenticate.names = this.validateName();
+                    if (this.authenticate.tipoCliente == "Administrador")
+                        this.isAdmin = true;
+                    else
+                        this.isAdmin = false;
+
+                    //console.log(this.authenticate);
+                    
                     //this.authenticate.names = this.authenticate.fName + " " + this.authenticate.lName.split(" ")[0];
                 } else {
                     this.authenticate = { status: false };
@@ -71,30 +79,30 @@ export class NavMenuComponent {
 
     //####################################################//
 
-    check = new CheckControl(1, "Sin filtro");
+   // check = new CheckControl(1, "Sin filtro");
 
-    searchForm = new FormGroup({
-        textSearch: new FormControl(''),
-        dateSearch: new FormControl(''),
-        checkSearch: new FormControl(''),
-    });
+    //searchForm = new FormGroup({
+    //    textSearch: new FormControl(''),
+    //    dateSearch: new FormControl(''),
+    //    checkSearch: new FormControl(''),
+    //});
 
-    sendSearch() {
-        var text = this.searchForm.value.textSearch;
-        var id = this.check.id;
+    //sendSearch() {
+    //    var text = this.searchForm.value.textSearch;
+    //    var id = this.check.id;
 
-        this.searchForm.reset();
-        this.changeFilter(1, "Sin filtro");
-        this.router.navigate(["product",
-            {
-                search: btoa(text),
-                type: id
-            }
-        ]);
-    }
+    //    this.searchForm.reset();
+    //    this.changeFilter(1, "Sin filtro");
+    //    this.router.navigate(["product",
+    //        {
+    //            search: btoa(text),
+    //            type: id
+    //        }
+    //    ]);
+    //}
 
-    changeFilter(id: number, text: string) {
-        this.check.id = id;
-        this.check.text = text;
-    }
+    //changeFilter(id: number, text: string) {
+    //    this.check.id = id;
+    //    this.check.text = text;
+    //}
 }

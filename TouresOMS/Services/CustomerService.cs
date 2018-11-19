@@ -36,8 +36,15 @@ namespace TouresOMS.Services
 
 			return await Task.Run(() => response);
 		}
+        public async Task<ResponseBase<CustomerModel>> GetCustomerByProduct()
+        {
+            var response = new ResponseBase<CustomerModel>();
+            response = await httpService.Send<CustomerModel>(UriMethod.Get);
 
-		public async Task<ResponseBase<CustomerModel>> LoginCustomer(LoginModel data)
+            return await Task.Run(() => response);
+        }
+
+        public async Task<ResponseBase<CustomerModel>> LoginCustomer(LoginModel data)
 		{
 			if (ValidateState(data))
 			{

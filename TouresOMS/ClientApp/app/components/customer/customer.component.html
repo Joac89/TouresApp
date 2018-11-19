@@ -1,4 +1,24 @@
-﻿<div class="text-center fadeIn slow animated registration">
+﻿<form [formGroup]="searchForm" (ngSubmit)="getUserInfo()" class="form-search">
+    <div class="form-inline">
+        <div class="input-group">
+            <div class="input-group-append show no-margin" id="button_event">
+                <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                <div id="dropdown" class="dropdown-menu">
+                </div>
+            </div>
+            <select id="Busquedas" name="Busquedas"
+                    placeholder="" formControlName="selectSearch" value="1">
+                <option value="1" selected>Identificacion</option>     
+            </select>
+            <input type="text"
+                   placeholder=""
+                   formControlName="textSearch" class="form-control" id="input_event" aria-describedby="event">
+        </div>
+        <button type="submit" class="btn btn-info btn xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+        <button type="submit" class="btn btn-light btn xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+    </div>
+</form>
+<div class="text-center fadeIn slow animated registration">
     <div class="row justify-content-md-center no-margin">
         <div class="col-lg-11 col-md-11 col-sm-12 home">
             <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
@@ -17,19 +37,19 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Documento</label>
-                            <input type="text" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="document" name="document" formControlName="textDocument" placeholder="">
+                            <input type="text"  [(ngModel)]="user.docNumber" required maxlength="20" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="document" name="document" formControlName="textDocument" placeholder="">
 
                             <validator [field]="form.textDocument"></validator>
                         </div>
                         <div class="form-group">
                             <label for="name">Nombres</label>
-                            <input type="text" required maxlength="40" minlenth="5" class="form-control" id="name" formControlName="textName" placeholder="">
+                            <input type="text" [(ngModel)]="user.fName" required maxlength="40" minlenth="5" class="form-control" id="name" formControlName="textName" placeholder="">
 
                             <validator [field]="form.textName"></validator>
                         </div>
                         <div class="form-group">
                             <label for="surname">Apellidos</label>
-                            <input type="text" required maxlength="40" minlength="5" class="form-control" id="surname" formControlName="textSurname" placeholder="">
+                            <input type="text" [(ngModel)]="user.lName" required maxlength="40" minlength="5" class="form-control" id="surname" formControlName="textSurname" placeholder="">
 
                             <validator [field]="form.textSurname"></validator>
                         </div>
@@ -51,14 +71,12 @@
                         </div>-->
                         <div class="form-group">
                             <label for="phone">Tel&eacute;fono</label>
-                            <input type="text" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="phone" formControlName="textPhone" placeholder="">
-
+                            <input type="text" [(ngModel)]="user.phoneNumber" required maxlength="40" minlength="10" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="phone" formControlName="textPhone" placeholder="">
                             <validator [field]="form.textPhone"></validator>
                         </div>
                         <div class="form-group">
                             <label for="email">Correo electr&oacute;nico</label>
-                            <input type="email" required maxlength="40" minlength="6" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" class="form-control" id="email" formControlName="textEmail" placeholder="">
-
+                            <input type="email" [(ngModel)]="user.phoneNumber" required maxlength="40" minlength="6" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" class="form-control" id="email" formControlName="textEmail" placeholder="">
                             <validator [field]="form.textEmail"></validator>
                         </div>
                     </div>
@@ -82,7 +100,7 @@
                                         <i class="fa" [ngClass]="{'fa-eye-slash': typepsw == 'password', 'fa-eye': typepsw == 'text'}"></i>
                                     </span>
                                 </div>
-                                <input [type]="typepsw" required maxlength="40" minlength="5" class="form-control" id="password1" formControlName="textPassword1" placeholder="">
+                                <input [type]="typepsw" [(ngModel)]="user.password" required maxlength="40" minlength="5" class="form-control" id="password1" formControlName="textPassword1" placeholder="">
                             </div>
                             <validator [field]="form.textPassword1"></validator>
                         </div>
@@ -95,44 +113,19 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
                                 </div>
-                                <input type="text" required maxlength="40" minlength="14" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="creditcard" (keyup)="getCreditCardType($event.target.value)" formControlName="textCreditCard" placeholder="">
+                                <input type="text" [(ngModel)]="user.creditCardNumber" required maxlength="40" minlength="14" pattern="^(0|[1-9][0-9]*)$" class="form-control" id="creditcard" (keyup)="getCreditCardType($event.target.value)" formControlName="textCreditCard" placeholder="">
                             </div>
                             <validator [field]="form.textCreditCard"></validator>
                         </div>
-                        <!--<div class="form-group">
-                            <label for="lastdate">Mes / A&ntilde;o de expiraci&oacute;</label>
-                            <div class="form-row">
-                                <div class="col">
-                                    <select required class="form-control" id="month" formControlName="cmbCreditMonth">
-                                        <option value="{{item.id}}" *ngFor="let item of getMonths()">{{item.description}}</option>
-                                    </select>
 
-                                    <validator [field]="form.cmbCreditMonth"></validator>
-                                </div>
-                                <div class="col">
-                                    <select required class="form-control" id="year" formControlName="cmbCreditYear">
-                                        <option value="{{item.id}}" *ngFor="let item of getYears()">{{item.description}}</option>
-                                    </select>
-
-                                    <validator [field]="form.cmbCreditYear"></validator>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-group">
-                            <label for="cv">C&oacute;digo de verificaci&oacute;n (CVV)</label>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="number" required maxlength="5" class="form-control" id="cvv" formControlName="textCreditCvv" placeholder="">
-
-                                    <validator [field]="form.textCreditCvv"></validator>
-                                </div>
-                                <div class="col">
-                                    <div class="alert alert-info" role="alert">
-                                        3 o 4 d&iacute;gitos en la parte posterior de la tarjeta
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
+                            <label for="surname">Tipo de Clientes</label>                            
+                            <select class="form-control col-lg-12 col-md-12 col-sm-12" id="tipoCliente" [(ngModel)]="user.tipoCliente" placeholder="" formControlName="selecttipoCliente">
+                                <option value="DORADO">DORADO</option>
+                                <option value="PLATINO">PLATINO</option>
+                                <option value="BRONCE">BRONCE</option>
+                            </select>
+                       </div>                       
                     </div>
                 </div>
                 <div *ngIf="error.statusCode != 200">
@@ -144,7 +137,7 @@
                 <p>
                     Completa todo el formulario para poder finalizar el registro. Lo datos de tarjeta de cr&eacute;dito no son obligatorios para registrarte, pero si para poder realizar compras de los eventos deportivos.
                 </p>
-                <button type="submit" class="btn btn-info" [disabled]="formReg.form.invalid">Finalizar registro</button>
+                <button type="submit" class="btn btn-info">Registrar Cliente</button>
             </form>
 
             <div class="text-left" style="padding:0" *ngIf="saved">

@@ -1,0 +1,81 @@
+﻿<div class="text-center fadeIn slow animated">
+    <div class="row justify-content-md-center no-margin">
+        <div class="col-lg-11 col-md-11 col-sm-12 home">
+            <ul class="nav justify-content-start">
+                <li class="nav-item">
+                    <form [formGroup]="searchForm" (ngSubmit)="getUserInfo()" class="form-search">
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <div class="input-group-append show no-margin" id="button_event">
+                                    <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{check.text}}
+                                    </button>
+                                    <div id="dropdown" class="dropdown-menu">
+                                        <a class="dropdown-item" (click)="changeFilter(1, 'Sin filtro')">Sin filtro</a>
+                                        <a class="dropdown-item" (click)="changeFilter(2, 'Buscar por c&oacute;digo')">C&oacute;digo</a>
+                                    </div>
+                                </div>
+                                <input type="{{check.id == 2 ? 'number': 'text'}}"
+                                       placeholder="{{check.id == 2 ? 'ingrese el c&oacute;digo': 'escriba el texto'}} a buscar"
+                                       formControlName="textSearch" class="form-control" id="input_event" aria-describedby="event">
+                            </div>
+                            <button type="submit" class="btn btn-info btn xs-desktop"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                            <button type="submit" class="btn btn-light btn xs-phone"><span class="fa fa-search"></span>&nbsp;Buscar</button>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+                        [subtitle]="'Se encontraron ' + (search && search.data ? search.data.length : 0) + ' coincidencias para '"
+                        [reference]="textSearch">
+            </page-title>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th colspan="8" class="text-left">
+                                    Clientes
+                                </th>
+                            </tr>
+                            <tr>                                 
+                                <th scope="col">#Cliente</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Tipo Tarjeta</th>
+                                <th scope="col">Numero Tarjeta</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Numero Documento</th>
+                                <th scope="col">Nombre de Usuario</th>
+                                <th scope="col">Tipo Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of user" [ngClass]="{'row-selected': selected == item.custId}">
+                                <td scope="row" class="row-fil text-center">{{(item.custId)}}</td>
+                                <td scope="row" class="row-fil text-center">{{item.fName}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.lName}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.phoneNumber}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.email}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.creditCardType}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.creditCardNumber}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.status}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.docNumber}}</td>                                
+                                <td scope="row" class="row-fil text-left">{{item.userName}}</td>
+                                <td scope="row" class="row-fil text-left">{{item.tipoCliente}}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <button *ngIf="!endPage" class="btn btn-info" (click)="getSearch(true)">
+                <i class="fa fa-download"></i>&nbsp;Cargar m&aacute;s
+            </button>
+        </div>
+    </div>
+</div>
+
+

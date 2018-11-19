@@ -41,8 +41,18 @@ namespace TouresOMS.Controllers
 
 			return this.Result(response.Code, response);
 		}
+        [HttpGet]
+        [Route("get/product/{id}")]
+        public async Task<IActionResult> getCustomerByProduct(string id)
+        {
+            var token = CommonService.Token.TokenBearerHeader(HttpContext, config);
+            var service = new CustomerService(new HttpService($"{urlService}/product/{id}"));
+            var response = await service.GetCustomerByProduct();
 
-		[HttpPost]
+            return this.Result(response.Code, response);
+        }
+
+        [HttpPost]
 		[Route("create")]
 		public async Task<IActionResult> InsertCustomer([FromBody] CustomerModel data)
 		{

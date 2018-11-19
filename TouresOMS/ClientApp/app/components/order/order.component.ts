@@ -8,6 +8,7 @@ import { StoreService } from '../../services/store.service';
 import { TokenService } from '../../services/token.service';
 import { LoaderService } from '../../services/loader.service';
 import { AuthService } from '../../services/auth.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'order',
@@ -24,8 +25,10 @@ export class OrderComponent {
     username: string = "";
     selected: number = 0;
     orderForDelete: number = 0;
+    textSearch: string = "";
 
     constructor(@Inject('BASE_URL') baseUrl: string, private router: Router, private http: Http, private tokenService: TokenService, private loaderService: LoaderService, private authService: AuthService) {
+        this.path = baseUrl;
         this.getOrders();
     }
 
@@ -67,7 +70,14 @@ export class OrderComponent {
         this.selected = order;
     }
 
-    getOrders() {
+    searchForm = new FormGroup({
+        textSearch: new FormControl(''),
+        dateSearch: new FormControl(''),
+        checkSearch: new FormControl(''),
+        selectProducto: new FormControl(''),
+    });
+
+    getOrders() {        
         this.loaderService.start();
 
         if (typeof window !== 'undefined') {
@@ -76,25 +86,47 @@ export class OrderComponent {
             var q = 0;
 
             var token = this.tokenService.getTokenHeader();
-            this.http.get(this.path + "api/order/get/" + user.custId, token).map(response => response.json()).subscribe(result => {
 
-                this.orders = result.data;
-                this.orders.forEach(x => {
-                    x.statusName = x.status == "1" ? "Pendiente" : "Aprobada";
-                    this.items = x.lItems;
-                    this.items.forEach(y => {
-                        q += <number>y.quantity;
+            if (this.searchForm.value.selectProducto == 1) {
+                this.http.get(this.path + "api/order/get/all/" + this.searchForm.value.textSearch).map(response => response.json()).subscribe(result => {
+
+                    this.orders = result.data;
+                    this.orders.forEach(x => {
+                        x.statusName = x.status == "1" ? "Pendiente" : x.status == 2 ? "Aprobada" : "Eliminada";
+                        this.items = x.lItems;
+                        this.items.forEach(y => {
+                            q += <number>y.quantity;
+                        });
+                        x.quantity = q;
+                        q = 0;
+                        this.username = user.fName;
                     });
-                    x.quantity = q;
-                    q = 0;
-                    this.username = user.fName;
+                    this.loaderService.end();
+                }, error => {
+                    this.loaderService.end();
+                    console.error(error);
                 });
+            }
+            else {
+                this.http.get(this.path + "api/order/get/all/Product/" + this.searchForm.value.textSearch).map(response => response.json()).subscribe(result => {
 
-                this.loaderService.end();
-            }, error => {
-                this.loaderService.end();
-                console.error(error);
-            });
+                    this.orders = result.data;
+                    this.orders.forEach(x => {
+                        x.statusName = x.status == "1" ? "Pendiente" : x.status == 2 ? "Aprobada" : "Eliminada";
+                        this.items = x.lItems;
+                        this.items.forEach(y => {
+                            q += <number>y.quantity;
+                        });
+                        x.quantity = q;
+                        q = 0;
+                        this.username = user.fName;
+                    });
+                    this.loaderService.end();
+                }, error => {
+                    this.loaderService.end();
+                    console.error(error);
+                });
+            }
 
 
             //this.orders = orders;

@@ -9,9 +9,16 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" [routerLink]="['/home']">Inicio</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/campaign']">Campa&ntilde;as</a>
-                        <a class="dropdown-item" href="#" [routerLink]="['/product']">Mis Productos</a>
-                        <a class="dropdown-item" href="#" [routerLink]="['/productC']">Mis Consultas Productos </a>
-                        <a class="dropdown-item" href="#" [routerLink]="['/order']">Mis ordenes</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/report']">Reportes Orden</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/reportCliente']">Reporte Cliente</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/reportProduct']">Reporte Producto</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/reportMonth']">Reporte Perido</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/product']">Productos</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/productC']">Consultas Productos </a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/customer']">Clientes</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/customerP']">Clientes x Producto</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/user']">Usuarios</a>
+                        <a class="dropdown-item" href="#" [routerLink]="['/order']">Ordenes</a>
                         <a class="dropdown-item" href="#" [routerLink]="['/customer']">Reg&iacute;strate</a>
                         <a class="dropdown-item" href="http://localhost:62440/Reporte/ReporteIndex" target="_blank">Reporte</a>
                     </div>
@@ -32,9 +39,9 @@
 </div>
 
 <div class="row justify-content-md-center h-menu">
-    <div class="col-md-11">
+    <div class="col-md-12">
         <div class="row">
-            <div class="col-md-7" style="padding-left:0">
+            <div class="col-md-2" style="padding-left:0">
                 <ul class="nav justify-content-start">
                     <li class="nav-item">
                         <a [routerLink]="['/home']" class="nav-link title" href="#" style="padding-left:0; padding-top: 5px;">
@@ -49,22 +56,43 @@
 
                 </ul>
             </div>
-            <div class="col-md-5" style="padding-right:0">
+            <div class="col-md-10" style="padding-right:0">
                 <ul class="nav justify-content-end">
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/home']" class="nav-link" href="#">Inicio</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/campaign']" class="nav-link" href="#">Campa&ntilde;as</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
-                        <a [routerLink]="['/order']" class="nav-link" href="#">Mis ordenes</a>
+                        <a [routerLink]="['/report']" class="nav-link" href="#">Reportes Orden</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/reportCliente']" class="nav-link" href="#">Reporte Cliente</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/reportProduct']" class="nav-link" href="#">Reporte Producto</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/reportMonth']" class="nav-link" href="#">Reporte Periodo</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/order']" class="nav-link" href="#">Ordenes</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
                         <a [routerLink]="['/productC']" class="nav-link" href="#">Consulta Productos</a>
                     </li>
-                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status && isAdmin">
                         <a [routerLink]="['/product']" class="nav-link" href="#">Productos</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/customer']" class="nav-link" href="#">Cliente</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/customerP']" class="nav-link" href="#">Clientes x Producto</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" class="nav-item" *ngIf="authenticate.status">
+                        <a [routerLink]="['/user']" class="nav-link" href="#">Usuarios</a>
                     </li>
                     <li [routerLinkActive]="['active']" class="nav-item" *ngIf="!authenticate.status">
                         <a [routerLink]="['/customer']" class="nav-link" style="padding-right:0" href="#">Reg&iacute;strate</a>
