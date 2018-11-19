@@ -8,16 +8,18 @@ import 'rxjs/add/operator/map';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'report',
-    templateUrl: './reportCliente.component.html',
-    styleUrls: ['./reportCliente.component.css', '../../style/general.css'],
+    selector: 'product',
+    templateUrl: './reportProduct.component.html',
+    styleUrls: ['./reportProduct.component.css', '../../style/general.css'],
     providers: [StoreService]
 })
-export class reportClienteComponent {
+export class reportProductComponent {
     search: any = {};
     path: string = "";  
-    aux: any;
-    showItems: any[] = [];
+    aux: any[] = [];
+    product: any = {};
+    date1: string = "";
+    date2: string = "";
     constructor(@Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
         this.path = baseUrl;
         this.route.params.subscribe(params => {
@@ -28,16 +30,10 @@ export class reportClienteComponent {
     get form() { return this.reportForm.controls; }
     getReport() {
         this.loaderService.start();
-        var text = this.reportForm.value.textSearch;
-        var tipo = 0;
-        if (text == "Ranking Clientes") {
-            tipo = 3;
-        }
-        else if (text == "Ranking Productos") {
-            tipo = 4;
-        }
-            
-        this.http.get(this.path + "api/report/get/cliente/" + tipo.toString()).map(response => response.json()).subscribe(result => {           
+        var tipo = 4;
+        this.date1 = this.reportForm.value.fechaIni;
+        this.date2 = this.reportForm.value.fechaFin;    
+        this.http.get(this.path + "api/report/get/product/" + tipo.toString() + "/" + this.date1 + "/" + this.date2).map(response => response.json()).subscribe(result => {           
             this.aux = result;
             this.loaderService.end();
         }, error => {
@@ -53,20 +49,38 @@ export class reportClienteComponent {
     });
 
     reportForm = new FormGroup({
-        textSearch: new FormControl(''),
+        textNombreProduct: new FormControl(''),
+        textEspectaculo: new FormControl(''),
+        textPrecioCiudad: new FormControl(''),
+        textPrecioProducto: new FormControl(''),
+        textPrecioHospedaje: new FormControl(''),
+        textPrecioTransporte: new FormControl(''),
+        textPrecioEspectaculo: new FormControl(''),
+        fechaIni: new FormControl(''),
+        fechaFin: new FormControl(''),
     });
 
 
 
     error: any = { statusCode: 200 };
 
-    showOrderItems(custid: number) {
-        var p_cusid = custid;
+    showOrderItems(proid: string) {
+        var p_proid = btoa(proid);
 
         this.loaderService.start();
+        
+        this.http.get(this.path + "api/product/search/" + p_proid + "/2/0").map(response => response.json()).subscribe(result2 => {
+            this.product = result2.data[0];
 
-        this.http.get(this.path + "api/report/get/clienteRanking/" + p_cusid.toString()).map(response => response.json()).subscribe(result2 => {
-            this.showItems = result2;
+            //this.product.fechaEspectaculo = this.transformDate(this.product.fechaEspectaculo);
+            //this.product.fechaSalida = this.transformDate(this.product.fechaSalida);
+            //this.product.fechaLlegada = this.transformDate(this.product.fechaLlegada);
+
+            console.log(this.product);
+
+            //for (var i = 0; i < this.aux.data.length; ++i) {
+            //    this.search.data.push(this.aux.data[i]);
+            //}
             this.loaderService.end();
         }, error => {
             this.loaderService.end();

@@ -6,13 +6,13 @@
                         [subtitle]="'Se encontraron ' + (aux && aux.data ? aux.data.length : 0) + ' coincidencias para '"
                         [reference]="textSearch">
             </page-title>
-            <label for="sel1">Seleccione el reporte a consultar:</label>
+            <label for="sel1">Seleccione la fecha a consultar:</label>
             <br />
             <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
                 <div class="row">
-                    <label for="campana">Fecha Incial Campa&ntilde;a</label>
+                    <label for="campana">Fecha Incial</label>
                         <input type="date" name="fechaIni" min="2018-11-04" max="2020-05-25" step="2" formControlName="fechaIni">
-                        <label for="campana">Fecha Fin Campa&ntilde;a</label>
+                        <label for="campana">Fecha Fin</label>
                         <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaFin">
                     <button class="btn btn-info" (click)="getReport()">
                         <i class="fa fa-download"></i>Buscar..
@@ -26,23 +26,25 @@
                             <thead>
                                 <tr>
                                     <th colspan="8" class="text-left">
-                                        Ranking Clientes Por Facturacion
+                                        Ranking Productos mas Facturados
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Codigo</th>
-                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Cantidad</th>
                                     <th scope="col">Valor</th>
                                     <th scope="col">&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let item of aux.data">
-                                    <td scope="row" class="row-fil text-left">{{item.custid}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.fname}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.total}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.proid}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.productname}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.cantidad}}</td>
+                                    <td scope="row" class="row-fil text-left">{{item.valor}}</td>
                                     <td scope="row" class="row-fil text-center">
-                                        <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.custid)">
+                                        <button class="btn btn-sm btn-outline-info" (click)="showOrderItems(item.proid)">
                                             Detalles
                                         </button>
                                     </td>
@@ -51,31 +53,38 @@
                         </table>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th colspan="8" class="text-left">
-                                        Ordenes
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <th scope="col">ordid</th>
-                                    <th scope="col">Fecha Inicial</th>
-                                    <th scope="col">Valor</th>
-                                    <th scope="col">Comentarios</th>
-                                    <th scope="col">Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let item of showItems.data">
-                                    <td scope="row" class="row-fil text-center">{{item.ordid}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.ordendate | date: 'yyyy/MM/dd'}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.price}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.comments}}</td>
-                                    <td scope="row" class="row-fil text-left">{{item.nombre_estado}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3">
+                            <label for="nombrep">Nombre Producto</label>
+                            <input type="text" maxlength="20" [(ngModel)]="product.nombre" class="form-control" id="nombrep" formControlName="textNombreProduct" placeholder="">
+                            <validator [field]="form.textNombreProduct"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="espectaculo">Nombre Espectaculo</label>
+                            <input type="text" [(ngModel)]="product.espectaculo" class="form-control" id="espectaculo" name="espectaculo" formControlName="textEspectaculo" placeholder="">
+                            <validator [field]="form.textEspectaculo"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="precioproducto">Precio Producto</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.valorProducto" minlength="6" class="form-control" id="precioproducto" formControlName="textPrecioProducto" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="preciociudad">Precio Ciudad</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioCiudad" minlength="5" class="form-control" id="preciociudad" formControlName="textPrecioCiudad" placeholder="">
+                            <validator [field]="form.textPrecioCiudad"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="preciociudad">Precio Espectaculo</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioEsp" minlength="5" class="form-control" id="precioespectaculo" formControlName="textPrecioEspectaculo" placeholder="">
+                            <validator [field]="form.textPrecioCiudad"></validator>
+                        </div>
+                        <div class="form-group">
+                            <label for="preciohospedaje">Precio Hospedaje</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioHospedaje" minlength="6" class="form-control" id="preciohospedaje" formControlName="textPrecioHospedaje" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="preciotransporte">Precio Transporte</label>
+                            <input type="text" required maxlength="40" [(ngModel)]="product.precioTransporte" minlength="6" class="form-control" id="preciotransporte" formControlName="textPrecioTransporte" placeholder="">
+                        </div>
                     </div>
 
                 </div>

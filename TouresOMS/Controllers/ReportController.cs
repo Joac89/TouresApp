@@ -44,11 +44,11 @@ namespace TouresOMS.Controllers
             return this.Result(response.Code, response);
         }
 
-        [HttpGet("get/product/{tipo}")]
-        public async Task<IActionResult> GetReportRankingProduct(int tipo)
+        [HttpGet("get/product/{tipo}/{fecha1}/{fecha2}")]
+        public async Task<IActionResult> GetReportRankingProduct(int tipo, string fecha1, string fecha2)
         {
-            var service = new ReportService(new HttpService($"{urlService}/product/{tipo}"));
-            var response = await service.GetReportOrden();
+            var service = new ReportService(new HttpService($"{urlService}/product/{tipo}/{fecha1}/{fecha2}"));
+            var response = await service.GetReportProduct();
             return this.Result(response.Code, response);
         }
     }
