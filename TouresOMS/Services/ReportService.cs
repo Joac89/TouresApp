@@ -36,5 +36,19 @@ namespace TouresOMS.Services
             response = await httpService.Send<List<ReportProductModel>>(UriMethod.Get);
             return await Task.Run(() => response);
         }
+
+        public async Task<ResponseBase<List<ReportOrderMonth>>> GetReportOrderMonth()
+        {
+            var response = new ResponseBase<List<ReportOrderMonth>>();
+            response = await httpService.Send<List<ReportOrderMonth>>(UriMethod.Get);
+            return await Task.Run(() => response);
+        }
+
+        public async Task<ResponseBase<List<OrderReportModel>>> GetReportOrderMonthDetail()
+        {
+            var response = new ResponseBase<List<OrderReportModel>>();
+            response = await httpService.Send<List<OrderReportModel>>(UriMethod.Get);
+            return await Task.Run(() => response);
+        }
     }
 }

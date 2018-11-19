@@ -11,6 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { OrderComponent } from './components/order/order.component';
 import { reportComponent } from './components/report/report.component';
 import { reportClienteComponent } from './components/report/reportCliente.component';
+import { reportProductComponent } from './components/report/reportProduct.component';
+import { reportMonthComponent } from './components/report/reportMonth.component';
 import { CampaignComponent } from './components/campaign/campaign.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductCComponent } from './components/product/productC.component';
@@ -36,6 +38,8 @@ import { DetailComponent } from './components/campaign/detail.component';
         OrderComponent,
         reportComponent,
         reportClienteComponent,
+        reportProductComponent,
+        reportMonthComponent,
         CampaignComponent,
         DetailComponent,
         StartComponent,
@@ -67,6 +71,8 @@ import { DetailComponent } from './components/campaign/detail.component';
             
             { path: 'report', component: reportComponent },
             { path: 'reportCliente', component: reportClienteComponent },
+            { path: 'reportProduct', component: reportProductComponent },
+            { path: 'reportMonth', component: reportMonthComponent },
             { path: 'campaign', component: CampaignComponent },
             { path: 'detail', component: DetailComponent },
             { path: 'detail/:camp', component: DetailComponent },

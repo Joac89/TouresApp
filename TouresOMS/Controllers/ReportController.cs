@@ -51,5 +51,21 @@ namespace TouresOMS.Controllers
             var response = await service.GetReportProduct();
             return this.Result(response.Code, response);
         }
+
+        [HttpGet("get/month/{tipo}")]
+        public async Task<IActionResult> GetReportOrderMonth(int tipo)
+        {
+            var service = new ReportService(new HttpService($"{urlService}/month/{tipo}"));
+            var response = await service.GetReportOrderMonth();
+            return this.Result(response.Code, response);
+        }
+
+        [HttpGet("get/monthDetail/{month}")]
+        public async Task<IActionResult> GetReportOrderMonthDetail(string month)
+        {
+            var service = new ReportService(new HttpService($"{urlService}/monthDetail/{month}"));
+            var response = await service.GetReportOrderMonthDetail();
+            return this.Result(response.Code, response);
+        }
     }
 }
