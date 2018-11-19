@@ -15,10 +15,10 @@ namespace TouresB2C.Services
 			httpService = httpService_;
 		}
 
-		public async Task<ResponseBase<bool>> InsertOrder(OrderModel data)
+		public async Task<ResponseBase<long>> InsertOrder(OrderModel data)
 		{
-			var response = new ResponseBase<bool>();
-			response = await httpService.Send<bool, OrderModel>(data, BodyMethod.Post);
+			var response = new ResponseBase<long>();
+			response = await httpService.Send<long, OrderModel>(data, BodyMethod.Post);
 
 			return await Task.Run(() => response);
 		}

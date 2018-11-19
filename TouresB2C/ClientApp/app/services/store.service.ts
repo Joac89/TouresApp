@@ -57,7 +57,15 @@ export class StoreService {
             id: 0,
             name: "",
             price: 0,
-            count: 0
+            count: 0,
+            extra: {
+                tipoHabitacion: "",
+                FechaSalida: "",
+                FechaLlegada: "",
+                modalidadTransporte: "",
+                pais: "",
+                precioHotel: ""
+            }
         };
     }
 

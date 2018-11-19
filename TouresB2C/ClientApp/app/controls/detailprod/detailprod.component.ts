@@ -28,6 +28,15 @@ export class DetailProdComponent {
         this.product.name = this.item.title;
         this.product.count = this.item.count;
 
+        this.product.extra = {
+            tipoHabitacion: this.item.tipoHospedaje,
+            precioHotel: this.item.precioHospedaje,
+            modalidadTransporte: this.item.tipoTransporte,
+            FechaLlegada: this.item.fechaLlegada.split(" ")[0] + "T00:00:00.000001Z", //2018-08-11 00:00:00.0 //2018-12-20T16:20:30.000001Z
+            FechaSalida: this.item.fechaSalida.split(" ")[0] + "T00:00:00.000001Z", //2018-08-11 00:00:00.0 //2018-12-20T16:20:30.000001Z
+            pais: this.item.pais
+        }
+
         this.storeService.addItemInCart(this.product);
         this.callback;        
     }
