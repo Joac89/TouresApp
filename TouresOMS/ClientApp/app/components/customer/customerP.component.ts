@@ -15,6 +15,7 @@ import 'rxjs/add/operator/map';
 import { forEach } from '@angular/router/src/utils/collection';
 import { isPlatformBrowser, DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CommonService } from '../../services/common.service';
 
 @Component({
     selector: 'customerP',
@@ -35,7 +36,22 @@ export class CustomerPComponent {
     path: string = "";
 
     inputFile: any;
-    imageSrc = '';    
+    imageSrc = '';  
+
+    cardtype: string = "";    
+    saved: boolean = false;
+    typepsw: string = "password";
+    error: any = { statusCode: 200 };
+    newuser: string = btoa("undefined");
+
+    private first: string = "";
+    private last: string = "";
+    private franchise: number = 0;
+
+    id: string = "";
+    user: any = {};
+    update: boolean = false;
+    authorize: boolean = false;
 
     citys: City[] = [
         { id: 1, name: 'Bogota' },
@@ -72,7 +88,7 @@ export class CustomerPComponent {
     ];
 
 
-    constructor(private datePipe: DatePipe, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService) {
+    constructor(private datePipe: DatePipe, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute, private router: Router, private http: Http, private storeService: StoreService, private loaderService: LoaderService, private commonService: CommonService) {
         this.path = baseUrl;
 
         this.route.params.subscribe(params => {
@@ -83,11 +99,8 @@ export class CustomerPComponent {
             if (this.textSearch) this.getSearch();
         });
 
-
     }
-
-    //get form() { return this.productForm.controls; }
-
+        
     transformDate(date: string) {
         return this.datePipe.transform(new Date(date), 'yyyy-MM-dd');
     }
@@ -133,20 +146,7 @@ export class CustomerPComponent {
         this.current = item;
         this.current.count = 1;
     }
-
-    update() {
-        var carts = this.storeService.getItemsInCart();
-        if (this.search.data) {
-            for (var i = 0; i < this.search.data.length; ++i) {
-                var find = carts.find(x => x.id == this.search.data[i].id);
-                if (find) {
-                    this.search.data[i].inCart = true;
-                    this.search.data[i].countCart = find.count;
-                }
-            }
-        }
-    }
-
+       
     //####################################################//
 
     check = new CheckControl(1, "Sin filtro");
@@ -156,35 +156,6 @@ export class CustomerPComponent {
         dateSearch: new FormControl(''),
         checkSearch: new FormControl(''),
     });
-
-    productForm = new FormGroup({
-        textNombreProduct: new FormControl(''),
-        textDescripProduct: new FormControl(''),
-        fechaEspectaculo: new FormControl(''),
-        fechaSalida: new FormControl(''),
-        fechaRegreso: new FormControl(''),
-        textEspectaculo: new FormControl(''),
-        selectCiudad: new FormControl(''),
-        selectCountry: new FormControl(''),
-        textPrecioCiudad: new FormControl(''),
-        textRutaimg: new FormControl(''),
-        fileUImage: new FormControl(''),        
-        textPrecioProducto: new FormControl(''),
-        ////
-        selectTipoEspectaculo: new FormControl(''),
-        textNombreEspectaculo: new FormControl(''),
-        textPrecioEspectaculo: new FormControl(''),
-        //
-        selectTipoTransporte: new FormControl(''),
-        textNombreTransporte: new FormControl(''),
-        textPrecioTrasporte: new FormControl(''),
-        //
-        selectTipoHospedaje: new FormControl(''),
-        textNombreHospedaje: new FormControl(''),
-        textPrecioHospedaje: new FormControl('') 
-    });
-
-    error: any = { statusCode: 200 };
 
     sendSearch() {
         var text = this.searchForm.value.textSearch;
@@ -200,65 +171,29 @@ export class CustomerPComponent {
         ]);
     }
 
-    get form() { return this.productForm.controls; }
-
-    sendProduct() {
-
-        this.loaderService.start();
-
-        //    }, error => {
-        //    this.loaderService.end();
-        //    this.error = error;
-
-        //    console.error(error);
-        //});
-    }
-
+    get form() { return this.searchForm.controls; }
+    
     changeFilter(id: number, text: string) {
         this.check.id = id;
         this.check.text = text;
     }
 
-    deleteProduct(id: number) {
+    getUserInfo() {
+        console.log("prueba");
         this.loaderService.start();
-                
-        this.http.delete(this.path + "api/Product/delete/" + id).map(response => response.json()).subscribe(result => {
 
-            // if (result.code == 200) 
-            //this.sendSearch();
-
+        //var token = this.tokenService.getTokenHeader();
+        this.http.get(this.path + "api/Customer/get/product" + this.searchForm.value.textSearch).map(response => response.json()).subscribe(result => {
             this.loaderService.end();
+            this.user = result.data;
+
+            this.user.creditType = this.commonService.getCreditCard(this.user.creditCardType);
+            this.user.names = (this.user.fName + ' ' + this.user.lName).toUpperCase();
+
         }, error => {
             this.loaderService.end();
             console.error(error);
         });
-
     }
 
-    reloadInfoProduct() {
-
-        console.log(this.product.espectaculo);
-
-        this.productForm.value.textEspectaculo = this.product.espectaculo;
-
-        console.log(this.productForm.value.textEspectaculo);
-        
-    }
-
-    handleInputChange(e: any) {
-        const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
-        const pattern = /image-*/;
-        const reader = new FileReader();
-        if (!file.type.match(pattern)) {
-            alert('invalid format');
-            return;
-        }
-        reader.onload = this._handleReaderLoaded.bind(this);
-        reader.readAsDataURL(file);
-    }
-    _handleReaderLoaded(e: any) {
-        const reader = e.target;
-        this.imageSrc = reader.result;
-    }
-
-}
+ }
