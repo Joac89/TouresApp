@@ -66,6 +66,7 @@ export class CustomerComponent {
         this.loaderService.start();
 
         if (this.user.custId == undefined) {
+
             var json = {
                 fname: this.registrationForm.value.textName,
                 lname: this.registrationForm.value.textSurname,
@@ -77,14 +78,14 @@ export class CustomerComponent {
                 status: "1",
                 docnumber: this.registrationForm.value.textDocument,
                 username: this.getUsername(),
-                address: "", //this.registrationForm.value.textAddres
-                clientType: this.user.tipoCliente
+                address: "" //this.registrationForm.value.textAddres
+                //clienttype: ""
             }
             var token = this.tokenService.getTokenHeader();
 
             this.http.post(this.path + "api/Customer/create", json, token).map(response => response.json()).subscribe(result => {
                 this.saved = true;
-                this.loaderService.end();
+                this.loaderService.end();     
 
                 this.newuser = btoa(json.username);
                 //this.authService.login(JSON.stringify(result));
