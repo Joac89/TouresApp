@@ -2,13 +2,13 @@
 <div class="text-center fadeIn slow animated">
     <div class="row justify-content-md-center no-margin">
         <div class="col-lg-11 col-md-11 col-sm-12 home">
-            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+            <!--<page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
                         [subtitle]="'Se encontraron ' + (aux && aux.data ? aux.data.length : 0) + ' coincidencias para '"
                         [reference]="textSearch">
-            </page-title>
+            </page-title>-->
             
             <br />
-            <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
+            <form [formGroup]="reportForm" #formReg="ngForm">
                 <!--<div class="row">
                     <select class="form-control col-lg-12 col-md-12 col-sm-12" formControlName="textSearch">
                         <option>Ranking Clientes</option>
@@ -34,7 +34,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of aux.data">
+                                    <tr *ngFor="let item of aux">
                                         <td scope="row" class="row-fil text-left">{{item.month}}</td>
                                         <td scope="row" class="row-fil text-left">{{item.cantidad}}</td>
                                         <td scope="row" class="row-fil text-left">{{item.valor}}</td>
@@ -64,7 +64,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let item of showItems.data">
+                                    <tr *ngFor="let item of showItems">
                                         <td scope="row" class="row-fil text-center">{{item.ordid}}</td>
                                         <td scope="row" class="row-fil text-left">{{item.ordendate | date: 'yyyy/MM/dd'}}</td>
                                         <td scope="row" class="row-fil text-left">{{item.price}}</td>
@@ -81,9 +81,7 @@
         </button>-->
 
             </form>
-            <form *ngIf="!saved" #formReg="ngForm">
-                
-            </form>
+            
         </div>
     </div>
 </div>

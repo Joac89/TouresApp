@@ -2,13 +2,13 @@
 <div class="text-center fadeIn slow animated">
     <div class="row justify-content-md-center no-margin">
         <div class="col-lg-11 col-md-11 col-sm-12 home">
-            <page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
+            <!--<page-title class="text-uppercase" [title]="'Resultados de la b&uacute;squeda'"
                         [subtitle]="'Se encontraron ' + (aux && aux.data ? aux.data.length : 0) + ' coincidencias para '"
                         [reference]="textSearch">
-            </page-title>
+            </page-title>-->
             <label for="sel1">Seleccione el reporte a consultar:</label>
             <br />
-            <form *ngIf="!saved" [formGroup]="reportForm" #formReg="ngForm">
+            <form [formGroup]="reportForm" #formReg="ngForm">
                 <div class="row">
                     <select class="form-control col-lg-11 col-md-11 col-sm-11" formControlName="textSearch">
                         <option>Ranking Ordenes Abiertas</option>

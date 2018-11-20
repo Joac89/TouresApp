@@ -32,7 +32,7 @@
             <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
                         [subtitle]="'Reg&iacute;strate para poder realizar las compras de tus eventos deportivos preferidos'">
             </page-title>
-            <form *ngIf="!saved" [formGroup]="productForm" (ngSubmit)="sendProduct()" #formReg="ngForm">
+            <form [formGroup]="productForm" (ngSubmit)="sendProduct()" #formReg="ngForm">
                 <div class="text-left">
 
                     <div class="step justify-content-md-center my-auto">
@@ -181,7 +181,7 @@
                 </button>
             </form>
 
-            <div class="text-left" style="padding:0" *ngIf="saved">
+            <!--<div class="text-left" style="padding:0" *ngIf="saved">
                 <div class="alert alert-info" role="alert">
                     <h4 class="alert-heading">
                         <i class="fa fa-check"></i>&nbsp;Felicitaciones!
@@ -193,7 +193,7 @@
                         Iniciar sesi&oacute;n
                     </a>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

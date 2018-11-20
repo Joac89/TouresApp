@@ -32,7 +32,7 @@ export class reportMonthComponent {
         this.showItems = [];
         var tipo = 5;     
         this.http.get(this.path + "api/report/get/month/" + tipo.toString()).map(response => response.json()).subscribe(result => {           
-            this.aux = result;
+            this.aux = result.data;
             this.loaderService.end();
         }, error => {
             this.loaderService.end();
@@ -59,7 +59,7 @@ export class reportMonthComponent {
         this.loaderService.start();
 
         this.http.get(this.path + "api/report/get/monthDetail/" + p_month.toString()).map(response => response.json()).subscribe(result2 => {
-            this.showItems = result2;
+            this.showItems = result2.data;
             this.loaderService.end();
         }, error => {
             this.loaderService.end();

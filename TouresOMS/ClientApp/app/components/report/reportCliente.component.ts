@@ -43,7 +43,7 @@ export class reportClienteComponent {
         //}
             
         this.http.get(this.path + "api/report/get/cliente/" + tipo.toString() + "/" + this.date1 + "/" + this.date2).map(response => response.json()).subscribe(result => {           
-            this.aux = result;
+            this.aux = result.data;
             this.loaderService.end();
         }, error => {
             this.loaderService.end();
@@ -73,7 +73,7 @@ export class reportClienteComponent {
         this.loaderService.start();
 
         this.http.get(this.path + "api/report/get/clienteRanking/" + p_cusid.toString()+ "/" + this.date1 + "/" + this.date2).map(response => response.json()).subscribe(result2 => {
-            this.showItems = result2;
+            this.showItems = result2.data;
             this.loaderService.end();
         }, error => {
             this.loaderService.end();

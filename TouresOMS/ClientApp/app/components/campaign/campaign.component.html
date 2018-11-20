@@ -54,7 +54,7 @@
             <page-title class="text-uppercase" [title]="'Reg&iacute;strate'"
                         [subtitle]="'Reg&iacute;strate para poder realizar las compras de tus eventos deportivos preferidos'">
             </page-title>
-            <form *ngIf="!saved" [formGroup]="campaingForm" (ngSubmit)="sendProduct()" #formReg="ngForm">
+            <form [formGroup]="campaingForm" (ngSubmit)="sendProduct()" #formReg="ngForm">
                 <div class="text-left">
                     <div class="step justify-content-md-center my-auto">
                         <div class="number bg-info justify-content-md-center my-auto">
@@ -78,13 +78,13 @@
                         <label for="campana">Fecha Fin Campa&ntilde;a</label>
                         <input type="date" name="fechaFin" min="2018-11-04" max="2020-05-25" step="3" formControlName="fechaFin">
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label for="rutaimg">Imagen</label>
                             <img [src]="product.image" style="max-width:100px;max-height:100px" />
                             <img [src]="imageSrc" style="max-width:100px;max-height:100px" />
                             <input name="imageUrl" type="file" [(ngModel)]="inputFile" accept="image/*" (change)="handleInputChange($event)" />
                             <button class="btn btn-sm btn-primary" (click)="cargarImagen()">Cargar</button>
-                        </div>
+                        </div>-->
                     </div>
 
                 </div>
@@ -100,12 +100,12 @@
                 <button type="submit" (click)="sendProduct()" id="Guardar" aria-label="Close" class="btn btn-info">
                     Guardar
                 </button>
-                <button type="button" (click)="clearProduct()" aria-label="Close" class="btn btn-outline-dark">
+                <!--<button type="button" (click)="clearProduct()" aria-label="Close" class="btn btn-outline-dark">
                     Limpiar
-                </button>
+                </button>-->
             </form>
 
-            <div class="text-left" style="padding:0" *ngIf="saved">
+            <!--<div class="text-left" style="padding:0" *ngIf="saved">
                 <div class="alert alert-info" role="alert">
                     <h4 class="alert-heading">
                         <i class="fa fa-check"></i>&nbsp;Felicitaciones!
@@ -117,7 +117,7 @@
                         Iniciar sesi&oacute;n
                     </a>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

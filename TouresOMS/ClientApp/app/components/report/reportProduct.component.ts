@@ -34,7 +34,7 @@ export class reportProductComponent {
         this.date1 = this.reportForm.value.fechaIni;
         this.date2 = this.reportForm.value.fechaFin;    
         this.http.get(this.path + "api/report/get/product/" + tipo.toString() + "/" + this.date1 + "/" + this.date2).map(response => response.json()).subscribe(result => {           
-            this.aux = result;
+            this.aux = result.data;
             this.loaderService.end();
         }, error => {
             this.loaderService.end();
